@@ -13,16 +13,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/create', function(req, res, next) {
-    const { email, name, password } = req.body
-    //CreateUser();
+    const { email, name, password } = req.query;
     bcrypt
         .genSalt(10)
         .then((salt: string) => {
-            console.log('Salt: ', salt)
-            return bcrypt.hash(password, salt)
-        })
-        .then((hash: string) => {
-            console.log('Hash: ', hash)
+            return bcrypt.hash(password as string, salt)
         })
         .catch((err: Error) => console.error(err.message))
     res.status(200).json({ message: 'create' });
