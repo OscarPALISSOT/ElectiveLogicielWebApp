@@ -12,15 +12,19 @@ async function CreateRole( role: string ) {
 }
 
 async function GetRole(role: string) {
-    await prisma.roles.findUnique({
+    return prisma.roles.findUnique({
         where: {
             Role: role
         }
     })
+}
+
+async function GetRoles() {
+    return prisma.roles.findMany()
 }
 
 async function DeleteRole(role: string) {
-    await prisma.roles.delete({
+    return prisma.roles.delete({
         where: {
             Role: role
         }
@@ -28,8 +32,17 @@ async function DeleteRole(role: string) {
 }
 
 
-//update role
+async function UpdateRole(role: string, newRole: string) {
+    return prisma.roles.update({
+        where: {
+            Role: role
+        },
+        data: {
+            Role: newRole
+        }
+    })
+}
 
 
 
-export {CreateRole, GetRole, DeleteRole};
+export {CreateRole, GetRole, DeleteRole, GetRoles, UpdateRole};

@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/create', async function(req, res, next) {
-    const {email, firstName, lastName, password, roles} = req.query;
+    const {email, firstName, lastName, password, roles} = req.query
     const hash = async (password: string, saltRound: number) => {
         try {
             const salt = await bcrypt.genSalt(saltRound);
@@ -28,13 +28,13 @@ router.post('/create', async function(req, res, next) {
         firstName: firstName,
         lastName: lastName,
         password: hashPassword,
-        roles: (roles as string).split(',')
+        roles: (roles as string).replace(' ', '').split(',')
     } as User
     try {
         const newUser = await CreateUser(user)
-        res.status(200).json({ message: newUser });
+        res.status(200).json({ response: newUser });
     } catch(error) {
-        res.status(500).json({ message: error });
+        res.status(500).json({ error: error });
     }
 });
 
@@ -42,9 +42,9 @@ router.get('/getUsers', async function(req, res, next) {
     const {email} = req.query;
     try {
         const users = await GetUsers(email as string)
-        res.status(200).json({ message: users });
+        res.status(200).json({ response: users });
     } catch(error) {
-        res.status(500).json({ message: error });
+        res.status(500).json({ error: error });
     }
 });
 

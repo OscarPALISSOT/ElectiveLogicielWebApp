@@ -18,9 +18,9 @@ model Users {
   Password               String
   RegistrationDate       DateTime  @default(now())
   UpdatedAt              DateTime  @updatedAt
-  Token                  String?
+  Token                  String?   @unique
   TokenExpiration        DateTime?
-  RefreshToken           String?
+  RefreshToken           String?   @unique
   RefreshTokenExpiration DateTime?
   Role                   Roles[]
 }
