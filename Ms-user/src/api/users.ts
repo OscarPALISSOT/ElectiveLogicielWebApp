@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import express from 'express';
-import {CreateUser} from "../modules/users";
+import {CreateUser, GetUser, GetUsers} from "../modules/users";
 import {User} from "../interfaces/User";
 
 const router = express.Router();
@@ -30,8 +30,22 @@ router.post('/create', async function(req, res, next) {
         password: hashPassword,
         roles: (roles as string).split(',')
     } as User
-    const newUser = await CreateUser(user)
-    res.status(200).json({ message: newUser });
+    try {
+        const newUser = await CreateUser(user)
+        res.status(200).json({ message: newUser });
+    } catch(error) {
+        res.status(500).json({ message: error });
+    }
+});
+
+router.get('/getUsers', async function(req, res, next) {
+    const {email} = req.query;
+    try {
+        const users = await GetUsers(email as string)
+        res.status(200).json({ message: users });
+    } catch(error) {
+        res.status(500).json({ message: error });
+    }
 });
 
 export default router;

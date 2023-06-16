@@ -16,9 +16,14 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
+import swaggerUi from 'swagger-ui-express';
+const swaggerDocument = require('../swagger.json');
+
 app.get('/', function(req, res, next) {
   res.status(200).json({ message: 'Hello world' });
 });
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use('/api/v1/users', users);
 app.use('/api/v1/roles', roles);

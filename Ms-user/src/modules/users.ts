@@ -27,21 +27,10 @@ async function CreateUser(user: User) {
     });
 }
 
-async function GetUsers(id: number, email: string) {
-    await prisma.users.findMany({
+async function GetUsers(email: string) {
+    return prisma.users.findMany({
         where: {
-            OR: [
-                {
-                    UserId: {
-                        equals: id
-                    }
-                },
-                {
-                    Email: {
-                        contains: email
-                    }
-                },
-            ]
+            Email: email
         }
     })
 }
