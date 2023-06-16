@@ -22,10 +22,10 @@ model Users {
   TokenExpiration        DateTime?
   RefreshToken           String?
   RefreshTokenExpiration DateTime?
-  Role                   Role[]
+  Role                   Roles[]
 }
 
-model Role {
+model Roles {
   RoleId Int     @id @default(autoincrement())
   Role   String  @unique
   User   Users[]

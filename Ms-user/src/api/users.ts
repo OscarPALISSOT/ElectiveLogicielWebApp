@@ -28,9 +28,9 @@ router.post('/create', async function(req, res, next) {
         firstName: firstName,
         lastName: lastName,
         password: hashPassword,
-        roles: roles
-    }
-    const newUser = await CreateUser(user as User)
+        roles: (roles as string).split(',')
+    } as User
+    const newUser = await CreateUser(user)
     res.status(200).json({ message: newUser });
 });
 

@@ -3,18 +3,31 @@ import {User} from "../interfaces/User";
 
 const prisma = new PrismaClient()
 
-async function CreateUser( user: User ) {
+async function CreateUser(user: User) {
+
     return prisma.users.create({
         data: {
             Email: user.email,
             FirstName: user.firstName,
             LastName: user.lastName,
             Password: user.password,
+            Role: {
+                connectOrCreate: user.roles.map((role) => {
+                    return {
+                        where: {
+                            Role: role
+                        },
+                        create: {
+                            Role: role
+                        }
+                    }
+                })
+            }
         }
     });
 }
 
-async function GetUsers(id: number, email: string, name: string) {
+async function GetUsers(id: number, email: string) {
     await prisma.users.findMany({
         where: {
             OR: [
@@ -49,18 +62,7 @@ async function DeleteUser(email: string) {
     })
 }
 
-async function UpdateUser(user: User) {
-    await prisma.users.update({
-        where: {
-            Email: user.email
-        },
-        data: {
-            Email: user.email,
-            FirstName: user.firstName,
-            LastName: user.lastName,
-            Password: user.password,
-        }
-    })
-}
 
-export {CreateUser, GetUsers, GetUser, DeleteUser, UpdateUser};
+//update user
+
+export {CreateUser, GetUsers, GetUser, DeleteUser};

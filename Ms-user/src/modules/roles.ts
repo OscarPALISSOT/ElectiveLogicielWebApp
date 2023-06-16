@@ -3,16 +3,16 @@ import {Role} from "../interfaces/Role";
 
 const prisma = new PrismaClient()
 
-async function CreateRole( role: Role ) {
-    return prisma.role.create({
+async function CreateRole( role: string ) {
+    return prisma.roles.create({
         data: {
-            Role: role.role,
+            Role: role,
         }
     });
 }
 
 async function GetRole(role: string) {
-    await prisma.role.findUnique({
+    await prisma.roles.findUnique({
         where: {
             Role: role
         }
@@ -20,7 +20,7 @@ async function GetRole(role: string) {
 }
 
 async function DeleteRole(role: string) {
-    await prisma.role.delete({
+    await prisma.roles.delete({
         where: {
             Role: role
         }

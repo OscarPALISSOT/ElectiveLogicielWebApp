@@ -5,6 +5,7 @@ import cors from 'cors';
 
 import * as middlewares from './middlewares';
 import users from './api/users';
+import roles from './api/roles';
 
 require('dotenv').config();
 
@@ -20,6 +21,7 @@ app.get('/', function(req, res, next) {
 });
 
 app.use('/api/v1/users', users);
+app.use('/api/v1/roles', roles);
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
