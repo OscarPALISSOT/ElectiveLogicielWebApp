@@ -4,7 +4,7 @@ import ErrorResponse from './interfaces/ErrorResponse';
 
 export function notFound(req: Request, res: Response, next: NextFunction) {
   res.status(404);
-  const error = new Error(`🔍 - Not Found - ${req.originalUrl}`);
+  const error = new Error(` 404 Not Found - ${req.originalUrl}`);
   next(error);
 }
 
