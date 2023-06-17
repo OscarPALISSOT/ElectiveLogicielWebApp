@@ -49,6 +49,11 @@ async function GetUser(email: string) {
             Email: true,
             RegistrationDate: true,
             UpdatedAt: true,
+            Role: {
+                select: {
+                    Role: true
+                }
+            }
         }
     })
 }
@@ -65,6 +70,11 @@ async function GetUsers() {
             Email: true,
             RegistrationDate: true,
             UpdatedAt: true,
+            Role: {
+                select: {
+                    Role: true
+                }
+            }
         }
     })
 }
@@ -113,4 +123,71 @@ async function UpdateUserPassword(email: string, password: string) {
     })
 }
 
-export {CreateUser, GetUser, GetUsers,DeleteUser, UpdateUser, UpdateUserPassword};
+/**
+ * Get a user hashed password
+ * @param {string} email the user email to get
+ */
+async function GetUserPassword(email: string) {
+    return prisma.users.findUnique({
+        where: {
+            Email: email
+        },
+        select: {
+            UserId: true,
+            Email: true,
+            Password: true
+        }
+    })
+}
+
+
+/**
+ * Add user roles
+ * @param {string} email the user email to be updated
+ * @param {string[]} roles the roles to be added
+ */
+async function AddUserRoles(email: string, roles: string[]) {
+    return prisma.users.update({
+        where: {
+            Email: email
+        },
+        data: {
+            Role: {
+                connectOrCreate: roles.map((role) => {
+                    return {
+                        where: {
+                            Role: role
+                        },
+                        create: {
+                            Role: role
+                        }
+                    }
+                })
+            }
+        }
+    })
+}
+
+/**
+ * Remove user roles
+ * @param {string} email the user email to be updated
+ * @param {string[]} roles the roles to be deleted
+ */
+async function RemoveUserRoles(email: string, roles: string[]) {
+    return prisma.users.update({
+        where: {
+            Email: email
+        },
+        data: {
+            Role: {
+                disconnect: roles.map((role) => {
+                    return {
+                        Role: role
+                    }
+                })
+            }
+        }
+    })
+}
+
+export {CreateUser, GetUser, GetUsers,DeleteUser, UpdateUser, UpdateUserPassword, GetUserPassword, AddUserRoles, RemoveUserRoles};

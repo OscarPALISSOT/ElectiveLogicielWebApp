@@ -1,8 +1,17 @@
 import bcrypt from 'bcrypt';
 import express from 'express';
-import {CreateUser, DeleteUser, GetUser, GetUsers, UpdateUser, UpdateUserPassword} from "../modules/users";
+import {
+    AddUserRoles,
+    CreateUser,
+    DeleteUser,
+    GetUser,
+    GetUserPassword,
+    GetUsers, RemoveUserRoles,
+    UpdateUser,
+    UpdateUserPassword,
+} from "../modules/users";
 import {User} from "../interfaces/User";
-import {hashPassword} from "../modules/hashPassword";
+import {comparePassword, hashPassword} from "../modules/hashPassword";
 
 const router = express.Router();
 
@@ -101,9 +110,15 @@ const {email, firstName, lastName, roles, userEmail} = req.query
  * update a user password
  */
 router.patch('/updateUserPassword', async function(req, res, next) {
-    const {email, password} = req.query
+    const {email, newPassword, oldPassword} = req.query
 
-    const hashPwd = await hashPassword(password as string)
+    const oldHashPwd = await GetUserPassword(email as string)
+
+    const comparePwd = await comparePassword(oldPassword as string, oldHashPwd?.Password as string)
+    if (!comparePwd) {
+        res.status(401).json({ error: 'Old password is not correct' });
+    }
+    const hashPwd = await hashPassword(newPassword as string)
     if (!hashPwd) {
         res.status(500).json({ error: 'Error while hashing password' });
     }
@@ -111,6 +126,37 @@ router.patch('/updateUserPassword', async function(req, res, next) {
     try {
         await UpdateUserPassword(email as string, hashPwd as string)
         res.status(200).json({ response: 'Password updated' });
+    } catch(error) {
+        res.status(500).json({ error: error });
+    }
+});
+
+
+/**
+ * Add roles to a user
+ */
+router.patch('/updateUserRoles', async function(req, res, next) {
+    const {email, roles} = req.query
+    const rolesArray = (roles as string).replace(' ', '').split(',');
+    try {
+        await AddUserRoles(email as string, rolesArray)
+        const updatedUser = await GetUser(email as string)
+        res.status(200).json({ response: updatedUser });
+    } catch(error) {
+        res.status(500).json({ error: error });
+    }
+});
+
+/**
+ * Remove roles to a user
+ */
+router.patch('/removeUserRoles', async function(req, res, next) {
+    const {email, roles} = req.query
+    const rolesArray = (roles as string).replace(' ', '').split(',');
+    try {
+        await RemoveUserRoles(email as string, rolesArray)
+        const updatedUser = await GetUser(email as string)
+        res.status(200).json({ response: updatedUser });
     } catch(error) {
         res.status(500).json({ error: error });
     }
