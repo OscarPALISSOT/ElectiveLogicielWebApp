@@ -1,15 +1,20 @@
 import bcrypt from 'bcrypt';
 import express from 'express';
-import {CreateUser, GetUser, GetUsers} from "../modules/users";
+import {CreateUser, GetUser} from "../modules/users";
 import {User} from "../interfaces/User";
 
 const router = express.Router();
 
-/* GET home page. */
+/**
+ * ping user route
+ */
 router.get('/', function(req, res, next) {
     res.status(200).json({ message: 'Users routes' });
 });
 
+/**
+ * create a user
+ */
 router.post('/create', async function(req, res, next) {
     const {email, firstName, lastName, password, roles} = req.query
     const hash = async (password: string, saltRound: number) => {
@@ -38,10 +43,14 @@ router.post('/create', async function(req, res, next) {
     }
 });
 
-router.get('/getUsers', async function(req, res, next) {
+
+/**
+ * get a user by email
+ */
+router.get('/getUser', async function(req, res, next) {
     const {email} = req.query;
     try {
-        const users = await GetUsers(email as string)
+        const users = await GetUser(email as string)
         res.status(200).json({ response: users });
     } catch(error) {
         res.status(500).json({ error: error });

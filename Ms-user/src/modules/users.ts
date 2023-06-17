@@ -3,6 +3,11 @@ import {User} from "../interfaces/User";
 
 const prisma = new PrismaClient()
 
+
+/**
+ * Create a user
+ * @param {User} user the user to be created
+ */
 async function CreateUser(user: User) {
 
     return prisma.users.create({
@@ -27,22 +32,31 @@ async function CreateUser(user: User) {
     });
 }
 
-async function GetUsers(email: string) {
-    return prisma.users.findMany({
-        where: {
-            Email: email
-        }
-    })
-}
 
+/**
+ * Get a user
+ * @param {string} email the user email to get
+ */
 async function GetUser(email: string) {
-    await prisma.users.findUnique({
+    return prisma.users.findUnique({
         where: {
             Email: email
+        },
+        select: {
+            UserId: true,
+            FirstName: true,
+            LastName: true,
+            Email: true,
+            RegistrationDate: true,
+            UpdatedAt: true,
         }
     })
 }
 
+/**
+ * Delete a user
+ * @param {string} email the user email to be deleted
+ */
 async function DeleteUser(email: string) {
     await prisma.users.findUnique({
         where: {
@@ -54,4 +68,4 @@ async function DeleteUser(email: string) {
 
 //update user
 
-export {CreateUser, GetUsers, GetUser, DeleteUser};
+export {CreateUser, GetUser, DeleteUser};

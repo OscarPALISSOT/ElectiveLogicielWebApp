@@ -4,11 +4,17 @@ import {CreateRole, DeleteRole, GetRole, GetRoles, UpdateRole} from "../modules/
 
 const router = express.Router();
 
-/* GET home page. */
+/**
+ * ping role route
+ */
 router.get('/', function(req, res, next) {
     res.status(200).json({ message: 'Role routes' });
 });
 
+
+/**
+ * create a role
+ */
 router.post('/create', async function(req, res, next) {
     const {role} = req.query;
     try {
@@ -19,6 +25,9 @@ router.post('/create', async function(req, res, next) {
     }
 });
 
+/**
+ * get a role
+ */
 router.get('/getRole', async function(req, res, next) {
     const {role} = req.query;
     try {
@@ -29,6 +38,9 @@ router.get('/getRole', async function(req, res, next) {
     }
 });
 
+/**
+ * get all roles
+ */
 router.get('/getRoles', async function(req, res, next) {
 try {
         const Roles = await GetRoles()
@@ -38,6 +50,10 @@ try {
     }
 });
 
+
+/**
+ * delete a role
+ */
 router.delete('/deleteRole', async function(req, res, next) {
     const {role} = req.query;
     try {
@@ -48,6 +64,9 @@ router.delete('/deleteRole', async function(req, res, next) {
     }
 });
 
+/**
+ * update a role
+ */
 router.put('/updateRole', async function(req, res, next) {
     const {role, newRole} = req.query;
     try {
