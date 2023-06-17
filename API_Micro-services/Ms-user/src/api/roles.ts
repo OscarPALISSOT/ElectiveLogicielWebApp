@@ -57,7 +57,7 @@ try {
 router.delete('/deleteRole', async function(req, res, next) {
     const {role} = req.query;
     try {
-        const Role = await DeleteRole(role as string)
+        await DeleteRole(role as string)
         res.status(200).json({ response: 'Role deleted' });
     } catch(error) {
         res.status(500).json({ error: error });

@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 require("dotenv").config();
 
-const indexRouter = require('./routes/index.ts');
+const indexRouter = require('./routes');
 const authRouter = require('./routes/auth.ts');
 
 const app = express()
