@@ -6,6 +6,8 @@ function Home() {
         <>
             <h1>Home</h1>
             <Link to="/about">About Us</Link>
+            <br/>
+            <Link to="/authentication">Se connecter</Link>
         </>
     )
 }
