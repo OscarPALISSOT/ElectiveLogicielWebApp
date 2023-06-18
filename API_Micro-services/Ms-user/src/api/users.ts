@@ -27,6 +27,7 @@ router.get('/', function(req, res, next) {
  */
 router.post('/create', async function(req, res, next) {
     const {email, firstName, lastName, password, roles} = req.query
+
     const hashPwd = await hashPassword(password as string)
     if (!hashPwd) {
         res.status(500).json({ error: 'Error while hashing password' });
