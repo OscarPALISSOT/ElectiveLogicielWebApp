@@ -1,5 +1,6 @@
 import express from 'express';
 import {
+  AddTokenToUser,
   AddUserRoles,
   CreateUser,
   DeleteUser,
@@ -174,6 +175,16 @@ router.post('/checkUserPassword', async function (req, res, next) {
       res.status(401).json({ error: 'Password is not correct' });
     }
     res.status(200).json({ response: 'Password is correct' });
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
+});
+
+router.post('/addTokenToUser', async function (req, res, next) {
+  const { email, token } = req.query;
+  try {
+    await AddTokenToUser(email as string, token as string);
+    res.status(200).json({ response: 'Token added' });
   } catch (error) {
     res.status(500).json({ error: error });
   }

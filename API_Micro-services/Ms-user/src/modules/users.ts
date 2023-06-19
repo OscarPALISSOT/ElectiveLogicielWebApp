@@ -178,4 +178,20 @@ async function RemoveUserRoles(email: string, roles: string[]) {
   });
 }
 
-export { CreateUser, GetUser, GetUsers, DeleteUser, UpdateUser, UpdateUserPassword, GetUserPassword, AddUserRoles, RemoveUserRoles };
+/**
+ * add token to user
+ * @param {string} email the user email to be updated
+ * @param {string} token the token to be added
+ */
+async function AddTokenToUser(email: string, token: string) {
+  return prisma.users.update({
+    where: {
+      Email: email,
+    },
+    data: {
+      Token: token,
+    },
+  });
+}
+
+export { CreateUser, GetUser, GetUsers, DeleteUser, UpdateUser, UpdateUserPassword, GetUserPassword, AddUserRoles, RemoveUserRoles, AddTokenToUser };

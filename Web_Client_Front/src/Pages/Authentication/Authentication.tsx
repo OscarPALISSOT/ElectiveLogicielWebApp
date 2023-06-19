@@ -11,6 +11,7 @@ function Authentication() {
 
     const [incorrectEmail, setIncorrectEmail] = React.useState(false)
     const [incorrectPwd, setIncorrectPwd] = React.useState(false)
+    const [disabled, setDisabled] = React.useState(false)
 
     const [inputs, setInputs] = React.useState({
         email: '',
@@ -33,14 +34,14 @@ function Authentication() {
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault()
+        setDisabled(true)
         try {
             const user = (await axios.get(import.meta.env.VITE_URL_MS_USER + '/getUser', {params: {email: inputs.email}})).data.response
             if (!user){
                 setIncorrectEmail(true)
             } else {
                 await axios.post(import.meta.env.VITE_URL_MS_USER + '/checkUserPassword', null, {params: {email: inputs.email, password: inputs.pwd}})
-                console.log(user)
-                await axios.post(import.meta.env.VITE_URL_MS_AUTH + '/create', null, {
+                const token = (await axios.post(import.meta.env.VITE_URL_MS_AUTH + '/create', null, {
                     params: {
                         userId: user.UserId,
                         email: user.Email,
@@ -48,9 +49,16 @@ function Authentication() {
                         lastName: user.LastName,
                         roles: user.Role.map((role: {'Role': string} ) => role.Role).join(', ')
                     }
+                })).data.token
+                await axios.post(import.meta.env.VITE_URL_MS_USER + '/addTokenToUser', null, {
+                    params: {
+                        email: inputs.email,
+                        token: token
+                    }
                 })
             }
         } catch (error) {
+            setDisabled(false)
             console.log(error);
             if ((error as any).response.status === 401){
                 setIncorrectPwd(true)
@@ -68,7 +76,7 @@ function Authentication() {
                 {incorrectEmail && <p>Indentifiant inconnu</p>}
                 <InputField name={'pwd'} label={'Your password'} type={'password'} onChange={handleChange} value={inputs.pwd}/>
                 {incorrectPwd && <p>Mot de passe incorrect</p>}
-                <Btn label={'Se connecter'}/>
+                <Btn label={'Se connecter'} disabled={disabled}/>
             </form>
 
             <Btn label={'Créer un compte'} link={'/createAccount'}/>
