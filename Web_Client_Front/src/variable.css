@@ -1,0 +1,12 @@
+:root{
+    --primary: #CFDBD5;
+    --secondary: #E8EDDF;
+    --yellow: #FEE131;
+    --primaryHover: #B9C3BE;
+    --secondaryHover: #D6DACE;
+    --yellowHover: #F8D500;
+    --dark: #242423;
+    --darkHover: #333533;
+    --fontColor: #000;
+    --fontColorLight: #FFF;
+}

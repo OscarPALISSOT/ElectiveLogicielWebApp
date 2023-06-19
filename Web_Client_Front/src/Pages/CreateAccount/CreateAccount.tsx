@@ -95,7 +95,7 @@ function CreateAccount() {
                 <InputField name={'pwdConfirm'} label={'Confirmez le mot de passe'} type={'password'} required={true}
                             value={inputs.pwdConfirm} onChange={handleChange}/>
                 {samePwd && <p>Les mots de passe ne sont pas identiques</p>}
-                <Btn label={'Créer le compte'} disabled={disabled}/>
+                <Btn label={'Créer le compte'} disabled={disabled} style={'yellow'} rounded/>
             </form>
         </>
     )

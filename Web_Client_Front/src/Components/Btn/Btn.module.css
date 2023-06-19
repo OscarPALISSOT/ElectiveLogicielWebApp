@@ -1,3 +1,50 @@
 .btn{
     cursor: pointer;
+    height: 2.5rem;
+    outline: none;
+    border-radius: 10px;
+    transition: background 0.1s ease-in;
+    padding: 0 1rem;
+    margin: 1rem 0;
+}
+
+.rounded{
+    border-radius: 30px;
+}
+
+.primary{
+    background: var(--primary);
+    border: var(--primary) solid 2px;
+}
+
+.primary:hover{
+    background: var(--primaryHover);
+}
+
+.secondary{
+    background: var(--secondary);
+    border: var(--secondary) solid 2px;
+}
+
+.secondary:hover{
+    background: var(--secondaryHover);
+}
+
+.yellow{
+    background: var(--yellow);
+    border: var(--yellow) solid 2px;
+}
+
+.yellow:hover{
+    background: var(--yellowHover);
+}
+
+.dark{
+    background: var(--dark);
+    border: var(--dark) solid 2px;
+    color: var(--fontColorLight);
+}
+
+.dark:hover{
+    background: var(--darkHover);
 }

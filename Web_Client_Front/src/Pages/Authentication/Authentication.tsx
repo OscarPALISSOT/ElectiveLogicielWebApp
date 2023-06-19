@@ -76,10 +76,10 @@ function Authentication() {
                 {incorrectEmail && <p>Indentifiant inconnu</p>}
                 <InputField name={'pwd'} label={'Your password'} type={'password'} onChange={handleChange} value={inputs.pwd}/>
                 {incorrectPwd && <p>Mot de passe incorrect</p>}
-                <Btn label={'Se connecter'} disabled={disabled}/>
+                <Btn label={'Se connecter'} disabled={disabled} style={'primary'}/>
             </form>
 
-            <Btn label={'Créer un compte'} link={'/createAccount'}/>
+            <Btn label={'Créer un compte'} link={'/createAccount'} style={'secondary'}/>
         </>
     )
 }
