@@ -4,8 +4,11 @@
     outline: none;
     border-radius: 10px;
     transition: background 0.1s ease-in;
-    padding: 0 1rem;
+    padding: 0.5rem 1rem;
     margin: 1rem 0;
+    border: none;
+    font-weight: 500;
+    font-size: 1rem;
 }
 
 .rounded{
@@ -14,7 +17,6 @@
 
 .primary{
     background: var(--primary);
-    border: var(--primary) solid 2px;
 }
 
 .primary:hover{
@@ -23,7 +25,6 @@
 
 .secondary{
     background: var(--secondary);
-    border: var(--secondary) solid 2px;
 }
 
 .secondary:hover{
@@ -32,7 +33,6 @@
 
 .yellow{
     background: var(--yellow);
-    border: var(--yellow) solid 2px;
 }
 
 .yellow:hover{
@@ -41,7 +41,6 @@
 
 .dark{
     background: var(--dark);
-    border: var(--dark) solid 2px;
     color: var(--fontColorLight);
 }
 
