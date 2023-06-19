@@ -25,7 +25,7 @@ router.get('/', function (req, res, next) {
  * create a user
  */
 router.post('/create', async function (req, res, next) {
-  const { email, firstName, lastName, password} = req.query;
+  const { email, firstName, lastName, password } = req.query;
 
   const hashPwd = await hashPassword(password as string);
   if (!hashPwd) {
@@ -157,6 +157,23 @@ router.patch('/removeUserRoles', async function (req, res, next) {
     await RemoveUserRoles(email as string, rolesArray);
     const updatedUser = await GetUser(email as string);
     res.status(200).json({ response: updatedUser });
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
+});
+
+/**
+ * Check user password
+ */
+router.post('/checkUserPassword', async function (req, res, next) {
+  const { email, password } = req.query;
+  const hashPwd = await GetUserPassword(email as string);
+  const comparePwd = await comparePassword(password as string, hashPwd?.Password as string);
+  try {
+    if (!comparePwd) {
+      res.status(401).json({ error: 'Password is not correct' });
+    }
+    res.status(200).json({ response: 'Password is correct' });
   } catch (error) {
     res.status(500).json({ error: error });
   }

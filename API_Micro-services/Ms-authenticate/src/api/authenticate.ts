@@ -20,7 +20,7 @@ router.get<{}, MessageResponse>('/', (req, res) => {
 router.post('/create', function (req, res, next) {
 
   const { userId, email, firstName, lastName, roles } = req.query;
-
+  console.log(req.query);
   if (!userId || !email || !firstName || !lastName || !roles) {
     res.status(500).json({ error: 'Missing parameters' });
   } else {
