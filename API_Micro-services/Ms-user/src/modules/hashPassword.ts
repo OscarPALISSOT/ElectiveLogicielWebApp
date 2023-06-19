@@ -1,18 +1,18 @@
-import bcrypt from "bcrypt";
+import bcrypt from 'bcrypt';
 
 /**
  * Hash a password
  * @param {string} password
  */
 export async function hashPassword(password: string) {
-    const saltRound = process.env.SALT_ROUNDS as unknown as number;
-    try {
-        const salt = await bcrypt.genSalt(+saltRound);
+  const saltRound = process.env.SALT_ROUNDS as unknown as number;
+  try {
+    const salt = await bcrypt.genSalt(+saltRound);
 
-        return await bcrypt.hash(password, salt)
-    } catch(error) {
-        console.log(error)
-    }
+    return await bcrypt.hash(password, salt);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 /**
@@ -21,5 +21,5 @@ export async function hashPassword(password: string) {
  * @param {string} hash
  */
 export async function comparePassword(plaintextPassword: string, hash: string) {
-    return await bcrypt.compare(plaintextPassword, hash);
+  return bcrypt.compare(plaintextPassword, hash);
 }

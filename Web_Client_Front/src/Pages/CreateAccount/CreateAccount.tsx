@@ -2,10 +2,12 @@ import InputField from "../../Components/InputField/InputField.tsx";
 import Btn from "../../Components/Btn/Btn.tsx";
 import React, {useEffect} from "react";
 import axios from "axios";
-import {redirect} from "react-router-dom";
+import {useNavigate} from "react-router";
 
 
 function CreateAccount() {
+
+    const navigate = useNavigate();
 
     const [disabled, setDisabled] = React.useState(true)
     const [samePwd, setSamePwd] = React.useState(false)
@@ -58,21 +60,18 @@ function CreateAccount() {
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault()
         setDisabled(true);
-        const headers = {
-            'Content-Type': 'application/json; charset=UTF-8',
-        }
         axios.post(import.meta.env.VITE_URL_MS_USER + '/create',
-            {
-                firstName: inputs.firstName,
-                lastName: inputs.lastName,
-                email: inputs.email,
-                password: inputs.pwd,
-                roles: 'user',
-            },{
-                headers: headers
+            null,{
+                params: {
+                    firstName: inputs.firstName,
+                    lastName: inputs.lastName,
+                    email: inputs.email,
+                    password: inputs.pwd,
+                    roles: 'user',
+                }
             })
             .then(function () {
-                redirect("/login")
+                navigate("/login")
             })
             .catch(function (error) {
                 console.log(error);
