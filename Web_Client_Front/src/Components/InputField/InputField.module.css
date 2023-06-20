@@ -1,3 +1,44 @@
 .inputField{
     margin: 1rem;
+    height: 2.5rem;
+    outline: none;
+    border: none;
+}
+
+.inputField:focus{
+    border-bottom: 2px solid var(--fontColor);
+}
+
+.rounded{
+    border-radius: 30px;
+    padding: 0 0.5rem;
+}
+
+.rounded:focus{
+    border: 2px solid var(--fontColor);
+}
+
+.primary{
+    background: var(--primary);
+}
+
+.secondary{
+    background: var(--secondary);
+}
+
+.yellow{
+    background: var(--yellow);
+}
+
+.dark{
+    background: var(--dark);
+    color: var(--fontColorLight);
+}
+
+.dark:focus{
+    border: var(--fontColorLight) 2px solid;
+}
+
+.dark .rounded:focus{
+    border: 2px solid var(--fontColorLight);
 }

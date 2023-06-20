@@ -72,9 +72,9 @@ function Authentication() {
         <>
             <h1>Authentication</h1>
             <form onSubmit={handleSubmit}>
-                <InputField name={'email'} label={'Votre identifiant'} type={'text'} placeholder={'username@example.com'} onChange={handleChange} value={inputs.email}/>
+                <InputField name={'email'} label={'Votre identifiant'} type={'text'} placeholder={'username@example.com'} onChange={handleChange} value={inputs.email} style={'primary'}/>
                 {incorrectEmail && <p>Indentifiant inconnu</p>}
-                <InputField name={'pwd'} label={'Your password'} type={'password'} onChange={handleChange} value={inputs.pwd}/>
+                <InputField name={'pwd'} label={'Your password'} type={'password'} onChange={handleChange} value={inputs.pwd} style={'primary'}/>
                 {incorrectPwd && <p>Mot de passe incorrect</p>}
                 <Btn label={'Se connecter'} disabled={disabled} style={'primary'}/>
             </form>
