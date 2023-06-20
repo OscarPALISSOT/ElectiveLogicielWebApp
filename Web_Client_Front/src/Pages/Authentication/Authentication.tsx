@@ -56,7 +56,8 @@ function Authentication() {
                         token: token
                     }
                 })
-                localStorage.setItem('JWT_auth', token)
+                localStorage.removeItem('JWT_auth_Cesivroo');
+                localStorage.setItem('JWT_auth_Cesivroo', token)
             }
         } catch (error) {
             setDisabled(false)

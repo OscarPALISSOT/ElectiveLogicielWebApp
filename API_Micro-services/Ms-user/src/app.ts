@@ -5,6 +5,7 @@ import cors from 'cors';
 import './middlewares/user';
 
 import * as middlewares from './middlewares';
+import * as middlewaresUser from './middlewares/user';
 import users from './api/users';
 import roles from './api/roles';
 
@@ -22,11 +23,13 @@ app.get('/', function (req, res, next) {
   res.status(200).json({ message: 'Hello world' });
 });
 
+app.use(middlewaresUser.tokenmiddleware);
 
 app.use('/api/v1/users', users);
 app.use('/api/v1/roles', roles);
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
+
 
 export default app;
