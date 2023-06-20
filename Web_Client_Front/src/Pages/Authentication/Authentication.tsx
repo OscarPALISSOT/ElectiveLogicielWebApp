@@ -91,7 +91,7 @@ function Authentication() {
                 <Btn label={'Se connecter'} disabled={disabled} style={'primary'}/>
             </form>
 
-            <Btn label={'Créer un compte'} link={'/createAccount'} style={'secondary'}/>
+            <Btn label={'Créer un compte'} style={'secondary'} onClick={() => navigate("/register")}/>
         </>
     )
 }
