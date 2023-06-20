@@ -1,59 +1,56 @@
-.divlogo {
+.logoContainer {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 7vh;
-    margin-bottom: 5rem;
+    margin-top: 5vh;
+    margin-bottom: 2rem;
 }
 
-.logo{
+.logoContainer img{
     width:60%;
     height:auto;
 }
 
-.line {
-    position: relative;
-    height: 2px;
-    background-color: black;
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5%;
+}
+
+.form > * {
+    margin: 0.5rem 0;
     width: 100%;
 }
 
-.text {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: white;
-    width: min-content;
+.registerBtnContainer {
+    width: 100%;
+    padding: 0 5%;
 }
 
-.lineContainer {
-    margin-left: 10%;
-    margin-right: 10%;
+.registerBtnContainer button{
+    width: 100%;
 }
 
-.connexionForm {
-    margin-bottom: 1rem;
+.separator{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
 }
 
-/* media queries */
-
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
+.lineSeparator{
+    width: 40%;
+    height: 2px;
+    background: var(--primary);
 }
 
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-}
-
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-}
-
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-}
-
-/* Double Extra large devices (x-large desktops, 1200px and up) */
-@media (min-width: 1700px) {
+.textSeparator{
+    margin: 0 0.5rem;
+    color: var(--primary);
 }
