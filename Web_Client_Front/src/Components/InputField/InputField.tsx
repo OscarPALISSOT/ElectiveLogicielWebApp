@@ -11,14 +11,14 @@ interface InputFieldProps{
     value?: string
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
     style: 'primary' | 'secondary' | 'yellow' | 'dark';
-    rounded?: boolean;
+    radius?: 'rounded' | 'smooth';
     icon?: any;
 }
 
-const InputField: React.FC<InputFieldProps> = ({type, label, required, name, placeholder, value, onChange, style, rounded, icon}: InputFieldProps) => {
+const InputField: React.FC<InputFieldProps> = ({type, label, required, name, placeholder, value, onChange, style, radius, icon}: InputFieldProps) => {
 
-    const inputFieldContainerClassName = `${styles.inputFieldContainer} ${style === 'primary' ? styles.primary : style === 'secondary' ? styles.secondary : style === 'yellow' ? styles.yellow : style === 'dark' && styles.dark } ${rounded && styles.rounded}`;
-    const inputFieldClassName = `${styles.inputField} ${style === 'dark' && styles.darkInput } ${rounded && styles.roundedInput}`;
+    const inputFieldContainerClassName = `${styles.inputFieldContainer} ${style === 'primary' ? styles.primary : style === 'secondary' ? styles.secondary : style === 'yellow' ? styles.yellow : style === 'dark' && styles.dark } ${radius == 'rounded' ? styles.rounded : radius == 'smooth' && styles.smoothRadius}`;
+    const inputFieldClassName = `${styles.inputField} ${style === 'dark' && styles.darkInput } ${radius && styles.radiusInput}`;
 
     return(
         <>

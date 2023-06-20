@@ -1,24 +1,30 @@
 .inputField{
-    height: 2.5rem;
+    height: 3rem;
     outline: none;
     border: none;
     background: transparent;
+    width: 100%;
 }
 
 .inputFieldContainer{
-    height: 2.5rem;
+    height: 3rem;
     width: min-content;
     display: flex;
     align-items: center;
     justify-content: start;
 }
 
-svg{
+.inputFieldContainer svg{
     margin: 0 0.5rem;
 }
 
 .rounded{
     border-radius: 30px;
+    padding: 0 0.5rem;
+}
+
+.smoothRadius{
+    border-radius: 10px;
     padding: 0 0.5rem;
 }
 
@@ -43,11 +49,11 @@ svg{
     border-bottom: 2px solid var(--fontColor);
 }
 
-.inputFieldContainer:has(.darkInput .roundedInput:focus){
+.inputFieldContainer:has(.darkInput .radiusInput:focus){
     border: 2px solid var(--fontColorLight);
 }
 
-.inputFieldContainer:has(.roundedInput:focus){
+.inputFieldContainer:has(.radiusInput:focus){
     border: 2px solid var(--fontColor);
 }
 
@@ -58,4 +64,4 @@ svg{
 
 .darkInput{}
 
-.roundedInput{}
+.radiusInput{}
