@@ -9,9 +9,10 @@ interface BtnProps {
     disabled?: boolean;
     style: 'primary' | 'secondary' | 'yellow' | 'dark';
     rounded?: boolean;
+    icon?: any;
 }
 
-const Btn: React.FC<BtnProps> = ({label, link, disabled, style, rounded}: BtnProps) => {
+const Btn: React.FC<BtnProps> = ({label, link, disabled, style, rounded, icon}: BtnProps) => {
 
     const btnClassName = `${styles.btn} ${style === 'primary' ? styles.primary : style === 'secondary' ? styles.secondary : style === 'yellow' ? styles.yellow : style === 'dark' && styles.dark } ${rounded && styles.rounded}`;
 
@@ -22,11 +23,13 @@ const Btn: React.FC<BtnProps> = ({label, link, disabled, style, rounded}: BtnPro
                     <button
                         className={btnClassName}
                         disabled={disabled}>
+                        {icon}
                         {label}
                     </button>
                 </Link>
                 :
                 <button className={btnClassName} disabled={disabled}>
+                    {icon}
                     {label}
                 </button>
             }

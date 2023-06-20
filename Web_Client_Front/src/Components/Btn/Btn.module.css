@@ -11,6 +11,10 @@
     font-size: 1rem;
 }
 
+.btn svg{
+    margin-right: 0.5rem;
+}
+
 .rounded{
     border-radius: 30px;
 }

@@ -2,6 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import cors from 'cors';
+import './middlewares/user';
 
 import * as middlewares from './middlewares';
 import users from './api/users';

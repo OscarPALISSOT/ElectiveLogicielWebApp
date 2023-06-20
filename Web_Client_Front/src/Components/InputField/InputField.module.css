@@ -1,21 +1,25 @@
 .inputField{
-    margin: 1rem;
     height: 2.5rem;
     outline: none;
     border: none;
+    background: transparent;
 }
 
-.inputField:focus{
-    border-bottom: 2px solid var(--fontColor);
+.inputFieldContainer{
+    height: 2.5rem;
+    width: min-content;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+svg{
+    margin: 0 0.5rem;
 }
 
 .rounded{
     border-radius: 30px;
     padding: 0 0.5rem;
-}
-
-.rounded:focus{
-    border: 2px solid var(--fontColor);
 }
 
 .primary{
@@ -35,10 +39,23 @@
     color: var(--fontColorLight);
 }
 
-.dark:focus{
+.inputFieldContainer:has(.inputField:focus){
+    border-bottom: 2px solid var(--fontColor);
+}
+
+.inputFieldContainer:has(.darkInput .roundedInput:focus){
+    border: 2px solid var(--fontColorLight);
+}
+
+.inputFieldContainer:has(.roundedInput:focus){
+    border: 2px solid var(--fontColor);
+}
+
+.inputFieldContainer:has(.darkInput:focus){
     border: var(--fontColorLight) 2px solid;
 }
 
-.dark .rounded:focus{
-    border: 2px solid var(--fontColorLight);
-}
+
+.darkInput{}
+
+.roundedInput{}
