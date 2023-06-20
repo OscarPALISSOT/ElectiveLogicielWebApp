@@ -6,6 +6,10 @@ function Home() {
 
     return (
         <>
+            <div className="logo" style={{width: '258px', height: '258px'}}>
+                <img src="./src/Assets/img/logo.svg" alt="" style={{width: '100%', height: 'auto'}}/>
+            </div>
+
             <h1>Home</h1>
             <Link to="/about">About Us</Link>
             <br/>

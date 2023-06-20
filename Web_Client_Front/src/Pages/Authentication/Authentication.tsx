@@ -56,6 +56,7 @@ function Authentication() {
                         token: token
                     }
                 })
+                localStorage.setItem('JWT_auth', token)
             }
         } catch (error) {
             setDisabled(false)
