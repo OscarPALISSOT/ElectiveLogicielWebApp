@@ -23,7 +23,8 @@ app.get('/', function (req, res, next) {
   res.status(200).json({ message: 'Hello world' });
 });
 
-app.use(middlewaresUser.tokenmiddleware);
+//app.use(middlewaresUser.tokenMiddleware);
+//app.use(middlewaresUser.isAdmin);
 
 app.use('/api/v1/users', users);
 app.use('/api/v1/roles', roles);
