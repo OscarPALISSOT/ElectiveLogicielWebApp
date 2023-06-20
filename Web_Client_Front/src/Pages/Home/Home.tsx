@@ -1,6 +1,9 @@
 import {Link} from "react-router-dom";
 import Btn from "../../Components/Btn/Btn.tsx";
 import InputField from "../../Components/InputField/InputField.tsx";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faPenNib} from "@fortawesome/free-solid-svg-icons";
+
 
 function Home() {
 
@@ -52,6 +55,13 @@ function Home() {
             <InputField placeholder={'test'} name={'name'} type={'text'} style={'yellow'}/>
             <br/>
             <InputField placeholder={'test'} name={'name'} type={'text'} style={'dark'}/>
+            <br/>
+
+            {
+                    <FontAwesomeIcon icon={faPenNib} />
+            }
+
+
         </>
     )
 }
