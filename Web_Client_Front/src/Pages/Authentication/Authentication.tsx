@@ -3,6 +3,9 @@ import Btn from "../../Components/Btn/Btn.tsx";
 import React, {useEffect} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router";
+import styles from './Authentication.module.css';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faBurger} from "@fortawesome/free-solid-svg-icons";
 
 
 function Authentication() {
@@ -72,6 +75,13 @@ function Authentication() {
 
     return (
         <>
+            <div className={styles.divlogo}>
+                <img className={styles.logo} src="./src/Assets/img/logo.svg" alt=""/>
+            </div>
+
+            <InputField placeholder={'identifiant'} name={'name'} type={'text'} style={'primary'} icon={<FontAwesomeIcon icon={faBurger}/>}/>
+            <InputField placeholder={'mot de passe'} name={'name'} type={'text'} style={'primary'} icon={<FontAwesomeIcon icon={faBurger}/>}/>
+
             <h1>Authentication</h1>
             <form onSubmit={handleSubmit}>
                 <InputField name={'email'} label={'Votre identifiant'} type={'text'} placeholder={'username@example.com'} onChange={handleChange} value={inputs.email} style={'primary'}/>
