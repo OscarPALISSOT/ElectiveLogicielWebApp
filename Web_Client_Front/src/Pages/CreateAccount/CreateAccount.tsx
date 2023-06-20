@@ -3,6 +3,9 @@ import Btn from "../../Components/Btn/Btn.tsx";
 import React, {useEffect} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEnvelope, faLock, faUser, faUserPlus} from "@fortawesome/free-solid-svg-icons";
+import styles from './CreateAccount.module.css'
 
 
 function CreateAccount() {
@@ -81,21 +84,27 @@ function CreateAccount() {
 
     return (
         <>
-            <h1>Inscription</h1>
-            <form onSubmit={handleSubmit}>
-                <InputField name={'firstName'} label={'Prénom'} type={'text'} placeholder={'John'} required={true}
-                            value={inputs.firstName} onChange={handleChange} style={'primary'}/>
-                <InputField name={'lastName'} label={'Nom'} type={'text'} placeholder={'Smith'} required={true}
-                            value={inputs.lastName} onChange={handleChange} style={'primary'}/>
-                <InputField name={'email'} label={'Email'} type={'text'} placeholder={'JohnSmith@example.com'}
-                            required={true} value={inputs.email} onChange={handleChange} style={'primary'}/>
-                {emailExist && <p>Cet email est déjà utilisé</p>}
-                <InputField name={'pwd'} label={'Mot de passe'} type={'password'} required={true} value={inputs.pwd}
-                            onChange={handleChange} style={'primary'}/>
-                <InputField name={'pwdConfirm'} label={'Confirmez le mot de passe'} type={'password'} required={true}
-                            value={inputs.pwdConfirm} onChange={handleChange} style={'primary'}/>
-                {samePwd && <p>Les mots de passe ne sont pas identiques</p>}
-                <Btn label={'Créer le compte'} disabled={disabled} style={'yellow'} rounded/>
+
+            <div className="headerrrr">
+                <Btn label={'Retour'} style={'yellow'} icon={<FontAwesomeIcon icon={faUserPlus} />} onClick={() => navigate("/login")}/>
+                <h1>Inscription</h1>
+            </div>
+            <form className={styles.form} onSubmit={handleSubmit}>
+                <div className={styles.inputContainer}>
+                    <InputField name={'firstName'} type={'text'} placeholder={'John'} required={true}
+                                value={inputs.firstName} onChange={handleChange} style={'primary'} icon={<FontAwesomeIcon icon={faUser} />}/>
+                    <InputField name={'lastName'} type={'text'} placeholder={'Smith'} required={true}
+                                value={inputs.lastName} onChange={handleChange} style={'primary'} icon={<FontAwesomeIcon icon={faUser} />}/>
+                    <InputField name={'email'} type={'text'} placeholder={'JohnSmith@example.com'}
+                                required={true} value={inputs.email} onChange={handleChange} style={'primary'} icon={<FontAwesomeIcon icon={faEnvelope} />}/>
+                    {emailExist && <p>Cet email est déjà utilisé</p>}
+                    <InputField name={'pwd'} type={'password'} required={true} value={inputs.pwd}
+                                onChange={handleChange} style={'primary'} icon={<FontAwesomeIcon icon={faLock} />}/>
+                    <InputField name={'pwdConfirm'} type={'password'} required={true}
+                                value={inputs.pwdConfirm} onChange={handleChange} style={'primary'} icon={<FontAwesomeIcon icon={faLock} />}/>
+                    {samePwd && <p>Les mots de passe ne sont pas identiques</p>}
+                </div>
+                <Btn label={'Créer mon compte'} disabled={disabled} style={'yellow'} icon={<FontAwesomeIcon icon={faUserPlus} />}/>
             </form>
         </>
     )
