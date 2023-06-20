@@ -94,21 +94,69 @@ function CreateAccount() {
 
             <h1 className={styles.title}>Inscription</h1>
             <form className={styles.form} onSubmit={handleSubmit}>
-                <div className={styles.inputContainer}>
-                    <InputField name={'firstName'} type={'text'} placeholder={'Prénom'} required={true}
-                                value={inputs.firstName} onChange={handleChange} style={'primary'} icon={<FontAwesomeIcon icon={faUser} />}/>
-                    <InputField name={'lastName'} type={'text'} placeholder={'Nom'} required={true}
-                                value={inputs.lastName} onChange={handleChange} style={'primary'} icon={<FontAwesomeIcon icon={faUser} />}/>
-                    <InputField name={'email'} type={'text'} placeholder={'Email'}
-                                required={true} value={inputs.email} onChange={handleChange} style={'primary'} icon={<FontAwesomeIcon icon={faEnvelope} />}/>
-                    {emailExist && <p>Cet email est déjà utilisé</p>}
-                    <InputField name={'pwd'} type={'password'} required={true} value={inputs.pwd} placeholder={'Mot de passe'}
-                                onChange={handleChange} style={'primary'} icon={<FontAwesomeIcon icon={faLock} />}/>
-                    <InputField name={'pwdConfirm'} type={'password'} required={true}
-                                value={inputs.pwdConfirm} onChange={handleChange} style={'primary'} icon={<FontAwesomeIcon icon={faLock} />} placeholder={'Confirmez le mot de passe'}/>
-                    {samePwd && <p>Les mots de passe ne sont pas identiques</p>}
-                </div>
-                <Btn label={'Créer mon compte'} disabled={disabled} style={'dark'} icon={<FontAwesomeIcon icon={faUserPlus} />}/>
+                <InputField
+                    name={'firstName'}
+                    type={'text'}
+                    placeholder={'Prénom'}
+                    required={true}
+                    value={inputs.firstName}
+                    onChange={handleChange}
+                    style={'secondary'}
+                    icon={<FontAwesomeIcon icon={faUser} />}
+                    radius={'smooth'}
+                />
+                <InputField
+                    name={'lastName'}
+                    type={'text'}
+                    placeholder={'Nom'}
+                    required={true}
+                    value={inputs.lastName}
+                    onChange={handleChange}
+                    style={'secondary'}
+                    icon={<FontAwesomeIcon icon={faUser} />}
+                    radius={'smooth'}
+                />
+                <InputField
+                    name={'email'}
+                    type={'text'}
+                    placeholder={'Email'}
+                    required={true}
+                    value={inputs.email}
+                    onChange={handleChange}
+                    style={'secondary'}
+                    icon={<FontAwesomeIcon icon={faEnvelope} />}
+                    radius={'smooth'}
+                />
+                {emailExist && <p>Cet email est déjà utilisé</p>}
+                <InputField
+                    name={'pwd'}
+                    type={'password'}
+                    required={true}
+                    value={inputs.pwd}
+                    placeholder={'Mot de passe'}
+                    onChange={handleChange}
+                    style={'secondary'}
+                    icon={<FontAwesomeIcon icon={faLock} />}
+                    radius={'smooth'}
+                />
+                <InputField
+                    name={'pwdConfirm'}
+                    type={'password'}
+                    required={true}
+                    value={inputs.pwdConfirm}
+                    onChange={handleChange}
+                    style={'secondary'}
+                    icon={<FontAwesomeIcon icon={faLock} />}
+                    placeholder={'Confirmez le mot de passe'}
+                    radius={'smooth'}
+                />
+                {samePwd && <p>Les mots de passe ne sont pas identiques</p>}
+                <Btn
+                    label={'Créer mon compte'}
+                    disabled={disabled}
+                    style={'dark'}
+                    icon={<FontAwesomeIcon icon={faUserPlus} />}
+                />
             </form>
         </>
     )

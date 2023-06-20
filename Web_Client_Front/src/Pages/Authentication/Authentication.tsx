@@ -5,7 +5,7 @@ import axios from "axios";
 import {useNavigate} from "react-router";
 import styles from './Authentication.module.css';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faLock, faRightToBracket, faUser} from "@fortawesome/free-solid-svg-icons";
+import {faLock, faRightToBracket, faUser, faUserPlus} from "@fortawesome/free-solid-svg-icons";
 
 
 function Authentication() {
@@ -119,7 +119,12 @@ function Authentication() {
             </div>
 
             <div className={styles.registerBtnContainer}>
-                <Btn label={'Créer un compte'} style={'secondary'} onClick={() => navigate("/register")}/>
+                <Btn
+                    label={'Créer un compte'}
+                    style={'yellow'}
+                    onClick={() => navigate("/register")}
+                    icon={<FontAwesomeIcon icon={faUserPlus} />}
+                />
             </div>
 
         </>

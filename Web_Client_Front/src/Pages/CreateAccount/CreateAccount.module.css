@@ -13,7 +13,7 @@
 
 .headerLogo{
     width: 4rem;
-    margin-right: 50vw;
+    margin-right: calc(50vw + 1rem);
     transform: translateX(50%);
 }
 
@@ -32,19 +32,11 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-}
-
-.inputContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
     margin: 0.5rem 0;
-    padding: 0 10%;
+    padding: 0 5%;
 }
 
-.inputContainer > * {
-    margin: 1rem 0;
+.form > * {
+    margin: 0.5rem 0;
     width: 100%;
 }
