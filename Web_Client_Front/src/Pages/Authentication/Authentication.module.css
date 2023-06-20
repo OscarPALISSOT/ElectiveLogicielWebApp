@@ -12,6 +12,30 @@
     height:auto;
 }
 
+.line {
+    position: relative;
+    height: 2px;
+    background-color: black;
+    width: 100%;
+}
+
+.text {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    width: min-content;
+}
+
+.lineContainer {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.connexionForm {
+    margin-bottom: 1rem;
+}
+
 /* media queries */
 
 /* Small devices (landscape phones, 576px and up) */

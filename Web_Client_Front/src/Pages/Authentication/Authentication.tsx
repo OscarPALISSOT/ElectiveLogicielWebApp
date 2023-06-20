@@ -4,8 +4,7 @@ import React, {useEffect} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router";
 import styles from './Authentication.module.css';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faBurger} from "@fortawesome/free-solid-svg-icons";
+
 
 
 function Authentication() {
@@ -79,17 +78,18 @@ function Authentication() {
                 <img className={styles.logo} src="./src/Assets/img/logo.svg" alt=""/>
             </div>
 
-            <InputField placeholder={'identifiant'} name={'name'} type={'text'} style={'primary'} icon={<FontAwesomeIcon icon={faBurger}/>}/>
-            <InputField placeholder={'mot de passe'} name={'name'} type={'text'} style={'primary'} icon={<FontAwesomeIcon icon={faBurger}/>}/>
-
-            <h1>Authentication</h1>
-            <form onSubmit={handleSubmit}>
+            <form className={styles.connexionForm} onSubmit={handleSubmit}>
                 <InputField name={'email'} label={'Votre identifiant'} type={'text'} placeholder={'username@example.com'} onChange={handleChange} value={inputs.email} style={'primary'}/>
                 {incorrectEmail && <p>Indentifiant inconnu</p>}
                 <InputField name={'pwd'} label={'Your password'} type={'password'} onChange={handleChange} value={inputs.pwd} style={'primary'}/>
                 {incorrectPwd && <p>Mot de passe incorrect</p>}
                 <Btn label={'Se connecter'} disabled={disabled} style={'primary'}/>
             </form>
+
+            <div className={styles.lineContainer}>
+                <div className={styles.line}></div>
+                <div className={styles.text}>ou</div>
+            </div>
 
             <Btn label={'Créer un compte'} style={'secondary'} onClick={() => navigate("/register")}/>
         </>
