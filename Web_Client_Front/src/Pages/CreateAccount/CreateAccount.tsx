@@ -84,16 +84,16 @@ function CreateAccount() {
             <h1>Inscription</h1>
             <form onSubmit={handleSubmit}>
                 <InputField name={'firstName'} label={'Prénom'} type={'text'} placeholder={'John'} required={true}
-                            value={inputs.firstName} onChange={handleChange}/>
+                            value={inputs.firstName} onChange={handleChange} style={'primary'}/>
                 <InputField name={'lastName'} label={'Nom'} type={'text'} placeholder={'Smith'} required={true}
-                            value={inputs.lastName} onChange={handleChange}/>
+                            value={inputs.lastName} onChange={handleChange} style={'primary'}/>
                 <InputField name={'email'} label={'Email'} type={'text'} placeholder={'JohnSmith@example.com'}
-                            required={true} value={inputs.email} onChange={handleChange}/>
+                            required={true} value={inputs.email} onChange={handleChange} style={'primary'}/>
                 {emailExist && <p>Cet email est déjà utilisé</p>}
                 <InputField name={'pwd'} label={'Mot de passe'} type={'password'} required={true} value={inputs.pwd}
-                            onChange={handleChange}/>
+                            onChange={handleChange} style={'primary'}/>
                 <InputField name={'pwdConfirm'} label={'Confirmez le mot de passe'} type={'password'} required={true}
-                            value={inputs.pwdConfirm} onChange={handleChange}/>
+                            value={inputs.pwdConfirm} onChange={handleChange} style={'primary'}/>
                 {samePwd && <p>Les mots de passe ne sont pas identiques</p>}
                 <Btn label={'Créer le compte'} disabled={disabled} style={'yellow'} rounded/>
             </form>
