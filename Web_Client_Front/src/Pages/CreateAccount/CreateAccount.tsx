@@ -4,7 +4,7 @@ import React, {useEffect} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faEnvelope, faLock, faUser, faUserPlus} from "@fortawesome/free-solid-svg-icons";
+import {faCircleChevronLeft, faEnvelope, faLock, faUser, faUserPlus} from "@fortawesome/free-solid-svg-icons";
 import styles from './CreateAccount.module.css'
 
 
@@ -85,26 +85,30 @@ function CreateAccount() {
     return (
         <>
 
-            <div className="headerrrr">
-                <Btn label={'Retour'} style={'yellow'} icon={<FontAwesomeIcon icon={faUserPlus} />} onClick={() => navigate("/login")}/>
-                <h1>Inscription</h1>
+            <div className={styles.header}>
+                <Btn label={'Retour'} style={'dark'} icon={<FontAwesomeIcon icon={faCircleChevronLeft} />} onClick={() => navigate("/login")} rounded/>
+                <div className={styles.headerLogo}>
+                    <img src="./src/Assets/img/logo.svg" alt=""/>
+                </div>
             </div>
+
+            <h1 className={styles.title}>Inscription</h1>
             <form className={styles.form} onSubmit={handleSubmit}>
                 <div className={styles.inputContainer}>
-                    <InputField name={'firstName'} type={'text'} placeholder={'John'} required={true}
+                    <InputField name={'firstName'} type={'text'} placeholder={'Prénom'} required={true}
                                 value={inputs.firstName} onChange={handleChange} style={'primary'} icon={<FontAwesomeIcon icon={faUser} />}/>
-                    <InputField name={'lastName'} type={'text'} placeholder={'Smith'} required={true}
+                    <InputField name={'lastName'} type={'text'} placeholder={'Nom'} required={true}
                                 value={inputs.lastName} onChange={handleChange} style={'primary'} icon={<FontAwesomeIcon icon={faUser} />}/>
-                    <InputField name={'email'} type={'text'} placeholder={'JohnSmith@example.com'}
+                    <InputField name={'email'} type={'text'} placeholder={'Email'}
                                 required={true} value={inputs.email} onChange={handleChange} style={'primary'} icon={<FontAwesomeIcon icon={faEnvelope} />}/>
                     {emailExist && <p>Cet email est déjà utilisé</p>}
-                    <InputField name={'pwd'} type={'password'} required={true} value={inputs.pwd}
+                    <InputField name={'pwd'} type={'password'} required={true} value={inputs.pwd} placeholder={'Mot de passe'}
                                 onChange={handleChange} style={'primary'} icon={<FontAwesomeIcon icon={faLock} />}/>
                     <InputField name={'pwdConfirm'} type={'password'} required={true}
-                                value={inputs.pwdConfirm} onChange={handleChange} style={'primary'} icon={<FontAwesomeIcon icon={faLock} />}/>
+                                value={inputs.pwdConfirm} onChange={handleChange} style={'primary'} icon={<FontAwesomeIcon icon={faLock} />} placeholder={'Confirmez le mot de passe'}/>
                     {samePwd && <p>Les mots de passe ne sont pas identiques</p>}
                 </div>
-                <Btn label={'Créer mon compte'} disabled={disabled} style={'yellow'} icon={<FontAwesomeIcon icon={faUserPlus} />}/>
+                <Btn label={'Créer mon compte'} disabled={disabled} style={'dark'} icon={<FontAwesomeIcon icon={faUserPlus} />}/>
             </form>
         </>
     )
