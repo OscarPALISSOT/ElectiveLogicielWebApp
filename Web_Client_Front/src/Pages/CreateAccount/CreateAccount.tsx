@@ -101,7 +101,7 @@ function CreateAccount() {
                     required={true}
                     value={inputs.firstName}
                     onChange={handleChange}
-                    style={'secondary'}
+                    style={'primary'}
                     icon={<FontAwesomeIcon icon={faUser} />}
                     radius={'smooth'}
                 />
@@ -112,7 +112,7 @@ function CreateAccount() {
                     required={true}
                     value={inputs.lastName}
                     onChange={handleChange}
-                    style={'secondary'}
+                    style={'primary'}
                     icon={<FontAwesomeIcon icon={faUser} />}
                     radius={'smooth'}
                 />
@@ -123,7 +123,7 @@ function CreateAccount() {
                     required={true}
                     value={inputs.email}
                     onChange={handleChange}
-                    style={'secondary'}
+                    style={'primary'}
                     icon={<FontAwesomeIcon icon={faEnvelope} />}
                     radius={'smooth'}
                 />
@@ -135,7 +135,7 @@ function CreateAccount() {
                     value={inputs.pwd}
                     placeholder={'Mot de passe'}
                     onChange={handleChange}
-                    style={'secondary'}
+                    style={'primary'}
                     icon={<FontAwesomeIcon icon={faLock} />}
                     radius={'smooth'}
                 />
@@ -145,7 +145,7 @@ function CreateAccount() {
                     required={true}
                     value={inputs.pwdConfirm}
                     onChange={handleChange}
-                    style={'secondary'}
+                    style={'primary'}
                     icon={<FontAwesomeIcon icon={faLock} />}
                     placeholder={'Confirmez le mot de passe'}
                     radius={'smooth'}

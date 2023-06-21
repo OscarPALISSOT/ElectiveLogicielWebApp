@@ -91,7 +91,7 @@ function Authentication() {
                     placeholder={'Email'}
                     onChange={handleChange}
                     value={inputs.email}
-                    style={'secondary'}
+                    style={'primary'}
                     required={true}
                     radius={'smooth'}
                     icon={<FontAwesomeIcon icon={faUser}/>}
@@ -102,7 +102,7 @@ function Authentication() {
                     type={'password'}
                     onChange={handleChange}
                     value={inputs.pwd}
-                    style={'secondary'}
+                    style={'primary'}
                     required={true}
                     radius={'smooth'}
                     placeholder={'Mot de passe'}
