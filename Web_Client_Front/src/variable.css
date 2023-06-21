@@ -1,9 +1,9 @@
 :root{
-    --primary: #CFDBD5;
-    --secondary: #E8EDDF;
+    --primary: #e2e2e2;
+    --secondary: #B1B2AF;
     --yellow: #FEE131;
-    --primaryHover: #B9C3BE;
-    --secondaryHover: #D6DACE;
+    --primaryHover: #D2D2D2;
+    --secondaryHover: #979797;
     --yellowHover: #F8D500;
     --dark: #242423;
     --darkHover: #333533;
