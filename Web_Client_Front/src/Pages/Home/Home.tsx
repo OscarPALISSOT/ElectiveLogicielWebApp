@@ -40,13 +40,13 @@ function Home() {
             <br/>
             <Btn label={'le texte'} style={'dark'} rounded={true} icon={<FontAwesomeIcon icon={faBurger}/>}/>
             <br/>
-            <InputField placeholder={'test'} name={'name'} type={'text'} style={'primary'} rounded={true} icon={<FontAwesomeIcon icon={faCartShopping}/>}/>
+            <InputField placeholder={'test'} name={'name'} type={'text'} style={'primary'} radius={'rounded'} icon={<FontAwesomeIcon icon={faCartShopping}/>}/>
             <br/>
-            <InputField placeholder={'test'} name={'name'} type={'text'} style={'secondary'} rounded={true}/>
+            <InputField placeholder={'test'} name={'name'} type={'text'} style={'secondary'} radius={'smooth'}/>
             <br/>
-            <InputField placeholder={'test'} name={'name'} type={'text'} style={'yellow'} rounded={true}/>
+            <InputField placeholder={'test'} name={'name'} type={'text'} style={'yellow'} radius={'smooth'}/>
             <br/>
-            <InputField placeholder={'test'} name={'name'} type={'text'} style={'dark'} rounded={true}/>
+            <InputField placeholder={'test'} name={'name'} type={'text'} style={'dark'} radius={'smooth'}/>
             <br/>
             <InputField placeholder={'test'} name={'name'} type={'text'} style={'primary'} icon={<FontAwesomeIcon icon={faBurger}/>}/>
             <br/>
