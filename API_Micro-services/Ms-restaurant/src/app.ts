@@ -4,7 +4,8 @@ import helmet from 'helmet';
 import cors from 'cors';
 
 import * as middlewares from './middlewares';
-import api from './api';
+import * as middlewaresUser from './middlewares/user';
+import restaurants from './api/restaurants';
 import MessageResponse from './interfaces/MessageResponse';
 
 require('dotenv').config();
@@ -17,12 +18,13 @@ app.use(cors());
 app.use(express.json());
 
 app.get<{}, MessageResponse>('/', (req, res) => {
-  res.json({
-    message: '🦄🌈✨👋🌎🌍🌏✨🌈🦄',
-  });
+  res.status(200).json({ message: 'Hello world' });
 });
 
-app.use('/api/v1', api);
+//app.use(middlewaresUser.tokenMiddleware);
+//app.use(middlewaresUser.isAdmin);
+
+app.use('/api/v1/restaurants', restaurants);
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
