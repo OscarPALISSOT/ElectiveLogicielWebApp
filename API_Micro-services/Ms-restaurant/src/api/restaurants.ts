@@ -1,7 +1,7 @@
 import express from 'express';
 
 import MessageResponse from '../interfaces/MessageResponse';
-import {CreateRestaurant} from "../modules/restaurant";
+import {CreateRestaurant, DeleteRestaurant, GetAllRestaurants, GetRestaurant} from "../modules/restaurant";
 import {Restaurant} from "../interfaces/Restaurant";
 import {FoodType} from "../interfaces/FoodType";
 
@@ -44,4 +44,42 @@ router.post('/create', async function (req, res, next) {
 });
 
 
+/**
+ * get a restaurant
+ */
+router.get('/getRestaurant', async function (req, res, next) {
+    const { restaurantId } = req.query;
+    try {
+        const Restaurant = await GetRestaurant(restaurantId as string);
+        res.status(200).json({ response: Restaurant });
+    } catch (error) {
+        res.status(500).json({ error: error });
+    }
+});
+
+/**
+ * get all restaurants
+ */
+router.get('/getAllRestaurants', async function (req, res, next) {
+    try {
+        const Restaurants = await GetAllRestaurants();
+        res.status(200).json({ response: Restaurants });
+    } catch (error) {
+        res.status(500).json({ error: error });
+    }
+});
+
+
+/**
+ * delete a restaurant
+ */
+router.delete('/deleteRestaurant', async function (req, res, next) {
+    const { restaurantId } = req.query;
+    try {
+        await DeleteRestaurant(restaurantId as string);
+        res.status(200).json({ response: 'Restaurant deleted' });
+    } catch (error) {
+        res.status(500).json({ error: error });
+    }
+});
 export default router;

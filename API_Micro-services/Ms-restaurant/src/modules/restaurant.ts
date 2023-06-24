@@ -40,6 +40,9 @@ async function GetRestaurant(restaurantId: string) {
         where: {
             restaurantId: restaurantId,
         },
+        include: {
+            foodType: true,
+        }
     });
 }
 
@@ -47,7 +50,11 @@ async function GetRestaurant(restaurantId: string) {
  * Get all restaurants
  */
 async function GetAllRestaurants() {
-    return prisma.restaurant.findMany({});
+    return prisma.restaurant.findMany({
+        include: {
+            foodType: true,
+        }
+    });
 }
 
 /**
