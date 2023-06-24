@@ -2,16 +2,16 @@ import {FoodType} from "./FoodType";
 
 export interface Restaurant {
     restaurantId: string;
-    nom: string;
+    name: string;
     owner: string;
     staff: string[];
-    adresse: string;
-    ville: string;
-    codePostal: string;
-    pays: string;
-    foodType: FoodType[];
+    address: string;
+    city: string;
+    postalCode: string;
+    country: string;
+    foodType: FoodType;
     evaluationId: string[];
     commentaires: string[];
-    heuresOuverture: string;
+    openingHours: string;
     menuId: string[];
 }

@@ -11,22 +11,21 @@ datasource db {
 }
 
 model Restaurant {
-  restaurantId    String   @id @default(auto()) @map("_id") @db.ObjectId
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-  nom             String
-  owner           String   @unique
-  staff           String[]
-  adresse         String
-  ville           String
-  codePostal      String
-  pays            String
-  foodType        FoodType @relation(references: [foodTypeId], fields: [foodTypeId])
-  foodTypeId      String   @db.ObjectId
-  evaluationId    String[]
-  commentaires    String[]
-  heuresOuverture String
-  menuId          String[]
+  restaurantId String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  name         String
+  owner        String
+  staff        String[]
+  address      String
+  city         String
+  postalCode   String
+  country      String
+  foodType     FoodType @relation(references: [foodTypeId], fields: [foodTypeId])
+  foodTypeId   String   @db.ObjectId
+  evaluationId String[]
+  openingHours String
+  menuId       String[]
 }
 
 model FoodType {
