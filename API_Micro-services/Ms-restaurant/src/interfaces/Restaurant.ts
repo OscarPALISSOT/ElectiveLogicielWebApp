@@ -4,6 +4,8 @@ import {Menu} from "./Menu";
 export interface Restaurant {
     restaurantId: string;
     nom: string;
+    owner: string;
+    staff: string[];
     adresse: string;
     ville: string;
     codePostal: string;
