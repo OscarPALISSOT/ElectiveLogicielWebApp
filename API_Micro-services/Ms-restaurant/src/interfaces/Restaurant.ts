@@ -1,3 +1,5 @@
+import {FoodType} from "./FoodType";
+
 export interface Restaurant {
     restaurantId: string;
     nom: string;
@@ -7,7 +9,7 @@ export interface Restaurant {
     ville: string;
     codePostal: string;
     pays: string;
-    typeCuisine: string;
+    foodType: FoodType[];
     evaluationId: string[];
     commentaires: string[];
     heuresOuverture: string;
