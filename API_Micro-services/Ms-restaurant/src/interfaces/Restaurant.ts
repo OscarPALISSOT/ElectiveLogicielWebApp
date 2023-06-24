@@ -1,6 +1,3 @@
-import {Evaluation} from "./Evaluation";
-import {Menu} from "./Menu";
-
 export interface Restaurant {
     restaurantId: string;
     nom: string;
@@ -11,8 +8,8 @@ export interface Restaurant {
     codePostal: string;
     pays: string;
     typeCuisine: string;
-    evaluation: Evaluation[];
+    evaluationId: string[];
     commentaires: string[];
     heuresOuverture: string;
-    menu: Menu[];
+    menuId: string[];
 }
