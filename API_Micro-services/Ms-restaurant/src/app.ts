@@ -6,6 +6,7 @@ import cors from 'cors';
 import * as middlewares from './middlewares';
 import * as middlewaresUser from './middlewares/user';
 import restaurants from './api/restaurants';
+import foodTypes from './api/foodTypes';
 import MessageResponse from './interfaces/MessageResponse';
 
 require('dotenv').config();
@@ -25,6 +26,7 @@ app.get<{}, MessageResponse>('/', (req, res) => {
 //app.use(middlewaresUser.isAdmin);
 
 app.use('/api/v1/restaurants', restaurants);
+app.use('/api/v1/foodTypes', foodTypes);
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
