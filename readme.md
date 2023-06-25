@@ -18,7 +18,8 @@ npx create-express-api --typescript --directory nom_du_mirco_service
 
  - Créer un fichier **.env.example** dans à la racine du microservice
  - Ajouter la ligne suivante dans le fichier **.env.example** :
-   - PORT=3000 (ou un autre port disponible à la suite, exemple : 3001, 3002, etc.)
+   - ```PORT=3000```
+   - (ou un autre port disponible à la suite, exemple : 3001, 3002, etc.)
  - Copier le fichier **.env.example** et le nommer **.env**
 
 ### 4. Tester le microservice
@@ -41,7 +42,7 @@ On doit recevoir un truc du style :
 Dans le repertoire **./src** :
 
 - Supprimer le fichier **./src/api/emojis.ts**
-- Dans le fichier **./src/api/Menus.ts**, supprimer tous et insérer le code suivant :
+- Dans le fichier **./src/api/index.ts**, supprimer tous et insérer le code suivant :
 ```typescript
 import express from 'express';
 
@@ -107,9 +108,31 @@ et
 Dans le repertoire **./src/interfaces/**, créer les types nécessaires pour le microservice sous formes d'interfaces.
 
 **Attention** :
-- Les interfaces doivent être nommées en **PascalCase** sans majuscule au début.
+- Les interfaces doivent être nommées en **camelCase** sans majuscule au début.
 - Une interface par fichier.
 
 ***Voir les interfaces déjà créées pour les autres microservices.***
 
+### 8. Importer Prisma
 
+Run à la racine du microservice
+```sh
+npm install typescript ts-node @types/node --save-dev
+npm install prisma --save-dev
+npx prisma init --datasource-provider mongodb
+```
+### 9. Créer le schema
+
+Dans le fichier **./prisma/schema.prisma/**, créer le schema de la base de données.
+
+**Attention** :
+- Le schema doit être nommé en **camelCase** sans majuscule au début.
+- le schema doit être coherent avec les types créés précédemment.
+
+***Voir les schemas déjà créés pour les autres microservices.***
+
+https://www.prisma.io/docs/getting-started/quickstart
+
+https://www.prisma.io/docs/concepts/database-connectors/mongodb
+
+https://www.prisma.io/docs/concepts/components/prisma-schema/relations/many-to-many-relations#mongodb
