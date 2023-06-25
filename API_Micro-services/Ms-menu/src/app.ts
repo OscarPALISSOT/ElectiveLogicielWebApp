@@ -5,7 +5,8 @@ import cors from 'cors';
 
 import * as middlewares from './middlewares';
 import * as middlewaresUser from './middlewares/tokenMiddleware';
-import menu from './api/Menus';
+import menus from './api/Menus';
+import dishes from './api/Dishes';
 import MessageResponse from './interfaces/MessageResponse';
 
 require('dotenv').config();
@@ -24,7 +25,8 @@ app.get<{}, MessageResponse>('/', (req, res) => {
 //app.use(middlewaresUser.tokenMiddleware);
 //app.use(middlewaresUser.isAdmin);
 
-app.use('/api/v1/menus', menu);
+app.use('/api/v1/menus', menus);
+app.use('/api/v1/dishes', dishes);
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
