@@ -136,3 +136,35 @@ https://www.prisma.io/docs/getting-started/quickstart
 https://www.prisma.io/docs/concepts/database-connectors/mongodb
 
 https://www.prisma.io/docs/concepts/components/prisma-schema/relations/many-to-many-relations#mongodb
+
+### 10. Créer la Db (pour environnement de dev)
+
+(Oscar) : J'ai déjà créé un cluster avec mon compte, voir avec moi pour ajouter de nouvelles bases. On souhaite avoir toutes les bases de dev sur un seul et même cluster.
+
+Si jamais on veut créer un cluster depuis un autre compte :
+
+- Se rendre sur https://www.mongodb.com/atlas/database
+- Se connecter, creer un cluster
+- Ajouter une db dans le cluster depuis l'onglet collections (la manip est horrible et pas du tout intuitive)
+- Supprimer la collection vide créée par défaut dans la db
+- Récupérer le lien de connexion à la db (penser à ajouter le nom de la db à la fin du lien)
+
+### 11. Ajouter la db à prisma
+
+Dans le fichier .env, ajouter la ligne suivante :
+```
+DATABASE_URL="mongodb://USERNAME:PASSWORD@HOST/DATABASE"
+```
+**Attention** :
+- Remplacer USERNAME, PASSWORD, HOST et DATABASE par les informations de la db.
+- Penser à ajouter la ligne à **.env.example**
+
+***Voir les .env.example des autres microservices.***
+
+Run à la racine du microservice :
+
+```sh 
+npx prisma db push
+```
+
+Cela va créer les collections dans la db.
