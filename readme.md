@@ -103,7 +103,93 @@ et
 }
 ```
 
-### 7. Créer les types
+### 7. Créer les middlewares
+
+- Créer le repertoire **./src/middlewares/**.
+- Créer le fichier **./src/middlewares/tokenMiddleware.ts**.
+- Importer le package jsonwebtoken :
+```sh
+npm install jsonwebtoken
+```
+
+- Dans le fichier **./src/middlewares/tokenMiddleware.ts**, insérer le code suivant :
+```typescript
+import { NextFunction, Request, Response } from 'express';
+import { checkJWT } from '../modules/jwt';
+import { JwtPayload } from 'jsonwebtoken';
+
+
+export function tokenMiddleware(req: Request, res: Response, next: NextFunction) {
+   const authorization = req.headers.authorization;
+   if (!authorization) {
+      res.status(403).json({ error: 'No token provided' } );
+   }
+   const token = authorization?.split(' ')[1];
+   if (!checkJWT(token as string)) {
+      res.status(403).json({ error: 'Invalid token' } );
+   }
+   next();
+}
+
+export function isAdmin(req: Request, res: Response, next: NextFunction) {
+   const authorization = req.headers.authorization;
+   if (!authorization) {
+      res.status(403).json({ error: 'No token provided' } );
+   }
+   const token = authorization?.split(' ')[1];
+   const decoded = checkJWT(token as string);
+   if (!decoded) {
+      res.status(403).json({ error: 'Invalid token' } );
+   }
+   if (!(decoded as JwtPayload).user.roles.includes('admin')) {
+      res.status(403).json({ error: 'Unauthorized' } );
+   }
+   next();
+}
+```
+- Créer le fichier **./src/modules/jwt.ts**.
+- Dans le fichier **./src/modules/jwt.ts**, insérer le code suivant :
+```typescript
+import jwt, { JwtPayload } from 'jsonwebtoken';
+
+
+/**
+ * check JWT token
+ * @param {string} token the token to check
+ */
+const checkJWT = (token: string) => {
+
+   let check: boolean | string | JwtPayload = false;
+
+   try {
+      check = jwt.verify(token, process.env.JWT_SECRET as unknown as string);
+   } catch (err) {
+      check = false;
+      console.log(err);
+   }
+   return check;
+};
+
+export { checkJWT };
+```
+
+- Dans le fichier **./src/app.ts**, insérer la ligne suivante dans les imports :
+```typescript
+import * as middlewaresUser from './middlewares/tokenMiddleware';
+```
+
+- Importer les middlewares dans le fichier **./src/app.ts** juste après la fonction de ping "Hello world" :
+
+```typescript
+//app.use(middlewaresUser.tokenMiddleware);
+//app.use(middlewaresUser.isAdmin);
+```
+
+***Attention*** : 
+- Bien laisser les commentaires pour le moment. On traitera les middlewares plus tard après avoir testé les microservices.
+
+
+### 8. Créer les types
 
 Dans le repertoire **./src/interfaces/**, créer les types nécessaires pour le microservice sous formes d'interfaces.
 
@@ -113,7 +199,7 @@ Dans le repertoire **./src/interfaces/**, créer les types nécessaires pour le 
 
 ***Voir les interfaces déjà créées pour les autres microservices.***
 
-### 8. Importer Prisma
+### 9. Importer Prisma
 
 Run à la racine du microservice
 ```sh
@@ -121,7 +207,7 @@ npm install typescript ts-node @types/node --save-dev
 npm install prisma --save-dev
 npx prisma init --datasource-provider mongodb
 ```
-### 9. Créer le schema
+### 10. Créer le schema
 
 Dans le fichier **./prisma/schema.prisma/**, créer le schema de la base de données.
 
@@ -137,7 +223,7 @@ https://www.prisma.io/docs/concepts/database-connectors/mongodb
 
 https://www.prisma.io/docs/concepts/components/prisma-schema/relations/many-to-many-relations#mongodb
 
-### 10. Créer la Db (pour environnement de dev)
+### 11. Créer la Db (pour environnement de dev)
 
 (Oscar) : J'ai déjà créé un cluster avec mon compte, voir avec moi pour ajouter de nouvelles bases. On souhaite avoir toutes les bases de dev sur un seul et même cluster.
 
@@ -149,7 +235,7 @@ Si jamais on veut créer un cluster depuis un autre compte :
 - Supprimer la collection vide créée par défaut dans la db
 - Récupérer le lien de connexion à la db (penser à ajouter le nom de la db à la fin du lien)
 
-### 11. Ajouter la db à prisma
+### 12. Ajouter la db à prisma
 
 Dans le fichier .env, ajouter la ligne suivante :
 ```
@@ -168,3 +254,5 @@ npx prisma db push
 ```
 
 Cela va créer les collections dans la db.
+
+### 13. Créer les fonctions CRUD dans les modules
