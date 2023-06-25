@@ -268,9 +268,20 @@ On va créer un module par entité (les types qu'on a créés à l'étape 8).
 
 - Dans le repertoire **./src/modules/**, créer un fichier par entité ( **./src/modules/nomDeLEntité.ts** ).
 - Dans chaque fichier, créer les fonctions nécessaires pour les CRUD de l'entité.
+- Générer le schema prisma avec la commande :
+```sh
+npx prisma generate
+```
+Cela va générer les fonctions de prisma pour les CRUD.
 
+- Chaque module doit commencer par :
+```typescript
+import { PrismaClient } from '@prisma/client';
 
-***Voir les modules déjà créés pour les autres microservices.***
+const prisma = new PrismaClient();
+```
+
+***Voir les modules déjà créés pour les autres microservices pour les fonctions. Bien respecter la mise en forme.***
 
 **Attention** :
 - Utiliser les fonctions de prisma pour les CRUD.
