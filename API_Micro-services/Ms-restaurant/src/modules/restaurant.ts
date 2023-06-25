@@ -6,6 +6,7 @@ const prisma = new PrismaClient();
 
 /**
  * Create a restaurant
+ * @param {Restaurant} restaurant the restaurant to be created
  */
 async function CreateRestaurant(restaurant: Restaurant) {
     return prisma.restaurant.create({
@@ -34,6 +35,7 @@ async function CreateRestaurant(restaurant: Restaurant) {
 
 /**
  * Get a restaurant
+ * @param {string} restaurantId the restaurant id to be retrieved
  */
 async function GetRestaurant(restaurantId: string) {
     return prisma.restaurant.findUnique({
@@ -59,6 +61,7 @@ async function GetAllRestaurants() {
 
 /**
  * Delete a restaurant
+ * @param {string} restaurantId the restaurant id to be deleted
  */
 async function DeleteRestaurant(restaurantId: string) {
     return prisma.restaurant.delete({
@@ -68,4 +71,27 @@ async function DeleteRestaurant(restaurantId: string) {
     });
 }
 
-export {CreateRestaurant, GetRestaurant, GetAllRestaurants, DeleteRestaurant};
+/**
+ * Update a restaurant
+ * @param {string} restaurantId the restaurant id to be updated
+ * @param {Restaurant} newRestaurant the new restaurant data
+ */
+async function UpdateRestaurant(restaurantId: string, newRestaurant: Restaurant) {
+    return prisma.restaurant.update({
+        where: {
+            restaurantId: restaurantId,
+        },
+        data: {
+            name: newRestaurant.name,
+            owner: newRestaurant.owner,
+            staff: newRestaurant.staff,
+            address: newRestaurant.address,
+            city: newRestaurant.city,
+            postalCode: newRestaurant.postalCode,
+            country: newRestaurant.country,
+            openingHours: newRestaurant.openingHours,
+        },
+    });
+}
+
+export {CreateRestaurant, GetRestaurant, GetAllRestaurants, DeleteRestaurant, UpdateRestaurant};
