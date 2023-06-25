@@ -289,3 +289,30 @@ const prisma = new PrismaClient();
 - Utiliser Copilot au maximum pour générer le code.
 - Commenter le code avec Jsdoc ça aide beaucoup Copilot.
 
+### 14. Créer les routes
+
+- Dans le repertoire **./src/api/**, créer un fichier par entité ( **./src/api/nomDeLEntité.ts** ).
+- Insérer le code suivant dans chaque fichier :
+```typescript
+import express from 'express';
+
+import MessageResponse from '../interfaces/MessageResponse';
+
+const router = express.Router();
+
+router.get<{}, MessageResponse>('/', (req, res) => {
+    res.status(200).json({ message: 'NomDeLEntité route' });
+});
+
+export default router;
+```
+
+- Dans chaque fichier, créer les routes nécessaires pour les CRUD de l'entité.
+
+***Voir les routes déjà créées pour les autres microservices pour les fonctions. Bien respecter la mise en forme.***
+
+**Attention** :
+- Utiliser les fonctions des modules créés à l'étape 13.
+- Utiliser les types créés à l'étape 8.
+- Utiliser Copilot au maximum pour générer le code.
+- Commenter le code avec Jsdoc ça aide beaucoup Copilot.
