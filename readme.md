@@ -11,7 +11,7 @@ cd API_Micro-services
 ### 2. Cloner le starter Express API Typescript
 
 ```sh
-npx create-express-api --typescript --directory nom_du_mirco_service
+npx create-express-api --typescript --directory NomDuMircoService
 ```
 
 ### 3. Assigner un port au microservice
@@ -51,12 +51,12 @@ import MessageResponse from '../interfaces/MessageResponse';
 const router = express.Router();
 
 router.get<{}, MessageResponse>('/', (req, res) => {
-  res.status(200).json({ message: 'Nom_de_la_route route' });
+  res.status(200).json({ message: 'NomDeLaRoute route' });
 });
 
 export default router;
 ```
-- Renommer le fichier **./src/api/Menus.ts** en **./src/api/nom_de_la_route.ts**
+- Renommer le fichier **./src/api/index.ts** en **./src/api/NomDeLaRoute.ts**
 - Dans le fichier **./src/app.ts**, remplacer la ligne suivante :
 ```typescript
 res.json({
@@ -73,7 +73,7 @@ import api from './api/index';
 ```
 par :
 ```typescript
-import nom_de_la_route from './api/Nom_de_la_route';
+import nomDeLaRoute from './api/NomDeLaRoute';
 ```
 Et 
 ```typescript
@@ -81,7 +81,7 @@ app.use('/api/v1', api);
 ```
 par :
 ```typescript
-app.use('/api/v1/nom_de_la_route', nom_de_la_route);
+app.use('/api/v1/NomDeLaRoute', nomDeLaRoute);
 ```
 
 ### 6. Tester
@@ -147,6 +147,7 @@ export function isAdmin(req: Request, res: Response, next: NextFunction) {
    next();
 }
 ```
+- Créer le repertoire **./src/modules/**.
 - Créer le fichier **./src/modules/jwt.ts**.
 - Dans le fichier **./src/modules/jwt.ts**, insérer le code suivant :
 ```typescript
@@ -261,4 +262,19 @@ npx prisma db push
 
 Cela va créer les collections dans la db.
 
-### 13. Créer les fonctions CRUD dans les modules
+### 13. Créer les modules pour les CRUD des entités
+
+On va créer un module par entité (les types qu'on a créés à l'étape 8).
+
+- Dans le repertoire **./src/modules/**, créer un fichier par entité ( **./src/modules/nomDeLEntité.ts** ).
+- Dans chaque fichier, créer les fonctions nécessaires pour les CRUD de l'entité.
+
+
+***Voir les modules déjà créés pour les autres microservices.***
+
+**Attention** :
+- Utiliser les fonctions de prisma pour les CRUD.
+- Utiliser les types créés à l'étape 8.
+- Utiliser Copilot au maximum pour générer le code.
+- Commenter le code avec Jsdoc ça aide beaucoup Copilot.
+
