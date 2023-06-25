@@ -4,7 +4,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 
 import * as middlewares from './middlewares';
-import * as middlewaresUser from './middlewares/user';
+import * as middlewaresUser from './middlewares/tokenMiddleware';
 import restaurants from './api/restaurants';
 import foodTypes from './api/foodTypes';
 import MessageResponse from './interfaces/MessageResponse';

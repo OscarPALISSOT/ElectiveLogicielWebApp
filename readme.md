@@ -185,6 +185,12 @@ import * as middlewaresUser from './middlewares/tokenMiddleware';
 //app.use(middlewaresUser.isAdmin);
 ```
 
+- Dans les fichiers **.env** et **.env.example**, ajouter la ligne suivante :
+```sh
+JWT_SECRET='jpoerqpoj'
+```
+On changera la valeur avant la mise en prod.
+
 ***Attention*** : 
 - Bien laisser les commentaires pour le moment. On traitera les middlewares plus tard après avoir testé les microservices.
 

@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 
 import * as middlewares from './middlewares';
+import * as middlewaresUser from './middlewares/tokenMiddleware';
 import menu from './api/Menus';
 import MessageResponse from './interfaces/MessageResponse';
 
@@ -19,6 +20,9 @@ app.use(express.json());
 app.get<{}, MessageResponse>('/', (req, res) => {
   res.status(200).json({ message: 'Hello world' });
 });
+
+//app.use(middlewaresUser.tokenMiddleware);
+//app.use(middlewaresUser.isAdmin);
 
 app.use('/api/v1/menus', menu);
 
