@@ -1,0 +1,13 @@
+.header{
+    height: 50px;
+    width: 100%;
+}
+
+.searchContainer{
+    width: 100%;
+    padding: 0 10%;
+}
+
+.searchContainer > *{
+    width: 100%;
+}

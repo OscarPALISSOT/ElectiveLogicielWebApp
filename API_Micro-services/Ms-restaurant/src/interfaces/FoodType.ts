@@ -1,4 +1,4 @@
 export interface FoodType {
-    foodTypeId: string;
-    foodTypeLabel: string;
+  foodTypeId: string;
+  foodTypeLabel: string;
 }
