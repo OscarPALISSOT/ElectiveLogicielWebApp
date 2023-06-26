@@ -9,7 +9,6 @@ import {useState} from "react";
 const NavBar: React.FC = () => {
     const navigate = useNavigate();
     const [url, setUrl] = useState<string>(window.location.pathname);
-    console.log(window.location.pathname);
     return(
         <>
             <div className={styles.navbar}>
