@@ -18,7 +18,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get<{}, MessageResponse>('/', (req, res) => {
-    res.status(200).json({message: 'Hello world'});
+  res.status(200).json({ message: 'Hello world' });
 });
 
 //app.use(middlewaresUser.tokenMiddleware);

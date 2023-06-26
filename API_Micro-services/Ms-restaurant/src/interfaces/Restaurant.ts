@@ -11,7 +11,6 @@ export interface Restaurant {
     country: string;
     foodType: FoodType;
     evaluationId: string[];
-    commentaires: string[];
     openingHours: string;
     menuId: string[];
 }
