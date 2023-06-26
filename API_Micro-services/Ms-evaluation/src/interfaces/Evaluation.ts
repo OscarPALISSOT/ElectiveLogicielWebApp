@@ -1,6 +1,6 @@
 export interface Evaluation {
-    restaurantId: string;
     evaluationId: string;
+    restaurantId: string;
     authorEmail: string;
     comment: string;
     date: Date;
