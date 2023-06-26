@@ -4,11 +4,13 @@ import Home from "./Pages/Home/Home.tsx";
 import About from "./Pages/About/About.tsx";
 import Authentication from "./Pages/Authentication/Authentication.tsx";
 import CreateAccount from "./Pages/CreateAccount/CreateAccount.tsx";
+import NavBar from "./Components/NavBar/NavBar.tsx";
 
 function App() {
 
     return (
         <Router>
+            <NavBar/>
             <Routes>
                 <Route path="/" element={<Home />}/>
                 <Route path="/about" element={<About />} />
