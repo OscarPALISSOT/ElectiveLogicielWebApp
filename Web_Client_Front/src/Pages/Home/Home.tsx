@@ -11,8 +11,7 @@ function Home() {
     const [foodTypes, setFoodTypes] = useState<FoodType[]>([]);
 
     useEffect(() => {
-        //axios.get(import.meta.env.VITE_URL_MS_RESTAURANT_FOODTYPE + '/getALLfoodTypes')
-        axios.get('http://192.168.1.177:3002/api/v1/foodTypes/getALLfoodTypes')
+        axios.get(import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_RESTAURANT_FOODTYPE + '/getALLfoodTypes')
             .then((response) => {
                 setFoodTypes(response.data.response);
                 console.log(response.data.response)
