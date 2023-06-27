@@ -1,62 +1,48 @@
-import {Link} from "react-router-dom";
-import Btn from "../../Components/Btn/Btn.tsx";
 import InputField from "../../Components/InputField/InputField.tsx";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faBurger, faCartShopping} from "@fortawesome/free-solid-svg-icons";
-
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faSearch} from "@fortawesome/free-solid-svg-icons";
+import style from "./Home.module.css";
+import {useEffect, useState} from "react";
+import axios from "axios";
+import {FoodType} from "../../Interfaces/FoodType.ts";
 
 function Home() {
 
+    const [foodTypes, setFoodTypes] = useState<FoodType[]>([]);
+
+    useEffect(() => {
+        //axios.get(import.meta.env.VITE_URL_MS_RESTAURANT_FOODTYPE + '/getALLfoodTypes')
+        axios.get('http://192.168.1.177:3002/api/v1/foodTypes/getALLfoodTypes')
+            .then((response) => {
+                setFoodTypes(response.data.response);
+                console.log(response.data.response)
+            })
+    }, [])
+
+
     return (
         <>
-            <div className="logo" style={{width: '258px', height: '258px'}}>
-                <img src="./src/Assets/img/logo.svg" alt="" style={{width: '100%', height: 'auto'}}/>
+            <div className={style.header}>
+                <h1>Home</h1>
+            </div>
+            <div className={style.searchContainer}>
+                <InputField
+                    name={'search'}
+                    radius={'rounded'}
+                    style={'primary'}
+                    type={'text'}
+                    placeholder={'Plats, restaurant, ...'}
+                    icon={<FontAwesomeIcon icon={faSearch}/>}
+                />
             </div>
 
-            <h1>Home</h1>
-            <Link to="/about">About Us</Link>
-            <br/>
-            <Link to="/login">Se connecter</Link>
-            <br/>
-            <Btn label={'le texte'} style={'primary'} icon={<FontAwesomeIcon icon={faBurger}/>}/>
-            <br/>
-            <Btn label={'le texte'} style={'secondary'} icon={<FontAwesomeIcon icon={faBurger}/>}/>
-            <br/>
-            <Btn label={'le texte'} style={'yellow'}/>
-            <br/>
-            <Btn label={'le texte'} style={'primary'} rounded={true}/>
-            <br/>
-            <Btn label={'le texte'} style={'secondary'} rounded={true}/>
-            <br/>
-            <Btn label={'le texte'} style={'yellow'} rounded={true}/>
-            <br/>
-            <Btn label={'le texte'} style={'primary'} disabled={true}/>
-            <br/>
-            <Btn label={'le texte'} style={'secondary'} disabled={true}/>
-            <br/>
-            <Btn label={'le texte'} style={'yellow'} disabled={true}/>
-            <br/>
-            <Btn label={'le texte'} style={'dark'} rounded={true} disabled={true}/>
-            <br/>
-            <Btn label={'le texte'} style={'dark'} rounded={true} icon={<FontAwesomeIcon icon={faBurger}/>}/>
-            <br/>
-            <InputField placeholder={'test'} name={'name'} type={'text'} style={'primary'} radius={'rounded'} icon={<FontAwesomeIcon icon={faCartShopping}/>}/>
-            <br/>
-            <InputField placeholder={'test'} name={'name'} type={'text'} style={'secondary'} radius={'smooth'}/>
-            <br/>
-            <InputField placeholder={'test'} name={'name'} type={'text'} style={'yellow'} radius={'smooth'}/>
-            <br/>
-            <InputField placeholder={'test'} name={'name'} type={'text'} style={'dark'} radius={'smooth'}/>
-            <br/>
-            <InputField placeholder={'test'} name={'name'} type={'text'} style={'primary'} icon={<FontAwesomeIcon icon={faBurger}/>}/>
-            <br/>
-            <InputField placeholder={'test'} name={'name'} type={'text'} style={'secondary'}/>
-            <br/>
-            <InputField placeholder={'test'} name={'name'} type={'text'} style={'yellow'} icon={<FontAwesomeIcon icon={faBurger}/>}/>
-            <br/>
-            <InputField placeholder={'test'} name={'name'} type={'text'} style={'dark'} icon={<FontAwesomeIcon icon={faBurger}/>}/>
-
-
+            <div className={style.foodTypeContainer}>
+                {foodTypes.map((foodType) => (
+                    <div key={foodType.foodTypeId}>
+                        <p>{foodType.foodTypeLabel}</p>
+                    </div>
+                ))}
+            </div>
         </>
     )
 }

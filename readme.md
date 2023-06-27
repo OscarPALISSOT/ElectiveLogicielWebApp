@@ -46,7 +46,7 @@ Dans le repertoire **./src** :
 ```typescript
 import express from 'express';
 
-import MessageResponse from '../interfaces/MessageResponse';
+import MessageResponse from '../Interfaces/MessageResponse';
 
 const router = express.Router();
 
@@ -296,7 +296,7 @@ const prisma = new PrismaClient();
 ```typescript
 import express from 'express';
 
-import MessageResponse from '../interfaces/MessageResponse';
+import MessageResponse from '../Interfaces/MessageResponse';
 
 const router = express.Router();
 
