@@ -9,8 +9,10 @@ import FoodTypesCarrousel from "../../Components/Homepage/FoodTypesCarrousel/Foo
 import NavBar from "../../Components/NavBar/NavBar.tsx";
 import {Restaurant} from "../../Interfaces/Restaurant.ts";
 import FeaturedRestaurants from "../../Components/Homepage/FeaturedRestaurants/FeaturedRestaurants.tsx";
+import MapComponent from "../../Components/MapComponent/MapComponent.tsx";
 
 function Home() {
+
 
     const [foodTypes, setFoodTypes] = useState<FoodType[]>([]);
     const [featuredRestaurants, setFeaturedRestaurants] = useState<Restaurant[]>([]);
@@ -61,6 +63,10 @@ function Home() {
             <FoodTypesCarrousel FoodTypes={foodTypes}/>
 
             <FeaturedRestaurants FeaturedRestaurants={featuredRestaurants}/>
+
+            <div className={style.mapContainer}>
+                <MapComponent/>
+            </div>
 
             <NavBar/>
         </>

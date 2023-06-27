@@ -40,3 +40,9 @@
 .searchContainer > *{
     width: 100%;
 }
+
+
+.mapContainer{
+    height: 10rem;
+    width: 100%;
+}
