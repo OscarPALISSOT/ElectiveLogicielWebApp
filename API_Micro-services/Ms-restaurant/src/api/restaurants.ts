@@ -79,7 +79,7 @@ router.get('/getAllRestaurants', async function (req, res, next) {
 /**
  * delete a restaurant
  */
-router.delete('/deleteRestaurant', async function (req, res, next) {
+router.delete('/delete', async function (req, res, next) {
   const { restaurantId } = req.query;
   try {
     await DeleteRestaurant(restaurantId as string);

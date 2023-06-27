@@ -1,0 +1,11 @@
+.featuredRestaurantsContainer{
+    margin: 0 0.8rem;
+}
+
+.featuredRestaurantItem{
+    margin-bottom: 1rem;
+    width: 100%;
+    height: 8rem;
+    background: var(--primary);
+    border-radius: 10px;
+}
