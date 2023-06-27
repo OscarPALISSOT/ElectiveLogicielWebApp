@@ -4,7 +4,7 @@ import MessageResponse from '../interfaces/MessageResponse';
 import {
   CreateRestaurant,
   DeleteRestaurant,
-  GetAllRestaurants,
+  GetAllRestaurants, GetNumberRestaurant,
   GetRestaurant,
   UpdateRestaurant,
 } from '../modules/restaurant';
@@ -110,6 +110,15 @@ router.patch('/updateRestaurant', async function (req, res, next) {
   try {
     await UpdateRestaurant(restaurantId as string, restaurant);
     res.status(200).json({ response: 'Restaurant updated' });
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
+});
+
+router.get('/getFeaturedRestaurant', async function (req, res, next) {
+  try {
+    const Restaurants = await GetNumberRestaurant(3);
+    res.status(200).json({ response: Restaurants });
   } catch (error) {
     res.status(500).json({ error: error });
   }

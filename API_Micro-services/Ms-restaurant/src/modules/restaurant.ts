@@ -94,4 +94,13 @@ async function UpdateRestaurant(restaurantId: string, newRestaurant: Restaurant)
   });
 }
 
-export { CreateRestaurant, GetRestaurant, GetAllRestaurants, DeleteRestaurant, UpdateRestaurant };
+async function GetNumberRestaurant(number: number) {
+  return prisma.restaurant.findMany({
+    take: number,
+    include: {
+      foodType: true,
+    },
+  });
+}
+
+export { CreateRestaurant, GetRestaurant, GetAllRestaurants, DeleteRestaurant, UpdateRestaurant, GetNumberRestaurant};
