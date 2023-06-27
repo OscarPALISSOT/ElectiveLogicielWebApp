@@ -13,9 +13,10 @@ import MapComponent from "../../Components/MapComponent/MapComponent.tsx";
 
 function Home() {
 
-
     const [foodTypes, setFoodTypes] = useState<FoodType[]>([]);
     const [featuredRestaurants, setFeaturedRestaurants] = useState<Restaurant[]>([]);
+    const [lng, setLng] = useState<number>(0);
+    const [lat, setLat] = useState<number>(0);
 
     useEffect(() => {
         axios.get(import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_RESTAURANT_FOODTYPE + '/getALLfoodTypes')
@@ -34,6 +35,10 @@ function Home() {
                 console.log(error);
             })
 
+        navigator.geolocation.getCurrentPosition((position) => {
+            setLat(position.coords.latitude)
+            setLng(position.coords.longitude)
+        })
     }, [])
 
 
@@ -65,7 +70,7 @@ function Home() {
             <FeaturedRestaurants FeaturedRestaurants={featuredRestaurants}/>
 
             <div className={style.mapContainer}>
-                <MapComponent/>
+                <MapComponent lat={lat} lng={lng} zoom={12}/>
             </div>
 
             <NavBar/>
