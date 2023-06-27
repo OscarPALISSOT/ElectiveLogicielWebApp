@@ -56,7 +56,7 @@ router.get<{}, MessageResponse>('/', (req, res) => {
 
 export default router;
 ```
-- Renommer le fichier **./src/api/Evaluation.ts** en **./src/api/NomDeLaRoute.ts**
+- Renommer le fichier **./src/api/index.ts** en **./src/api/NomDeLaRoute.ts**
 - Dans le fichier **./src/app.ts**, remplacer la ligne suivante :
 ```typescript
 res.json({
