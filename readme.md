@@ -42,7 +42,7 @@ On doit recevoir un truc du style :
 Dans le repertoire **./src** :
 
 - Supprimer le fichier **./src/api/emojis.ts**
-- Dans le fichier **./src/api/Evaluation.ts**, supprimer tous et insérer le code suivant :
+- Dans le fichier **./src/api/index.ts**, supprimer tous et insérer le code suivant :
 ```typescript
 import express from 'express';
 
