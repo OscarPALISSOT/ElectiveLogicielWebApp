@@ -1,7 +1,15 @@
 import express from 'express';
 
 import MessageResponse from '../interfaces/MessageResponse';
-import { CreateFoodType, DeleteFoodType, GetAllFoodTypes, GetFoodType, UpdateFoodType } from '../modules/foodType';
+import {
+  CreateFoodType,
+  DeleteFoodType,
+  GetAllFoodTypes,
+  GetFoodType,
+  GetNumberFood,
+  UpdateFoodType
+} from '../modules/foodType';
+import {GetNumberRestaurant} from "../modules/restaurant";
 
 const router = express.Router();
 
@@ -74,6 +82,15 @@ router.patch('/updateFoodType', async function (req, res, next) {
   try {
     await UpdateFoodType(foodType as string, updatedFoodType as string);
     res.status(200).json({ response: 'FoodType updated' });
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
+});
+
+router.get('/getFeaturedFood', async function (req, res, next) {
+  try {
+    const Foods = await GetNumberFood(3);
+    res.status(200).json({ response: Foods });
   } catch (error) {
     res.status(500).json({ error: error });
   }

@@ -62,4 +62,10 @@ async function UpdateFoodType(foodType: string, newFoodType: string) {
   });
 }
 
-export { CreateFoodType, GetFoodType, GetAllFoodTypes, DeleteFoodType, UpdateFoodType };
+async function GetNumberFood(number: number) {
+  return prisma.foodType.findMany({
+    take: number,
+  });
+}
+
+export { CreateFoodType, GetFoodType, GetAllFoodTypes, DeleteFoodType, UpdateFoodType, GetNumberFood};
