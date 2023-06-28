@@ -10,6 +10,7 @@ import NavBar from "../../Components/NavBar/NavBar.tsx";
 import {Restaurant} from "../../Interfaces/Restaurant.ts";
 import FeaturedRestaurants from "../../Components/Homepage/FeaturedRestaurants/FeaturedRestaurants.tsx";
 import MapComponent from "../../Components/MapComponent/MapComponent.tsx";
+import logo from "../../Assets/img/logo.svg";
 
 function Home() {
 
@@ -51,7 +52,7 @@ function Home() {
                     <p className={style.headerAddress}>10 rue de l'école</p>
                 </div>
                 <div className={style.logo}>
-                    <img src="./src/Assets/img/logo.svg" alt=""/>
+                    <img src={logo} alt=""/>
                 </div>
             </div>
             <div className={style.searchContainer}>
