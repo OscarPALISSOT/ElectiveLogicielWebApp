@@ -88,7 +88,12 @@ router.get('/getAllFoodTypes', async function (req, res, next) {
  * delete a foodType
  */
 router.delete('/delete', async function (req, res, next) {
-  const { foodType } = req.query;
+  const { foodType, icon } = req.query;
+  fs.unlink(path.join(__dirname, '../../assets/foodTypesIcons/' + icon), (err) => {
+    if (err) {
+      throw err;
+    }
+  });
   try {
     await DeleteFoodType(foodType as string);
     res.status(200).json({ response: 'FoodType deleted' });

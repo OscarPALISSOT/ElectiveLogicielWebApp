@@ -132,14 +132,14 @@ router.get('/getFeaturedRestaurant', async function (req, res, next) {
  */
 
 router.get('/search', async function (req, res, next) {
-    const { search } = req.query;
-    try {
-        const Restaurants = await SearchRestaurant(search as string);
-        res.status(200).json({ response: Restaurants });
-    } catch (error) {
-        res.status(500).json({ error: error });
-    }
-}
+  const { search } = req.query;
+  try {
+    const Restaurants = await SearchRestaurant(search as string);
+    res.status(200).json({ response: Restaurants });
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
+},
 );
 
 export default router;
