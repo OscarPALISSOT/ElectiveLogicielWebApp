@@ -3,6 +3,7 @@ import Btn from "../../Components/Btn/Btn.tsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBurger, faCartShopping} from "@fortawesome/free-solid-svg-icons";
 import InputField from "../../Components/InputField/InputField.tsx";
+import InputFile from "../../Components/InputFile/InputFile.tsx";
 
 
 function About() {
@@ -17,6 +18,8 @@ function About() {
             </div>
 
             <h1>Home</h1>
+
+            <InputFile id={'test'}/>
             <Link to="/about">About Us</Link>
             <br/>
             <Link to="/login">Se connecter</Link>
@@ -43,7 +46,8 @@ function About() {
             <br/>
             <Btn label={'le texte'} style={'dark'} rounded={true} icon={<FontAwesomeIcon icon={faBurger}/>}/>
             <br/>
-            <InputField placeholder={'test'} name={'name'} type={'text'} style={'primary'} radius={'rounded'} icon={<FontAwesomeIcon icon={faCartShopping}/>}/>
+            <InputField placeholder={'test'} name={'name'} type={'text'} style={'primary'} radius={'rounded'}
+                        icon={<FontAwesomeIcon icon={faCartShopping}/>}/>
             <br/>
             <InputField placeholder={'test'} name={'name'} type={'text'} style={'secondary'} radius={'smooth'}/>
             <br/>
@@ -51,13 +55,16 @@ function About() {
             <br/>
             <InputField placeholder={'test'} name={'name'} type={'text'} style={'dark'} radius={'smooth'}/>
             <br/>
-            <InputField placeholder={'test'} name={'name'} type={'text'} style={'primary'} icon={<FontAwesomeIcon icon={faBurger}/>}/>
+            <InputField placeholder={'test'} name={'name'} type={'text'} style={'primary'}
+                        icon={<FontAwesomeIcon icon={faBurger}/>}/>
             <br/>
             <InputField placeholder={'test'} name={'name'} type={'text'} style={'secondary'}/>
             <br/>
-            <InputField placeholder={'test'} name={'name'} type={'text'} style={'yellow'} icon={<FontAwesomeIcon icon={faBurger}/>}/>
+            <InputField placeholder={'test'} name={'name'} type={'text'} style={'yellow'}
+                        icon={<FontAwesomeIcon icon={faBurger}/>}/>
             <br/>
-            <InputField placeholder={'test'} name={'name'} type={'text'} style={'dark'} icon={<FontAwesomeIcon icon={faBurger}/>}/>
+            <InputField placeholder={'test'} name={'name'} type={'text'} style={'dark'}
+                        icon={<FontAwesomeIcon icon={faBurger}/>}/>
 
         </>
     )
