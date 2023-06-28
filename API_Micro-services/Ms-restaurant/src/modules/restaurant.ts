@@ -19,13 +19,8 @@ async function CreateRestaurant(restaurant: Restaurant) {
       postalCode: restaurant.postalCode,
       country: restaurant.country,
       foodType: {
-        connectOrCreate: {
-          where: {
-            foodTypeLabel: restaurant.foodType.foodTypeLabel,
-          },
-          create: {
-            foodTypeLabel: restaurant.foodType.foodTypeLabel,
-          },
+        connect: {
+          foodTypeLabel: restaurant.foodType.foodTypeLabel,
         },
       },
       openingHours: restaurant.openingHours,
@@ -103,4 +98,4 @@ async function GetNumberRestaurant(number: number) {
   });
 }
 
-export { CreateRestaurant, GetRestaurant, GetAllRestaurants, DeleteRestaurant, UpdateRestaurant, GetNumberRestaurant};
+export { CreateRestaurant, GetRestaurant, GetAllRestaurants, DeleteRestaurant, UpdateRestaurant, GetNumberRestaurant };

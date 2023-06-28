@@ -1,4 +1,6 @@
 import express from 'express';
+import * as fs from 'fs';
+import fileUpload from 'express-fileupload';
 
 import MessageResponse from '../interfaces/MessageResponse';
 import {
@@ -7,11 +9,13 @@ import {
   GetAllFoodTypes,
   GetFoodType,
   GetNumberFood,
-  UpdateFoodType
+  UpdateFoodType,
 } from '../modules/foodType';
-import {GetNumberRestaurant} from "../modules/restaurant";
+import path from 'path';
 
 const router = express.Router();
+
+router.use(fileUpload());
 
 
 /**
@@ -27,8 +31,15 @@ router.get<{}, MessageResponse>('/', (req, res) => {
  */
 router.post('/create', async function (req, res, next) {
   const { foodType } = req.query;
+  const foodTypeThumbnail = req.files?.foodTypeThumbnail as fileUpload.UploadedFile;
+
+  const icon = foodType + '.' + foodTypeThumbnail.name.split('.').pop();
+
   try {
-    const newFoodType = await CreateFoodType(foodType as string);
+    fs.writeFile(`./assets/foodTypesIcons/${foodType}.${foodTypeThumbnail.name.split('.').pop()}`, foodTypeThumbnail.data, (err) => {
+      if (err) throw err;
+    });
+    const newFoodType = await CreateFoodType(foodType as string, icon);
     res.status(200).json({ response: newFoodType });
   } catch (error) {
     res.status(500).json({ error: error });
@@ -50,6 +61,18 @@ router.get('/getFoodType', async function (req, res, next) {
 });
 
 /**
+ * get a foodType thumbnail
+ */
+router.get('/getFoodTypeThumbnail', async function (req, res, next) {
+  const { foodTypeIcons } = req.query;
+  try {
+    res.status(200).sendFile(path.join(__dirname, '../../assets/foodTypesIcons/' + foodTypeIcons));
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
+});
+
+/**
  * get all foodTypes
  */
 router.get('/getAllFoodTypes', async function (req, res, next) {
@@ -64,7 +87,7 @@ router.get('/getAllFoodTypes', async function (req, res, next) {
 /**
  * delete a foodType
  */
-router.delete('/deleteFoodType', async function (req, res, next) {
+router.delete('/delete', async function (req, res, next) {
   const { foodType } = req.query;
   try {
     await DeleteFoodType(foodType as string);

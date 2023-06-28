@@ -6,11 +6,13 @@ const prisma = new PrismaClient();
 /**
  * Create a food type
  * @param {string} foodType the food type label to create
+ * @param {string} icon the food type icon
  */
-async function CreateFoodType(foodType: string) {
+async function CreateFoodType(foodType: string, icon: string) {
   return prisma.foodType.create({
     data: {
       foodTypeLabel: foodType,
+      icon: icon,
     },
   });
 }
@@ -68,4 +70,4 @@ async function GetNumberFood(number: number) {
   });
 }
 
-export { CreateFoodType, GetFoodType, GetAllFoodTypes, DeleteFoodType, UpdateFoodType, GetNumberFood};
+export { CreateFoodType, GetFoodType, GetAllFoodTypes, DeleteFoodType, UpdateFoodType, GetNumberFood };

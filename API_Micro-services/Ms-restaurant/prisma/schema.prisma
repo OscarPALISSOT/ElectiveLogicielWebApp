@@ -33,5 +33,6 @@ model FoodType {
   createdAt     DateTime     @default(now())
   updatedAt     DateTime     @updatedAt
   foodTypeLabel String       @unique
+  icon          String
   restaurants   Restaurant[]
 }

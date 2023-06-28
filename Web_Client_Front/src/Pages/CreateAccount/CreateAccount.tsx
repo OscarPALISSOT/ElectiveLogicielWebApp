@@ -30,10 +30,10 @@ function CreateAccount() {
         } else {
             setSamePwd(false)
         }
-    }, [inputs.pwdConfirm])
+    }, [inputs.pwd, inputs.pwdConfirm])
 
     useEffect(() => {
-        axios.get(import.meta.env.VITE_URL_MS_USER + '/getUser', {params: {email: inputs.email}})
+        axios.get(import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_USER + '/getUser', {params: {email: inputs.email}})
             .then(function (response) {
                 if (response.data.response !== null) {
                     setEmailExist(true)
@@ -63,7 +63,7 @@ function CreateAccount() {
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault()
         setDisabled(true);
-        axios.post(import.meta.env.VITE_URL_MS_USER + '/create',
+        axios.post(import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_USER + '/create',
             null,{
                 params: {
                     firstName: inputs.firstName,
