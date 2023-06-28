@@ -56,8 +56,8 @@ router.post('/create', async function (req, res, next) {
 router.get('/getRestaurant', async function (req, res, next) {
   const { restaurantId } = req.query;
   try {
-    const Restaurant = await GetRestaurant(restaurantId as string);
-    res.status(200).json({ response: Restaurant });
+    const restaurant = await GetRestaurant(restaurantId as string);
+    res.status(200).json({ response: restaurant });
   } catch (error) {
     res.status(500).json({ error: error });
   }
