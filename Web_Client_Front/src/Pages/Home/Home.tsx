@@ -19,17 +19,17 @@ function Home() {
     const [lat, setLat] = useState<number>(0);
 
     useEffect(() => {
-        axios.get(import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_RESTAURANT_FOODTYPE + '/getALLfoodTypes')
+        axios.get(import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_RESTAURANT_FOODTYPE + '/getFeaturedFood')
             .then((response) => {
-                setFoodTypes(response.data.response.slice(0, 3));
+                setFoodTypes(response.data.response);
             })
             .catch((error) => {
                 console.log(error);
             })
 
-        axios.get(import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_RESTAURANT + '/getAllrestaurants')
+        axios.get(import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_RESTAURANT + '/getFeaturedRestaurant')
             .then((response) => {
-                setFeaturedRestaurants(response.data.response.slice(0, 3));
+                setFeaturedRestaurants(response.data.response);
             })
             .catch((error) => {
                 console.log(error);
