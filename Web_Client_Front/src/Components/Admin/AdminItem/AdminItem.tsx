@@ -1,30 +1,36 @@
-//Rectangle + nom de l'item + deux bouton update et del
 import style from '../AdminItem/AdminItem.module.css';
 import Btn from '../../Btn/Btn.tsx';
 import React from 'react';
-import logo from "../../../Assets/img/logo.svg";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faGear, faTrash} from "@fortawesome/free-solid-svg-icons";
 
-interface AdminItemProps{
-    label: string;
+interface AdminItemProps {
+    title: string;
     image?: string;
     preview?: string;
     onDelete?: () => void
     onUpdate?: () => void;
 }
 
-const AdminItem: React.FC<AdminItemProps> = ({label, image, preview, onUpdate, onDelete}: AdminItemProps) => {
-    
+const AdminItem: React.FC<AdminItemProps> = ({title, image, preview, onUpdate, onDelete}: AdminItemProps) => {
+
     return (
         <>
             <div className={style.container}>
-                <img src={logo} alt="Image temporaire" className={style.img}/>
-                {image && <img src={image} alt={label} className={style.img}/>}
-                
-                <h2 className={style.header}>{label}</h2>
-                    {label && <p>{preview}</p>}
+
+                <div className={style.contentContainer}>
+                    <h2 className={style.title}>{title}</h2>
+
+                    <div className={style.thumbnail}>
+                        {image && <img crossOrigin={"anonymous"} src={image} alt={title}/>}
+                    </div>
+
+                    {preview && <p>{preview}</p>}
+                </div>
+
                 <div className={style.buttonContainer}>
-                    <Btn label={'Mettre à jour'} style={'primary'} rounded={true} onClick={onUpdate} />
-                    <Btn label={'Supprimer'} style={'dark'} rounded={true} onClick={onDelete}/>
+                    <Btn label={'Modifier'} style={'secondary'} rounded={true} onClick={onUpdate} icon={<FontAwesomeIcon icon={faGear}/> }/>
+                    <Btn label={'Supprimer'} style={'dark'} rounded={true} onClick={onDelete} icon={<FontAwesomeIcon icon={faTrash}/> }/>
                 </div>
             </div>
         </>
