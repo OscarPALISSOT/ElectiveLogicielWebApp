@@ -1,0 +1,15 @@
+.searchContainer{
+    margin: 1rem 1rem;
+    position: sticky;
+    top: 0;
+    background: var(--fontColorLight);
+    padding-bottom: 1rem;
+}
+
+.searchContainer > *{
+    width: 100%;
+}
+
+.title{
+    margin-left: 1rem;
+}

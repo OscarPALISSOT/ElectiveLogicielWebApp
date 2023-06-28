@@ -8,6 +8,7 @@ import CreateFoodType from "./Pages/AppAdmin/FoodType/CreateFoodType/CreateFoodT
 import NotFound from "./Pages/NotFound/NotFound.tsx";
 import FoodTypeAdmin from "./Pages/AppAdmin/FoodType/FoodType/AdminFoodType.tsx";
 import CreateRestaurant from "./Pages/RestaurantAdmin/CreateRestaurant.tsx";
+import Search from "./Pages/Search/Search.tsx";
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Router>
             <Routes>
                 <Route path="/" element={<Home />}/>
+                <Route path="/search" element={<Search />}/>
                 <Route path="/about" element={<About />} />
                 <Route path="/login" element={<Authentication />} />
                 <Route path="/register" element={<CreateAccount />} />

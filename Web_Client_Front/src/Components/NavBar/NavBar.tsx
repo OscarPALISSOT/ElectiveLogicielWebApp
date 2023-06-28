@@ -18,9 +18,9 @@ const NavBar: React.FC = () => {
                         setUrl(window.location.pathname);
                     }}/>
                 </div>
-                <div className={`${url ==="/about" && styles.active}`}>
+                <div className={`${url ==="/search" && styles.active}`}>
                     <FontAwesomeIcon icon={faMagnifyingGlass} size={"xl"} onClick={() => {
-                        navigate("/about");
+                        navigate("/search");
                         setUrl(window.location.pathname);
                     }}/>
                 </div>
