@@ -5,7 +5,7 @@ import style from "./Home.module.css";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {FoodType} from "../../Interfaces/FoodType.ts";
-import FoodTypesCarrousel from "../../Components/Homepage/FoodTypesCarrousel/FoodTypesCarrousel.tsx";
+import FeaturedFoodTypes from "../../Components/Homepage/FeaturedFoodTypes/FeaturedFoodTypes.tsx";
 import NavBar from "../../Components/NavBar/NavBar.tsx";
 import {Restaurant} from "../../Interfaces/Restaurant.ts";
 import FeaturedRestaurants from "../../Components/Homepage/FeaturedRestaurants/FeaturedRestaurants.tsx";
@@ -85,7 +85,7 @@ function Home() {
                 />
             </div>
 
-            <FoodTypesCarrousel FoodTypes={foodTypes}/>
+            <FeaturedFoodTypes FoodTypes={foodTypes}/>
 
             <FeaturedRestaurants FeaturedRestaurants={featuredRestaurants}/>
 
