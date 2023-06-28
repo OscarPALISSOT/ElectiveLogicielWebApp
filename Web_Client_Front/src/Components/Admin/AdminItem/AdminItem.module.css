@@ -5,7 +5,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin: 1rem 20%;
+    margin: 1rem 0;
+    width: 100%;
 }
 
 .contentContainer{
@@ -15,6 +16,7 @@
 }
 
 .thumbnail {
+    padding: 0.5rem;
     height: 10rem;
     width: 10rem;
 

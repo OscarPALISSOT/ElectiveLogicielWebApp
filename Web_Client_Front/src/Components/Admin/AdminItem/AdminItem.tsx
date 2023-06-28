@@ -12,7 +12,7 @@ interface AdminItemProps {
     onUpdate?: () => void;
 }
 
-const AdminItem: React.FC<AdminItemProps> = ({title, image, preview, onUpdate, onDelete}: AdminItemProps) => {
+const AdminItem: React.FC<AdminItemProps> = ({ title, image, preview, onUpdate, onDelete}: AdminItemProps) => {
 
     return (
         <>

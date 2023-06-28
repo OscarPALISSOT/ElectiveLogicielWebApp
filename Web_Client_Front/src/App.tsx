@@ -6,7 +6,7 @@ import Authentication from "./Pages/Authentication/Authentication.tsx";
 import CreateAccount from "./Pages/CreateAccount/CreateAccount.tsx";
 import CreateFoodType from "./Pages/AppAdmin/FoodType/CreateFoodType/CreateFoodType.tsx";
 import NotFound from "./Pages/NotFound/NotFound.tsx";
-import FoodTypeAdmin from "./Pages/AppAdmin/FoodType/FoodType/FoodType.tsx";
+import FoodTypeAdmin from "./Pages/AppAdmin/FoodType/FoodType/AdminFoodType.tsx";
 
 function App() {
 
