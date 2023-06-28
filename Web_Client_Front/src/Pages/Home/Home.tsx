@@ -72,6 +72,7 @@ function Home() {
                     <img src={logo} alt=""/>
                 </div>
             </div>
+
             <div className={style.searchContainer}>
                 <InputField
                     name={'search'}

@@ -6,7 +6,7 @@ import Authentication from "./Pages/Authentication/Authentication.tsx";
 import CreateAccount from "./Pages/CreateAccount/CreateAccount.tsx";
 import CreateFoodType from "./Pages/AppAdmin/FoodType/CreateFoodType/CreateFoodType.tsx";
 import NotFound from "./Pages/NotFound/NotFound.tsx";
-import FoodType from "./Pages/AppAdmin/FoodType/FoodType/FoodType.tsx";
+import FoodTypeAdmin from "./Pages/AppAdmin/FoodType/FoodType/FoodType.tsx";
 
 function App() {
 
@@ -17,8 +17,8 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/login" element={<Authentication />} />
                 <Route path="/register" element={<CreateAccount />} />
-                <Route path="/admin/addFoodType" element={<CreateFoodType />} />
-                <Route path="/admin/FoodTypes" element={<FoodType/>}/>
+                <Route path="/admin/foodTypes/add" element={<CreateFoodType />} />
+                <Route path="/admin/foodTypes" element={<FoodTypeAdmin/>}/>
                 <Route path='*' element={<NotFound />} />
             </Routes>
         </Router>

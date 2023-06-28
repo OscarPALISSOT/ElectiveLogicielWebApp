@@ -38,7 +38,7 @@ function CreateFoodType() {
                 }
             })
             .then(function () {
-                navigate("/Admin/FoodType")
+                navigate("/admin/foodTypes")
             })
             .catch(function (error) {
                 console.log(error);

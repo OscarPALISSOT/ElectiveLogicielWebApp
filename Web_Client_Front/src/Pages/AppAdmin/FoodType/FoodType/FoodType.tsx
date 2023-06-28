@@ -2,9 +2,8 @@ import AdminItem from "../../../../Components/Admin/AdminItem/AdminItem.tsx";
 import {useState, useEffect} from 'react';
 import {FoodType} from "../../../../Interfaces/FoodType.ts";
 import axios from "axios";
-import NavBar from "../../../../Components/NavBar/NavBar.tsx";
 
-function GetAllFoodType() {
+function FoodTypeAdmin() {
     const [foodTypes, setFoodTypes] = useState<FoodType[]>([])
 
     useEffect(() => {
@@ -19,7 +18,7 @@ function GetAllFoodType() {
 
     return(
         <>
-            <h1>Type de restaurants</h1>
+            <h1>Catégories de restaurants</h1>
             <div>
                 {foodTypes.map((item) => (
                     <div key={item.foodTypeId}>
@@ -27,9 +26,8 @@ function GetAllFoodType() {
                     </div>
                 ))}
             </div>
-            <NavBar/>
         </>
     )
 }
 
-export default GetAllFoodType
+export default FoodTypeAdmin
