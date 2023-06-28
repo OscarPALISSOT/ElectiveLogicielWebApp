@@ -19,8 +19,13 @@ async function CreateRestaurant(restaurant: Restaurant) {
       postalCode: restaurant.postalCode,
       country: restaurant.country,
       foodType: {
-        connect: {
-          foodTypeLabel: restaurant.foodType.foodTypeLabel,
+        connectOrCreate: {
+          where: {
+            foodTypeLabel: restaurant.foodType.foodTypeLabel,
+          },
+          create: {
+            foodTypeLabel: restaurant.foodType.foodTypeLabel,
+          },
         },
       },
       openingHours: restaurant.openingHours,
@@ -89,6 +94,10 @@ async function UpdateRestaurant(restaurantId: string, newRestaurant: Restaurant)
   });
 }
 
+
+/**
+ * get 3 first restaurants
+ */
 async function GetNumberRestaurant(number: number) {
   return prisma.restaurant.findMany({
     take: number,
@@ -98,4 +107,20 @@ async function GetNumberRestaurant(number: number) {
   });
 }
 
-export { CreateRestaurant, GetRestaurant, GetAllRestaurants, DeleteRestaurant, UpdateRestaurant, GetNumberRestaurant };
+/**
+ * search a restaurant
+ *  @param {string} letter the letter to be searched
+ */
+
+async function SearchRestaurant(letter: string) {
+  return prisma.restaurant.findMany({
+    where: {
+      name: {
+        contains: letter,
+        mode: 'insensitive',
+      },
+    },
+  });
+}
+
+export { CreateRestaurant, GetRestaurant, GetAllRestaurants, DeleteRestaurant, UpdateRestaurant, GetNumberRestaurant, SearchRestaurant };
