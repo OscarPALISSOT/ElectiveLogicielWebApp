@@ -18,6 +18,7 @@ function Home() {
     const [featuredRestaurants, setFeaturedRestaurants] = useState<Restaurant[]>([]);
     const [lng, setLng] = useState<number>(0);
     const [lat, setLat] = useState<number>(0);
+    const [ searchResult, setSearchResult ] = useState<Restaurant[]>([]);
 
     useEffect(() => {
         axios.get(import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_RESTAURANT_FOODTYPE + '/getFeaturedFood')
@@ -43,6 +44,22 @@ function Home() {
     }, [])
 
 
+    const search = (event: React.ChangeEvent<HTMLInputElement>) => {
+        axios.get(import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_RESTAURANT + '/search', {
+            params: {
+                search: event.target.value
+            }
+        })
+            .then((response) => {
+                setSearchResult(response.data.response);
+                console.log(response.data.response);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+
 
     return (
         <>
@@ -63,6 +80,7 @@ function Home() {
                     type={'text'}
                     placeholder={'Plats, restaurant, ...'}
                     icon={<FontAwesomeIcon icon={faSearch}/>}
+                    onChange={(event) => search(event)}
                 />
             </div>
 
