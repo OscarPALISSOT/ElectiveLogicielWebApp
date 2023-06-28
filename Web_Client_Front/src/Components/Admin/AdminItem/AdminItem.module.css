@@ -1,0 +1,22 @@
+.container{
+    background-color: #979797;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.img {
+    height: 10rem;
+    width: 10rem;
+
+}
+
+.header {
+    padding-left: 2rem;
+}
+
+.buttonContainer {
+    background-color: #F8D500;
+}
