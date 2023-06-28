@@ -5,7 +5,7 @@ import {
   CreateRestaurant,
   DeleteRestaurant,
   GetAllRestaurants, GetNumberRestaurant,
-  GetRestaurant,
+  GetRestaurant, SearchRestaurant,
   UpdateRestaurant,
 } from '../modules/restaurant';
 import { Restaurant } from '../interfaces/Restaurant';
@@ -56,8 +56,8 @@ router.post('/create', async function (req, res, next) {
 router.get('/getRestaurant', async function (req, res, next) {
   const { restaurantId } = req.query;
   try {
-    const Restaurant = await GetRestaurant(restaurantId as string);
-    res.status(200).json({ response: Restaurant });
+    const restaurant = await GetRestaurant(restaurantId as string);
+    res.status(200).json({ response: restaurant });
   } catch (error) {
     res.status(500).json({ error: error });
   }
@@ -115,6 +115,9 @@ router.patch('/updateRestaurant', async function (req, res, next) {
   }
 });
 
+/**
+ * get 3 first restaurants
+ */
 router.get('/getFeaturedRestaurant', async function (req, res, next) {
   try {
     const Restaurants = await GetNumberRestaurant(3);
@@ -123,5 +126,20 @@ router.get('/getFeaturedRestaurant', async function (req, res, next) {
     res.status(500).json({ error: error });
   }
 });
+
+/**
+ * search restaurants
+ */
+
+router.get('/search', async function (req, res, next) {
+    const { search } = req.query;
+    try {
+        const Restaurants = await SearchRestaurant(search as string);
+        res.status(200).json({ response: Restaurants });
+    } catch (error) {
+        res.status(500).json({ error: error });
+    }
+}
+);
 
 export default router;
