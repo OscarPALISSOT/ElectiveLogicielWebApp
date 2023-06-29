@@ -39,7 +39,7 @@ function FoodTypeAdmin() {
                     <AdminItem
                         key={item.restaurantId}
                         title={item.name}
-                        image={import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_RESTAURANT_FOODTYPE + '/getFoodTypeThumbnail?foodTypeIcons=' + item.thumbnail}
+                        image={import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_RESTAURANT + '/getRestaurantThumbnail?restaurantThumbnail=' + item.thumbnail}
                     />
                 ))}
             </div>

@@ -12,6 +12,7 @@ import {
 } from '../modules/restaurant';
 import { Restaurant } from '../interfaces/Restaurant';
 import { FoodType } from '../interfaces/FoodType';
+import path from "path";
 
 const router = express.Router();
 
@@ -87,6 +88,17 @@ router.get('/getAllRestaurants', async function (req, res, next) {
   }
 });
 
+/**
+ * get a restaurant thumbnail
+ */
+router.get('/getRestaurantThumbnail', async function (req, res, next) {
+  const { restaurantThumbnail } = req.query;
+  try {
+    res.status(200).sendFile(path.join(__dirname, '../../assets/restaurantsThumbnail/' + restaurantThumbnail));
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
+});
 
 /**
  * delete a restaurant
