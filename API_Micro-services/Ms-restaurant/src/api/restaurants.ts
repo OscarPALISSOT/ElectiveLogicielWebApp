@@ -31,12 +31,9 @@ router.get<{}, MessageResponse>('/', (req, res) => {
 router.post('/create', async function (req, res, next) {
   const { name, owner, staff, address, city, postalCode, country, foodType, openingHours } = req.query;
 
-  console.log(req.files);
-
   const restaurantThumbnail = req.files?.restaurantThumbnail as fileUpload.UploadedFile;
   const randomString = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 
-  console.log(restaurantThumbnail);
 
   const restaurant = {
     name: name as string,
