@@ -1,17 +1,44 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import style from "./CreateRestaurant.module.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCity, faClock, faEarthEurope, faHome, faPlus, faUtensils} from "@fortawesome/free-solid-svg-icons";
+import {
+    faBowlFood,
+    faCity,
+    faClock,
+    faEarthEurope,
+    faHome,
+    faPlus,
+    faUtensils
+} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import {useNavigate} from "react-router";
-import InputField from "../../Components/InputField/InputField.tsx";
-import Btn from "../../Components/Btn/Btn.tsx";
-import InputFile from "../../Components/InputFile/InputFile.tsx";
+import InputField from "../../../Components/InputField/InputField.tsx";
+import Btn from "../../../Components/Btn/Btn.tsx";
+import InputFile from "../../../Components/InputFile/InputFile.tsx";
+import Select from "../../../Components/Select/Select.tsx";
+import {FoodType} from "../../../Interfaces/FoodType.ts";
 
 
 function CreateFoodType() {
 
     const navigate = useNavigate();
+
+    const [foodTypes, setFoodTypes] = useState<FoodType[]>([]);
+    const [foodTypesLabel, setFoodTypesLabel] = useState<string[]>([]);
+
+    useEffect(() => {
+        axios.get(import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_RESTAURANT_FOODTYPE + '/getALLfoodTypes')
+            .then((response) => {
+                setFoodTypes(response.data.response);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }, [])
+
+    useEffect(() => {
+        setFoodTypesLabel(foodTypes.map((foodType) => foodType.foodTypeLabel))
+    }, [foodTypes])
 
     const [inputs, setInputs] = useState({
         name: '',
@@ -26,7 +53,7 @@ function CreateFoodType() {
 
     })
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
         const name = event.target.name;
         const value = event.target.value;
         setInputs(values => ({...values, [name]: value}))
@@ -37,17 +64,25 @@ function CreateFoodType() {
         const restaurantThumbnail: File = (event.target as any).restaurantThumbnail.files[0];
         const formData = new FormData();
         formData.append('restaurantThumbnail', restaurantThumbnail);
-        axios.post( import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_RESTAURANT_FOODTYPE + '/create',
-            formData,{
+        axios.post(import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_RESTAURANT + '/create',
+            formData, {
                 params: {
-
+                    name: inputs.name,
+                    owner: inputs.owner,
+                    staff: '',
+                    address: inputs.address,
+                    city: inputs.city,
+                    postalCode: inputs.postalCode,
+                    country: inputs.country,
+                    foodType: inputs.foodType,
+                    openingHours: inputs.openingHours,
                 },
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             })
             .then(function () {
-                navigate("/admin/foodTypes")
+                navigate("/admin/restaurants");
             })
             .catch(function (error) {
                 console.log(error);
@@ -67,7 +102,7 @@ function CreateFoodType() {
                     required={true}
                     style={'primary'}
                     radius={'smooth'}
-                    icon={<FontAwesomeIcon icon={faUtensils} />}
+                    icon={<FontAwesomeIcon icon={faUtensils}/>}
                     onChange={handleChange}
                 />
                 <InputField
@@ -78,7 +113,7 @@ function CreateFoodType() {
                     required={true}
                     style={'primary'}
                     radius={'smooth'}
-                    icon={<FontAwesomeIcon icon={faHome} />}
+                    icon={<FontAwesomeIcon icon={faHome}/>}
                     onChange={handleChange}
                 />
                 <InputField
@@ -89,7 +124,7 @@ function CreateFoodType() {
                     required={true}
                     style={'primary'}
                     radius={'smooth'}
-                    icon={<FontAwesomeIcon icon={faCity} />}
+                    icon={<FontAwesomeIcon icon={faCity}/>}
                     onChange={handleChange}
                 />
                 <InputField
@@ -100,7 +135,7 @@ function CreateFoodType() {
                     required={true}
                     style={'primary'}
                     radius={'smooth'}
-                    icon={<FontAwesomeIcon icon={faEarthEurope} />}
+                    icon={<FontAwesomeIcon icon={faEarthEurope}/>}
                     onChange={handleChange}
                 />
                 <InputField
@@ -111,10 +146,20 @@ function CreateFoodType() {
                     required={true}
                     style={'primary'}
                     radius={'smooth'}
-                    icon={<FontAwesomeIcon icon={faClock} />}
+                    icon={<FontAwesomeIcon icon={faClock}/>}
                     onChange={handleChange}
                 />
 
+                <Select
+                    required={true}
+                    name={'foodType'}
+                    style={'primary'}
+                    radius={'smooth'}
+                    placeholder={'Type de cuisine'}
+                    icon={<FontAwesomeIcon icon={faBowlFood}/>}
+                    options={foodTypesLabel}
+                    onChange={handleChange}
+                />
 
 
                 <h2>Bannière de présentation</h2>
@@ -122,7 +167,7 @@ function CreateFoodType() {
                 <Btn
                     label={'Créer le restaurant'}
                     style={'yellow'}
-                    icon={<FontAwesomeIcon icon={faPlus} />}
+                    icon={<FontAwesomeIcon icon={faPlus}/>}
                 />
             </form>
         </>

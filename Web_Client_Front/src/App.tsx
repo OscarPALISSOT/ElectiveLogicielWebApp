@@ -7,10 +7,11 @@ import CreateAccount from "./Pages/CreateAccount/CreateAccount.tsx";
 import CreateFoodType from "./Pages/AppAdmin/FoodType/CreateFoodType/CreateFoodType.tsx";
 import NotFound from "./Pages/NotFound/NotFound.tsx";
 import FoodTypeAdmin from "./Pages/AppAdmin/FoodType/FoodType/AdminFoodType.tsx";
-import CreateRestaurant from "./Pages/RestaurantAdmin/CreateRestaurant.tsx";
+import CreateRestaurant from "./Pages/RestaurantAdmin/CreateRestaurants/CreateRestaurant.tsx";
 import Search from "./Pages/Search/Search.tsx";
 import Admin from "./Pages/AppAdmin/Admin/Admin.tsx";
 import ProtectedRoute from "./Modules/ProtectedRoute.tsx";
+import AdminRestaurants from "./Pages/RestaurantAdmin/Restaurants/AdminRestaurants.tsx";
 
 function App() {
 
@@ -54,7 +55,7 @@ function App() {
 
                 <Route path="/admin/restaurants" element={
                     <ProtectedRoute element={
-                        <FoodTypeAdmin/>
+                        <AdminRestaurants/>
                     }/>
                 }/>
                 <Route path="/admin/restaurants/add" element={

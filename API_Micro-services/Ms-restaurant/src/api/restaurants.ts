@@ -1,4 +1,6 @@
 import express from 'express';
+import * as fs from 'fs';
+import fileUpload from 'express-fileupload';
 
 import MessageResponse from '../interfaces/MessageResponse';
 import {
@@ -12,6 +14,8 @@ import { Restaurant } from '../interfaces/Restaurant';
 import { FoodType } from '../interfaces/FoodType';
 
 const router = express.Router();
+
+router.use(fileUpload());
 
 
 /**
@@ -27,6 +31,13 @@ router.get<{}, MessageResponse>('/', (req, res) => {
 router.post('/create', async function (req, res, next) {
   const { name, owner, staff, address, city, postalCode, country, foodType, openingHours } = req.query;
 
+  console.log(req.files);
+
+  const restaurantThumbnail = req.files?.restaurantThumbnail as fileUpload.UploadedFile;
+  const randomString = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+
+  console.log(restaurantThumbnail);
+
   const restaurant = {
     name: name as string,
     owner: owner as string,
@@ -39,9 +50,13 @@ router.post('/create', async function (req, res, next) {
       foodTypeLabel: foodType as string,
     } as FoodType,
     openingHours: openingHours as string,
+    thumbnail: randomString + '.' + restaurantThumbnail.name.split('.').pop(),
   } as Restaurant;
 
   try {
+    fs.writeFile(`./assets/restaurantsThumbnail/${randomString}.${restaurantThumbnail.name.split('.').pop()}`, restaurantThumbnail.data, (err) => {
+      if (err) throw err;
+    });
     const newRestaurant = await CreateRestaurant(restaurant);
     res.status(200).json({ response: newRestaurant });
   } catch (error) {

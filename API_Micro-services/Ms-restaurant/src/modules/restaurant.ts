@@ -24,6 +24,7 @@ async function CreateRestaurant(restaurant: Restaurant) {
         },
       },
       openingHours: restaurant.openingHours,
+      thumbnail: restaurant.thumbnail,
     },
   });
 }

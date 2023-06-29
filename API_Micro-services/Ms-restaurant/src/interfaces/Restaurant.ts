@@ -12,5 +12,6 @@ export interface Restaurant {
   foodType: FoodType;
   evaluationId: string[];
   openingHours: string;
+  thumbnail: string;
   menuId: string[];
 }

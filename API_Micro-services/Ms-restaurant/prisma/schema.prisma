@@ -25,6 +25,7 @@ model Restaurant {
   foodTypeId   String   @db.ObjectId
   evaluationId String[]
   openingHours String
+  thumbnail    String
   menuId       String[]
 }
 
