@@ -19,6 +19,14 @@ function Admin() {
                     onClick={() => navigate('/admin/foodtypes')}
                     icon={<FontAwesomeIcon icon={faBurger}/> }
                 />
+
+                <Btn
+                    label={'Restaurants'}
+                    style={'primary'}
+                    rounded={true}
+                    onClick={() => navigate('/admin/restaurants')}
+                    icon={<FontAwesomeIcon icon={faBurger}/> }
+                />
             </div>
         </>
     )
