@@ -11,6 +11,7 @@ import CreateRestaurant from "./Pages/RestaurantAdmin/CreateRestaurant.tsx";
 import Search from "./Pages/Search/Search.tsx";
 import Admin from "./Pages/AppAdmin/Admin/Admin.tsx";
 import ProtectedRoute from "./Modules/ProtectedRoute.tsx";
+
 function App() {
 
 
@@ -18,24 +19,51 @@ function App() {
         <Router>
             <Routes>
 
-                <Route path="/" element={<Home/>}/>
-                <Route path="/search" element={
-                    <ProtectedRoute element={<Search/>}/>
-                }/>
-
-
                 <Route path="/about" element={<About/>}/>
                 <Route path="/login" element={<Authentication/>}/>
                 <Route path="/register" element={<CreateAccount/>}/>
 
+                <Route path="/" element={
+                    <ProtectedRoute element={
+                        <Home/>}
+                    />}
+                />
+                <Route path="/search" element={
+                    <ProtectedRoute element={
+                        <Search/>}
+                    />
+                }/>
 
-                <Route path="/admin" element={<Admin/>}/>
-                <Route path="/admin/foodTypes" element={<FoodTypeAdmin/>}/>
-                <Route path="/admin/foodTypes/add" element={<CreateFoodType/>}/>
+
+                <Route path="/admin" element={
+                    <ProtectedRoute element={
+                        <Admin/>
+                    }/>
+                }/>
+                <Route path="/admin/foodTypes" element={
+                    <ProtectedRoute element={
+                        <FoodTypeAdmin/>
+                    }/>
+                }/>
+                <Route path="/admin/foodTypes/add" element={
+                    <ProtectedRoute element={
+                        <CreateFoodType/>
+                    }/>
+                }/>
 
 
-                <Route path="/admin/restaurants" element={<FoodTypeAdmin/>}/>
-                <Route path="/admin/restaurants/add" element={<CreateRestaurant/>}/>
+                <Route path="/admin/restaurants" element={
+                    <ProtectedRoute element={
+                        <FoodTypeAdmin/>
+                    }/>
+                }/>
+                <Route path="/admin/restaurants/add" element={
+                    <ProtectedRoute element={
+                        <CreateRestaurant/>
+                    }/>
+                }/>
+
+
                 <Route path='*' element={<NotFound/>}/>
 
 
