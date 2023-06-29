@@ -39,17 +39,17 @@ function Authentication() {
         event.preventDefault()
         setDisabled(true)
         try {
-            const user = (await axios.get(import.meta.env.VITE_URL_MS_USER + '/getUser', {params: {email: inputs.email}})).data.response
+            const user = (await axios.get(import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_USER + '/getUser', {params: {email: inputs.email}})).data.response
             if (!user) {
                 setIncorrectEmail(true)
             } else {
-                await axios.post(import.meta.env.VITE_URL_MS_USER + '/checkUserPassword', null, {
+                await axios.post(import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_USER + '/checkUserPassword', null, {
                     params: {
                         email: inputs.email,
                         password: inputs.pwd
                     }
                 })
-                const token = (await axios.post(import.meta.env.VITE_URL_MS_AUTH + '/create', null, {
+                const token = (await axios.post(import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_AUTH + '/create', null, {
                     params: {
                         userId: user.UserId,
                         email: user.Email,
@@ -58,7 +58,7 @@ function Authentication() {
                         roles: user.Role.map((role: { 'Role': string }) => role.Role).join(', ')
                     }
                 })).data.token
-                await axios.post(import.meta.env.VITE_URL_MS_USER + '/addTokenToUser', null, {
+                await axios.post(import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_USER + '/addTokenToUser', null, {
                     params: {
                         email: inputs.email,
                         token: token
