@@ -16,7 +16,6 @@ export function IsLogged() {
                 )
                 .then((response) => {
                     if (response.data.check !== false) {
-                        console.log("Logged");
                         resolve(true);
                     } else {
                         resolve(false);
