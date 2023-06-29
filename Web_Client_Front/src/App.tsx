@@ -9,22 +9,33 @@ import NotFound from "./Pages/NotFound/NotFound.tsx";
 import FoodTypeAdmin from "./Pages/AppAdmin/FoodType/FoodType/AdminFoodType.tsx";
 import CreateRestaurant from "./Pages/RestaurantAdmin/CreateRestaurant.tsx";
 import Search from "./Pages/Search/Search.tsx";
+import Admin from "./Pages/AppAdmin/Admin/Admin.tsx";
 
 function App() {
 
     return (
         <Router>
             <Routes>
+
                 <Route path="/" element={<Home />}/>
                 <Route path="/search" element={<Search />}/>
+
+
                 <Route path="/about" element={<About />} />
                 <Route path="/login" element={<Authentication />} />
                 <Route path="/register" element={<CreateAccount />} />
-                <Route path="/admin/foodTypes/add" element={<CreateFoodType />} />
+
+
+                <Route path="/admin" element={<Admin />} />
                 <Route path="/admin/foodTypes" element={<FoodTypeAdmin/>}/>
+                <Route path="/admin/foodTypes/add" element={<CreateFoodType />} />
+
+
                 <Route path="/admin/restaurants" element={<FoodTypeAdmin/>}/>
                 <Route path="/admin/restaurants/add" element={<CreateRestaurant/>}/>
                 <Route path='*' element={<NotFound />} />
+
+
             </Routes>
         </Router>
     )
