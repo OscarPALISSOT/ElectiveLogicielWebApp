@@ -1,6 +1,7 @@
 import style from "./FeaturedRestaurants.module.css";
 import React from "react";
 import {Restaurant} from "../../../Interfaces/Restaurant.ts";
+import {useNavigate} from "react-router";
 
 
 interface FeaturedRestaurantsProps {
@@ -9,11 +10,13 @@ interface FeaturedRestaurantsProps {
 
 const FeaturedRestaurants: React.FC<FeaturedRestaurantsProps> = ({FeaturedRestaurants}: FeaturedRestaurantsProps) => {
 
+    const navigate = useNavigate();
+
     return (
         <>
             <div className={style.featuredRestaurantsContainer}>
                 {FeaturedRestaurants.map((restaurant) => (
-                    <div key={restaurant.restaurantId} className={style.featuredRestaurantItem}>
+                    <div key={restaurant.restaurantId} className={style.featuredRestaurantItem} onClick={() => navigate('restaurant/' + restaurant.restaurantId)}>
                         <div className={style.thumbnail}>
                             <img crossOrigin={"anonymous"} src={import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_RESTAURANT + '/getRestaurantThumbnail?restaurantThumbnail=' + restaurant.thumbnail} alt=""/>
                         </div>

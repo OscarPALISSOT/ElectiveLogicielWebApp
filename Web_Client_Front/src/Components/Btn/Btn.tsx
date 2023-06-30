@@ -3,7 +3,7 @@ import React from "react";
 
 
 interface BtnProps {
-    label: string;
+    label?: string;
     disabled?: boolean;
     style: 'primary' | 'secondary' | 'yellow' | 'dark';
     rounded?: boolean;
@@ -18,7 +18,7 @@ const Btn: React.FC<BtnProps> = ({label, disabled, style, rounded, icon, onClick
     return (
         <>
             <button className={btnClassName} disabled={disabled} onClick={onClick}>
-                {icon}
+                {icon && icon}
                 {label}
             </button>
         </>

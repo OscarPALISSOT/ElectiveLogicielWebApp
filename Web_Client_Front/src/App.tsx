@@ -34,7 +34,7 @@ function App() {
                     />
                 }/>
 
-                <Route path="/restaurants/:id" element={
+                <Route path="/restaurant/:id" element={
                     <ProtectedRoute element={
                         <SingleRestaurant/>}
                     />
