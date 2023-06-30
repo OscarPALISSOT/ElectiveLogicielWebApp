@@ -4,6 +4,8 @@ import {Restaurant} from "../../../Interfaces/Restaurant.ts";
 import axios from "axios";
 import setAuthTokenHeader from "../../../Modules/SetToken.ts";
 import style from "./SingleRestaurant.module.css";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faXmark} from "@fortawesome/free-solid-svg-icons";
 
 
 function SingleRestaurant() {
@@ -28,11 +30,16 @@ function SingleRestaurant() {
 
     return (
         <>
+            <div className={style.header}>
+                <div className="">
+                    <FontAwesomeIcon icon={faXmark} size={'2xl'}/>
+                </div>
+            </div>
             <div className={style.bannerContainer}>
                 <img crossOrigin={"anonymous"} src={import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_RESTAURANT + '/getRestaurantThumbnail?restaurantThumbnail=' + restaurant.thumbnail} alt={restaurant.name}/>
             </div>
             <div className={style.container}>
-                <h2>{restaurant.name}</h2>
+                <h2 className={style.title}>{restaurant.name} - {restaurant.address}, {restaurant.city}</h2>
             </div>
         </>
     )
