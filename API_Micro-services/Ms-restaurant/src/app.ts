@@ -8,7 +8,7 @@ import * as middlewaresUser from './middlewares/tokenMiddleware';
 import restaurants from './api/restaurants';
 import foodTypes from './api/foodTypes';
 import foodTypesNoToken from './api/foodTypesNoTokens';
-import restaurantsNoToken from "./api/restaurantsNoToken";
+import restaurantsNoToken from './api/restaurantsNoToken';
 import MessageResponse from './interfaces/MessageResponse';
 
 require('dotenv').config();
@@ -24,7 +24,7 @@ app.get<{}, MessageResponse>('/', (req, res) => {
 });
 
 app.use('/api/v1/foodTypes', foodTypesNoToken);
-app.use('/api/v1/restaurants', restaurantsNoToken)
+app.use('/api/v1/restaurants', restaurantsNoToken);
 
 app.use(middlewaresUser.tokenMiddleware);
 //app.use(middlewaresUser.isAdmin);

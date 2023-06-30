@@ -12,6 +12,7 @@ import Search from "./Pages/Search/Search.tsx";
 import Admin from "./Pages/AppAdmin/Admin/Admin.tsx";
 import ProtectedRoute from "./Modules/ProtectedRoute.tsx";
 import AdminRestaurants from "./Pages/RestaurantAdmin/Restaurants/AdminRestaurants.tsx";
+import SingleRestaurant from "./Pages/Restaurants/SingleRestaurant/SingleRestaurant.tsx";
 
 function App() {
     return (
@@ -30,6 +31,12 @@ function App() {
                 <Route path="/search" element={
                     <ProtectedRoute element={
                         <Search/>}
+                    />
+                }/>
+
+                <Route path="/restaurants/:id" element={
+                    <ProtectedRoute element={
+                        <SingleRestaurant/>}
                     />
                 }/>
 
