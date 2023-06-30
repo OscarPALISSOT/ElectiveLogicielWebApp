@@ -1,0 +1,56 @@
+.logoContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 5vh;
+    margin-bottom: 2rem;
+}
+
+.logoContainer img{
+    width:60%;
+    height:auto;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5%;
+}
+
+.form > * {
+    margin: 0.5rem 0;
+    width: 100%;
+}
+
+.registerBtnContainer {
+    width: 100%;
+    padding: 0 5%;
+}
+
+.registerBtnContainer button{
+    width: 100%;
+}
+
+.separator{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.lineSeparator{
+    width: 40%;
+    height: 2px;
+    background: var(--primary);
+}
+
+.textSeparator{
+    margin: 0 0.5rem;
+    color: var(--primary);
+}

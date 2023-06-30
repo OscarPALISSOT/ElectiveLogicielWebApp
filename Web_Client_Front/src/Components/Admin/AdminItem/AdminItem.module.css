@@ -1,0 +1,36 @@
+.container{
+    background: var(--primary);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem 0;
+    width: 100%;
+}
+
+.contentContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.thumbnail {
+    padding: 0.5rem;
+    height: 10rem;
+    width: 10rem;
+
+}
+
+.thumbnail > img{
+    height: 100%;
+    width: auto;
+}
+
+.title{
+    margin-left: 1rem;
+}
+
+.buttonContainer > * {
+    margin: 1rem;
+}

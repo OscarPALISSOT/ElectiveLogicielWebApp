@@ -1,0 +1,17 @@
+.inputFile {
+    width: 100%;
+    min-height: 55px;
+}
+
+.inputFile[type='file']::file-selector-button {
+    border-radius: 4px;
+    min-height: 55px;
+    cursor: pointer;
+    border: 1px solid var(--fontColor);
+    background: var(--primary);
+    box-shadow: none;
+}
+
+.inputFile[type='file']::file-selector-button:hover {
+    border: 1px solid var(--fontColor);
+}

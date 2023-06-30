@@ -1,0 +1,67 @@
+.inputField{
+    height: 3rem;
+    outline: none;
+    border: none;
+    background: transparent;
+    width: 100%;
+}
+
+.inputFieldContainer{
+    height: 3rem;
+    width: min-content;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.inputFieldContainer svg{
+    margin: 0 0.5rem;
+}
+
+.rounded{
+    border-radius: 30px;
+    padding: 0 0.5rem;
+}
+
+.smoothRadius{
+    border-radius: 10px;
+    padding: 0 0.5rem;
+}
+
+.primary{
+    background: var(--primary);
+}
+
+.secondary{
+    background: var(--secondary);
+}
+
+.yellow{
+    background: var(--yellow);
+}
+
+.dark{
+    background: var(--dark);
+    color: var(--fontColorLight);
+}
+
+.inputFieldContainer:has(.inputField:focus){
+    border-bottom: 2px solid var(--fontColor);
+}
+
+.inputFieldContainer:has(.darkInput .radiusInput:focus){
+    border: 2px solid var(--fontColorLight);
+}
+
+.inputFieldContainer:has(.radiusInput:focus){
+    border: 2px solid var(--fontColor);
+}
+
+.inputFieldContainer:has(.darkInput:focus){
+    border: var(--fontColorLight) 2px solid;
+}
+
+
+.darkInput{}
+
+.radiusInput{}

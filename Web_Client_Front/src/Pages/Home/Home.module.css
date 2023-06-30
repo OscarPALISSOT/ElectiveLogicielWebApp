@@ -1,0 +1,51 @@
+.container{
+    height: 100%;
+}
+
+.header{
+    height: 50px;
+    padding: 0.5rem 1rem 1rem 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    background: #FFFFFF;
+}
+
+.headerLabel{
+    color: var(--secondary);
+    font-size: 0.8rem;
+}
+
+.headerAddress{
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.logo{
+    height: 100%;
+}
+
+.logo img{
+    height: 100%;
+    width: auto;
+}
+
+.searchContainer{
+    margin: 1rem 1rem;
+}
+
+.searchContainer > *{
+    width: 100%;
+}
+
+.title{
+    margin-left: 1rem;
+}
+
+.mapContainer{
+    height: 50vh;
+    width: 100%;
+}
