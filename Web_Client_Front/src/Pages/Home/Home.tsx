@@ -11,6 +11,7 @@ import {Restaurant} from "../../Interfaces/Restaurant.ts";
 import FeaturedRestaurants from "../../Components/Homepage/FeaturedRestaurants/FeaturedRestaurants.tsx";
 import MapComponent from "../../Components/MapComponent/MapComponent.tsx";
 import logo from "../../Assets/img/logo.svg";
+import setAuthTokenHeader from "../../Modules/SetToken.ts";
 
 function Home() {
 
@@ -21,6 +22,7 @@ function Home() {
     const [ searchResult, setSearchResult ] = useState<Restaurant[]>([]);
 
     useEffect(() => {
+        setAuthTokenHeader(localStorage.getItem('JWT_auth_Cesivroo'));
         axios.get(import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_RESTAURANT_FOODTYPE + '/getFeaturedFood')
             .then((response) => {
                 setFoodTypes(response.data.response);

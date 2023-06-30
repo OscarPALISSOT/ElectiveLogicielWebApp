@@ -61,18 +61,6 @@ router.get('/getFoodType', async function (req, res, next) {
 });
 
 /**
- * get a foodType thumbnail
- */
-router.get('/getFoodTypeThumbnail', async function (req, res, next) {
-  const { foodTypeIcons } = req.query;
-  try {
-    res.status(200).sendFile(path.join(__dirname, '../../assets/foodTypesIcons/' + foodTypeIcons));
-  } catch (error) {
-    res.status(500).json({ error: error });
-  }
-});
-
-/**
  * get all foodTypes
  */
 router.get('/getAllFoodTypes', async function (req, res, next) {

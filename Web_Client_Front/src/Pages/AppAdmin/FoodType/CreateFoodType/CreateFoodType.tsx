@@ -7,6 +7,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus, faUtensils} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import {useNavigate} from "react-router";
+import setAuthTokenHeader from "../../../../Modules/SetToken.ts";
 
 
 function CreateFoodType() {
@@ -28,6 +29,7 @@ function CreateFoodType() {
         const foodTypeThumbnail: File = (event.target as any).foodTypeThumbnail.files[0];
         const formData = new FormData();
         formData.append('foodTypeThumbnail', foodTypeThumbnail);
+        setAuthTokenHeader(localStorage.getItem('JWT_auth_Cesivroo'));
         axios.post( import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_RESTAURANT_FOODTYPE + '/create',
             formData,{
                 params: {

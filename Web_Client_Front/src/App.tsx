@@ -14,8 +14,6 @@ import ProtectedRoute from "./Modules/ProtectedRoute.tsx";
 import AdminRestaurants from "./Pages/RestaurantAdmin/Restaurants/AdminRestaurants.tsx";
 
 function App() {
-
-
     return (
         <Router>
             <Routes>

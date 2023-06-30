@@ -7,6 +7,7 @@ import Btn from "../../../../Components/Btn/Btn.tsx";
 import {useNavigate} from "react-router";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import setAuthTokenHeader from "../../../../Modules/SetToken.ts";
 
 function FoodTypeAdmin() {
 
@@ -15,6 +16,7 @@ function FoodTypeAdmin() {
     const [foodTypes, setFoodTypes] = useState<FoodType[]>([])
 
     useEffect(() => {
+        setAuthTokenHeader(localStorage.getItem('JWT_auth_Cesivroo'));
         axios.get(import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_RESTAURANT_FOODTYPE + '/getALLfoodTypes')
             .then((response) => {
                 setFoodTypes(response.data.response);

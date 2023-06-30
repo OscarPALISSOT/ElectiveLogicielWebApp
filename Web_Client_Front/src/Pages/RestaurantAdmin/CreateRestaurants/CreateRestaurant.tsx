@@ -17,6 +17,7 @@ import Btn from "../../../Components/Btn/Btn.tsx";
 import InputFile from "../../../Components/InputFile/InputFile.tsx";
 import Select from "../../../Components/Select/Select.tsx";
 import {FoodType} from "../../../Interfaces/FoodType.ts";
+import setAuthTokenHeader from "../../../Modules/SetToken.ts";
 
 
 function CreateFoodType() {
@@ -64,6 +65,7 @@ function CreateFoodType() {
         const restaurantThumbnail: File = (event.target as any).restaurantThumbnail.files[0];
         const formData = new FormData();
         formData.append('restaurantThumbnail', restaurantThumbnail);
+        setAuthTokenHeader(localStorage.getItem('JWT_auth_Cesivroo'));
         axios.post(import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_RESTAURANT + '/create',
             formData, {
                 params: {
