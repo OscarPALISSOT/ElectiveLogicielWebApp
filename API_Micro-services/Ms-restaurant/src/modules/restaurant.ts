@@ -119,4 +119,18 @@ async function SearchRestaurant(letter: string) {
   });
 }
 
-export { CreateRestaurant, GetRestaurant, GetAllRestaurants, DeleteRestaurant, UpdateRestaurant, GetNumberRestaurant, SearchRestaurant };
+async function GetAllRestaurantsFromCat(foodTypeLabel : string) {
+  return prisma.restaurant.findMany({
+    include: {
+      foodType: true,
+    },
+    where: {
+        foodType: {
+            foodTypeLabel: foodTypeLabel,
+        }
+    }
+  });
+}
+
+
+export { CreateRestaurant, GetRestaurant, GetAllRestaurants, DeleteRestaurant, UpdateRestaurant, GetNumberRestaurant, SearchRestaurant , GetAllRestaurantsFromCat};

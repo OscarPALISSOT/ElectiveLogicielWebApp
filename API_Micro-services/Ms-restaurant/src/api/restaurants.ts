@@ -6,7 +6,7 @@ import MessageResponse from '../interfaces/MessageResponse';
 import {
   CreateRestaurant,
   DeleteRestaurant,
-  GetAllRestaurants, GetNumberRestaurant,
+  GetAllRestaurants, GetAllRestaurantsFromCat, GetNumberRestaurant,
   GetRestaurant, SearchRestaurant,
   UpdateRestaurant,
 } from '../modules/restaurant';
@@ -153,5 +153,16 @@ router.get('/search', async function (req, res, next) {
   }
 },
 );
+
+router.get('/getAllRestaurantFromCat', async function (req, res, next) {
+  const { foodTypeLabel } = req.query;
+  console.log(foodTypeLabel);
+  try {
+    const restaurant = await GetAllRestaurantsFromCat(foodTypeLabel as string);
+    res.status(200).json({ response: restaurant });
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
+});
 
 export default router;
