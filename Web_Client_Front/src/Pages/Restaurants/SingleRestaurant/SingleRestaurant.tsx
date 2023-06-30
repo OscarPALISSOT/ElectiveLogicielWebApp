@@ -5,10 +5,13 @@ import axios from "axios";
 import setAuthTokenHeader from "../../../Modules/SetToken.ts";
 import style from "./SingleRestaurant.module.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faXmark} from "@fortawesome/free-solid-svg-icons";
+import {faStar, faXmark} from "@fortawesome/free-solid-svg-icons";
+import {useNavigate} from "react-router";
 
 
 function SingleRestaurant() {
+
+    const navigate = useNavigate();
 
 
     const {id} = useParams();
@@ -22,16 +25,17 @@ function SingleRestaurant() {
                 restaurantId: id
             }
         }).then((response) => {
+            console.log(response.data.response);
             setRestaurant(response.data.response);
         }).catch((error) => {
             console.log(error);
         })
-    }, [id])
+    }, [])
 
     return (
         <>
             <div className={style.header}>
-                <div className="">
+                <div className={style.close} onClick={() => navigate('/')}>
                     <FontAwesomeIcon icon={faXmark} size={'2xl'}/>
                 </div>
             </div>
@@ -40,6 +44,7 @@ function SingleRestaurant() {
             </div>
             <div className={style.container}>
                 <h2 className={style.title}>{restaurant.name} - {restaurant.address}, {restaurant.city}</h2>
+                <p className={style.restoInfo}>{parseFloat((Math.random() * 4 + 1).toFixed(1))} <FontAwesomeIcon icon={faStar}/></p>
             </div>
         </>
     )

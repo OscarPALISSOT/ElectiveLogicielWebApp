@@ -21,7 +21,27 @@
 }
 
 .close{
-    padding: 0.3rem;
-    border-radius: 30px;
+    margin-left: 0.8rem;
+    border-radius: 2rem;
     background-color: var(--fontColorLight);
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header{
+    padding-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    height: 3rem;
+    width: 100%;
+}
+
+.restoInfo{
+    margin-top: 1rem;
+    font-weight: bold;
 }
