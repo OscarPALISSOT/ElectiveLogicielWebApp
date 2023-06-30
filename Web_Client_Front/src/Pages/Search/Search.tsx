@@ -8,6 +8,7 @@ import axios from "axios";
 import {Restaurant} from "../../Interfaces/Restaurant.ts";
 import style from "./Search.module.css";
 import Categories from "../../Components/Search/Categories/Categories.tsx";
+import setAuthTokenHeader from "../../Modules/SetToken.ts";
 
 function Search() {
 
@@ -16,6 +17,7 @@ function Search() {
     const [ searchResult, setSearchResult ] = useState<Restaurant[]>([]);
 
     useEffect(() => {
+        setAuthTokenHeader(localStorage.getItem('JWT_auth_Cesivroo'));
         axios.get(import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_RESTAURANT_FOODTYPE + '/getALLfoodTypes')
             .then((response) => {
                 setFoodTypes(response.data.response);
