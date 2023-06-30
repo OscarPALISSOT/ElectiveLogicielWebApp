@@ -12,7 +12,7 @@ import {
 } from '../modules/restaurant';
 import { Restaurant } from '../interfaces/Restaurant';
 import { FoodType } from '../interfaces/FoodType';
-import path from "path";
+import path from 'path';
 
 const router = express.Router();
 
