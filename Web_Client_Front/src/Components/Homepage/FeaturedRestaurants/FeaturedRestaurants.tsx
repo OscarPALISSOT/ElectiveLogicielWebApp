@@ -14,7 +14,20 @@ const FeaturedRestaurants: React.FC<FeaturedRestaurantsProps> = ({FeaturedRestau
             <div className={style.featuredRestaurantsContainer}>
                 {FeaturedRestaurants.map((restaurant) => (
                     <div key={restaurant.restaurantId} className={style.featuredRestaurantItem}>
-                        <p>{restaurant.name}</p>
+                        <div className={style.thumbnail}>
+                            <img crossOrigin={"anonymous"} src={import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_RESTAURANT + '/getRestaurantThumbnail?restaurantThumbnail=' + restaurant.thumbnail} alt=""/>
+                        </div>
+                        <div className={style.footerContent}>
+                            <div className={style.footerContentLeft}>
+                                <p className={style.restaurantName}>{restaurant.name}</p>
+                                <p>{restaurant.address} - {restaurant.city}</p>
+                            </div>
+                            <div className={style.footerContentRight}>
+                                <div className={style.rating}>
+                                    <p>{parseFloat((Math.random() * 4 + 1).toFixed(1))}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 ))}
             </div>

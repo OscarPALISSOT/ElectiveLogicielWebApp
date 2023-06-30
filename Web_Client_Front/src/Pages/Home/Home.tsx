@@ -85,7 +85,11 @@ function Home() {
                 />
             </div>
 
+            <h2 className={style.title}>Catégories à la une :</h2>
+
             <FeaturedFoodTypes FoodTypes={foodTypes}/>
+
+            <h2 className={style.title}>Restaurants à la une :</h2>
 
             <FeaturedRestaurants FeaturedRestaurants={featuredRestaurants}/>
 

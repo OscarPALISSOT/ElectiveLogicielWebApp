@@ -41,6 +41,9 @@
     width: 100%;
 }
 
+.title{
+    margin-left: 1rem;
+}
 
 .mapContainer{
     height: 50vh;
