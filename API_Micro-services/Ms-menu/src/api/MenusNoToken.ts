@@ -1,13 +1,10 @@
 import express from 'express';
-import fileUpload from 'express-fileupload';
 
 import MessageResponse from '../interfaces/MessageResponse';
 import {Menu} from "../interfaces/Menu";
 import {CreateMenu, DeleteMenu, GetAllMenus, GetMenu, UpdateMenu} from "../modules/Menu";
 
 const router = express.Router();
-
-router.use(fileUpload());
 
 /**
  * Ping menus route
