@@ -54,7 +54,7 @@ router.get('/getDish', async function (req, res, next) {
 });
 
 /**
- * Get all dishes from a restaurant
+ * Get all dishes from a Restaurant
  */
 router.get('/getAllDishes', async function (req, res, next) {
     const { restaurantId } = req.query;

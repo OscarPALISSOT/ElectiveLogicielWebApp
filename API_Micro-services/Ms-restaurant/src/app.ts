@@ -26,7 +26,7 @@ app.get<{}, MessageResponse>('/', (req, res) => {
 app.use('/api/v1/foodTypes', foodTypesNoToken);
 app.use('/api/v1/restaurants', restaurantsNoToken);
 
-app.use(middlewaresUser.tokenMiddleware);
+//app.use(middlewaresUser.tokenMiddleware);
 //app.use(middlewaresUser.isAdmin);
 
 app.use('/api/v1/restaurants', restaurants);

@@ -31,7 +31,7 @@ function FoodTypeAdmin() {
             <div className={style.container}>
                 <h1>Gestion des restaurants</h1>
                 <Btn
-                    label={'Ajouter un restaurant'}
+                    label={'Ajouter un Restaurant'}
                     style={'primary'}
                     rounded={true}
                     icon={<FontAwesomeIcon icon={faPlus}/> }

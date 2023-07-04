@@ -5,8 +5,8 @@ const prisma = new PrismaClient();
 
 
 /**
- * Create a restaurant
- * @param {Restaurant} restaurant the restaurant to be created
+ * Create a Restaurant
+ * @param {Restaurant} restaurant the Restaurant to be created
  */
 async function CreateRestaurant(restaurant: Restaurant) {
   return prisma.restaurant.create({
@@ -30,8 +30,8 @@ async function CreateRestaurant(restaurant: Restaurant) {
 }
 
 /**
- * Get a restaurant
- * @param {string} restaurantId the restaurant id to be retrieved
+ * Get a Restaurant
+ * @param {string} restaurantId the Restaurant id to be retrieved
  */
 async function GetRestaurant(restaurantId: string) {
   return prisma.restaurant.findUnique({
@@ -56,8 +56,8 @@ async function GetAllRestaurants() {
 }
 
 /**
- * Delete a restaurant
- * @param {string} restaurantId the restaurant id to be deleted
+ * Delete a Restaurant
+ * @param {string} restaurantId the Restaurant id to be deleted
  */
 async function DeleteRestaurant(restaurantId: string) {
   return prisma.restaurant.delete({
@@ -68,9 +68,9 @@ async function DeleteRestaurant(restaurantId: string) {
 }
 
 /**
- * Update a restaurant
- * @param {string} restaurantId the restaurant id to be updated
- * @param {Restaurant} newRestaurant the new restaurant data
+ * Update a Restaurant
+ * @param {string} restaurantId the Restaurant id to be updated
+ * @param {Restaurant} newRestaurant the new Restaurant data
  */
 async function UpdateRestaurant(restaurantId: string, newRestaurant: Restaurant) {
   return prisma.restaurant.update({
@@ -104,7 +104,7 @@ async function GetNumberRestaurant(number: number) {
 }
 
 /**
- * search a restaurant
+ * search a Restaurant
  *  @param {string} letter the letter to be searched
  */
 

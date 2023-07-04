@@ -1,12 +1,15 @@
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {Restaurant} from "../../../Interfaces/Restaurant.ts";
+import {Menu} from "../../../Interfaces/Menu.ts";
 import axios from "axios";
 import setAuthTokenHeader from "../../../Modules/SetToken.ts";
 import style from "./SingleRestaurant.module.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStar, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {useNavigate} from "react-router";
+import FeaturedRestaurants from "../../../Components/Homepage/FeaturedRestaurants/FeaturedRestaurants.tsx";
+import Menus from "../../../Components/Restaurant/Menus/Menus.tsx";
 
 
 function SingleRestaurant() {
@@ -17,6 +20,7 @@ function SingleRestaurant() {
     const {id} = useParams();
 
     const [restaurant, setRestaurant] = useState<Restaurant>({} as Restaurant);
+    const [menu, setMenu] = useState<Menu[]>([]);
 
     useEffect(() => {
         setAuthTokenHeader(localStorage.getItem('JWT_auth_Cesivroo'));
@@ -27,6 +31,17 @@ function SingleRestaurant() {
         }).then((response) => {
             console.log(response.data.response);
             setRestaurant(response.data.response);
+        }).catch((error) => {
+            console.log(error);
+        })
+
+        axios.get(import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_MENU + '/getAllMenus', {
+            params: {
+                restaurantId: id
+            }
+        }).then((response) => {
+            console.log(response.data.response);
+            setMenu(response.data.response);
         }).catch((error) => {
             console.log(error);
         })
@@ -46,6 +61,8 @@ function SingleRestaurant() {
                 <h2 className={style.title}>{restaurant.name} - {restaurant.address}, {restaurant.city}</h2>
                 <p className={style.restoInfo}>{parseFloat((Math.random() * 4 + 1).toFixed(1))} <FontAwesomeIcon icon={faStar}/></p>
             </div>
+
+            <Menus Menus={menu}/>
         </>
     )
 }

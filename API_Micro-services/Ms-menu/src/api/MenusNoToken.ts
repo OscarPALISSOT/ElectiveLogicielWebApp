@@ -51,7 +51,7 @@ router.get('/getMenu', async function (req, res, next) {
 });
 
 /**
- * Get all menus from a restaurant
+ * Get all menus from a Restaurant
  */
 router.get('/getAllMenus', async function (req, res, next) {
     const {restaurantId} = req.query;

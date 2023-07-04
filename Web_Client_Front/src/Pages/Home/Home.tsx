@@ -81,7 +81,7 @@ function Home() {
                     radius={'rounded'}
                     style={'primary'}
                     type={'text'}
-                    placeholder={'Plats, restaurant, ...'}
+                    placeholder={'Plats, Restaurant, ...'}
                     icon={<FontAwesomeIcon icon={faSearch}/>}
                     onChange={(event) => search(event)}
                 />

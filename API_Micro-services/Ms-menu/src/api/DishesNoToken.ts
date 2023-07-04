@@ -4,7 +4,7 @@ import path from 'path';
 const router = express.Router();
 
 /**
- * get a restaurant thumbnail
+ * get a Restaurant thumbnail
  */
 
 router.get('/getDishesThumbnail', async function (req, res, next) {

@@ -41,8 +41,8 @@ async function GetDelivery(deliveryId: string) {
 }
 
 /**
- * Get all deliveries from a restaurant
- * @param {string} restaurantId the restaurant id to get deliveries from
+ * Get all deliveries from a Restaurant
+ * @param {string} restaurantId the Restaurant id to get deliveries from
  */
 async function GetAllDeliveries(restaurantId: string) {
   return prisma.delivery.findMany({

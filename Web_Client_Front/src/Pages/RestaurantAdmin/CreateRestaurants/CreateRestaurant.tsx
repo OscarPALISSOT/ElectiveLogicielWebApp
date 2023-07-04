@@ -99,7 +99,7 @@ function CreateFoodType() {
                 <InputField
                     type={'text'}
                     value={inputs.name}
-                    placeholder={'Nom du restaurant'}
+                    placeholder={'Nom du Restaurant'}
                     name={'name'}
                     required={true}
                     style={'primary'}
@@ -167,7 +167,7 @@ function CreateFoodType() {
                 <h2>Bannière de présentation</h2>
                 <InputFile id={'restaurantThumbnail'}/>
                 <Btn
-                    label={'Créer le restaurant'}
+                    label={'Créer le Restaurant'}
                     style={'yellow'}
                     icon={<FontAwesomeIcon icon={faPlus}/>}
                 />
