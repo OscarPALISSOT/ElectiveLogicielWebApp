@@ -30,7 +30,6 @@ function SingleRestaurant() {
                 restaurantId: id
             }
         }).then((response) => {
-            console.log(response.data.response);
             setRestaurant(response.data.response);
         }).catch((error) => {
             console.log(error);
@@ -78,7 +77,7 @@ function SingleRestaurant() {
             <div className={style.container}>
                 <h2 className={style.title}>{restaurant.name}<span className={style.address}> - {restaurant.address}, {restaurant.city}</span></h2>
                 <p className={style.restoInfo}>{parseFloat((Math.random() * 4 + 1).toFixed(1))} <FontAwesomeIcon icon={faStar}/> {restaurant.openingHours}</p>
-                <h2 className={style.titleMenu}> Les menus :</h2>
+                <h2 className={style.titleMenu}> Les plus populaires :</h2>
                 <Menus Menus={menus}/>
             </div>
 
