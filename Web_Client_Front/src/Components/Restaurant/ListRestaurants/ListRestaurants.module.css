@@ -1,0 +1,8 @@
+.ListRestaurantsContainer {
+    margin: 1rem 0.8rem;
+}
+
+.ListRestaurantsContainer > * {
+    margin-bottom: 1rem;
+    width: 100%;
+}

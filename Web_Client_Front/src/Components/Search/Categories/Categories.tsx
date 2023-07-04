@@ -17,7 +17,6 @@ const Categories: React.FC<CategoriesProps> = ({FoodTypes}: CategoriesProps) => 
             <div className={style.containerCategories}>
                 {FoodTypes.map((foodType) => (
                     <div key={foodType.foodTypeLabel} className={style.categoriesItem} onClick={() => navigate('/restaurants/foodtype/' + foodType.foodTypeLabel)}>
-
                         <div className={style.thumbnail}>
                             <img crossOrigin={"anonymous"} src={import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_RESTAURANT_FOODTYPE + '/getFoodTypeThumbnail?foodTypeIcons=' + foodType.icon} alt=""/>
                         </div>

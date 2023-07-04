@@ -8,10 +8,10 @@ import {FoodType} from "../../Interfaces/FoodType.ts";
 import FeaturedFoodTypes from "../../Components/Homepage/FeaturedFoodTypes/FeaturedFoodTypes.tsx";
 import NavBar from "../../Components/NavBar/NavBar.tsx";
 import {Restaurant} from "../../Interfaces/Restaurant.ts";
-import FeaturedRestaurants from "../../Components/Homepage/FeaturedRestaurants/FeaturedRestaurants.tsx";
 import MapComponent from "../../Components/MapComponent/MapComponent.tsx";
 import logo from "../../Assets/img/logo.svg";
 import setAuthTokenHeader from "../../Modules/SetToken.ts";
+import ListRestaurants from "../../Components/Restaurant/ListRestaurants/ListRestaurants.tsx";
 
 function Home() {
 
@@ -93,7 +93,7 @@ function Home() {
 
             <h2 className={style.title}>Restaurants à la une :</h2>
 
-            <FeaturedRestaurants FeaturedRestaurants={featuredRestaurants}/>
+            <ListRestaurants restaurants={featuredRestaurants} sizeItem={'large'}/>
 
             <div className={style.mapContainer}>
                 <MapComponent lat={lat} lng={lng} zoom={12}/>

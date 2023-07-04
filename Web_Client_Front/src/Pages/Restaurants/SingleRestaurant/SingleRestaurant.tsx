@@ -8,7 +8,6 @@ import style from "./SingleRestaurant.module.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStar, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {useNavigate} from "react-router";
-import FeaturedRestaurants from "../../../Components/Homepage/FeaturedRestaurants/FeaturedRestaurants.tsx";
 import Menus from "../../../Components/Restaurant/Menus/Menus.tsx";
 
 
