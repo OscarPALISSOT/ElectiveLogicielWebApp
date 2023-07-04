@@ -1,7 +1,6 @@
 import './App.css'
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Home from "./Pages/Home/Home.tsx";
-import About from "./Pages/About/About.tsx";
 import Authentication from "./Pages/Authentication/Authentication.tsx";
 import CreateAccount from "./Pages/CreateAccount/CreateAccount.tsx";
 import CreateFoodType from "./Pages/AppAdmin/FoodType/CreateFoodType/CreateFoodType.tsx";
@@ -13,17 +12,21 @@ import Admin from "./Pages/AppAdmin/Admin/Admin.tsx";
 import ProtectedRoute from "./Modules/ProtectedRoute.tsx";
 import AdminRestaurants from "./Pages/RestaurantAdmin/Restaurants/AdminRestaurants.tsx";
 import SingleRestaurant from "./Pages/Restaurants/SingleRestaurant/SingleRestaurant.tsx";
-import SingleSearch from "./Pages/Search/SingleSearch/SingleSearch.tsx";
+import ArchiveRestoByCat from "./Pages/Restaurants/ArchiveRestoByCat/ArchiveRestoByCat.tsx";
 
 function App() {
     return (
         <Router>
             <Routes>
 
-                <Route path="/about" element={<About/>}/>
+
+                {/* <Route path="/about" element={<About/>}/> */}
+
+                {/* Routes for authentication */}
                 <Route path="/login" element={<Authentication/>}/>
                 <Route path="/register" element={<CreateAccount/>}/>
 
+                {/* Mains routes */}
                 <Route path="/" element={
                     <ProtectedRoute element={
                         <Home/>}
@@ -35,24 +38,30 @@ function App() {
                     />
                 }/>
 
+
+
+                {/* Restaurant */}
                 <Route path="/restaurant/:id" element={
                     <ProtectedRoute element={
                         <SingleRestaurant/>}
                     />
                 }/>
-
-                <Route path="/search/foodtype/:label" element={
+                <Route path="/restaurants/foodtype/:label" element={
                     <ProtectedRoute element={
-                        <SingleSearch/>}
+                        <ArchiveRestoByCat/>}
                     />
                 }/>
 
 
+                {/* Admin */}
                 <Route path="/admin" element={
                     <ProtectedRoute element={
                         <Admin/>
                     }/>
                 }/>
+
+
+                {/* Admin for food types */}
                 <Route path="/admin/foodTypes" element={
                     <ProtectedRoute element={
                         <FoodTypeAdmin/>
@@ -65,6 +74,7 @@ function App() {
                 }/>
 
 
+                {/* Admin for restaurants */}
                 <Route path="/admin/restaurants" element={
                     <ProtectedRoute element={
                         <AdminRestaurants/>
@@ -77,6 +87,7 @@ function App() {
                 }/>
 
 
+                {/* 404 page */}
                 <Route path='*' element={<NotFound/>}/>
 
 
