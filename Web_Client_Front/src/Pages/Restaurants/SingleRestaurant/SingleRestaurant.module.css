@@ -14,36 +14,64 @@
 
 .container{
     margin: 1rem 0.8rem;
+    min-height: calc(100vh - 60px);
 }
 
 .title{
     max-width: 80%;
 }
 
+.address{
+    color: var(--secondary);
+    font-size: 1.2rem;
+}
+
 .titleMenu{
-    margin-left: 0.8rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .close{
     margin-left: 0.8rem;
     border-radius: 2rem;
     background-color: var(--fontColorLight);
+    color: var(--fontColor);
     width: 2.5rem;
     height: 2.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.5s ease;
+}
+
+.headerScrolled .close{
+    background-color: var(--fontColor);
+    color: var(--fontColorLight);
 }
 
 .header{
-    padding-top: 0.5rem;
+    padding : 2rem 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: fixed;
     height: 3rem;
     width: 100%;
+    transition: all 0.5s ease;
+}
+
+.headerScrolled{
+    background-color: var(--primary);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+.headerTitle{
+    opacity: 0;
+    transform: translateX(calc(50% - 50vw));
+    transition: all 0.5s ease;
+}
+
+.headerScrolled .headerTitle{
+    opacity: 1;
 }
 
 .restoInfo{
