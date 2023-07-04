@@ -2,19 +2,20 @@
     margin: 1rem 0.8rem;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .carrouselItem{
-    margin-right: 0.5rem;
     background: var(--primary);
-    border-radius: 10px;
-    height: 6rem;
+    border-radius: 6px;
+    height: 9rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 46%;
+    margin-bottom: 2rem;
 }
 
 .thumbnail{

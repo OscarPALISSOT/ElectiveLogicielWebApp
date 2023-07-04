@@ -62,6 +62,8 @@ function SingleRestaurant() {
                 <p className={style.restoInfo}>{parseFloat((Math.random() * 4 + 1).toFixed(1))} <FontAwesomeIcon icon={faStar}/></p>
             </div>
 
+            <h3 className={style.titleMenu}> Les menus :</h3>
+
             <Menus Menus={menu}/>
         </>
     )

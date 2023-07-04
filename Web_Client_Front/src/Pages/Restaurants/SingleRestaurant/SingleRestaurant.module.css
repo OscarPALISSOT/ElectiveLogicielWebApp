@@ -20,6 +20,11 @@
     max-width: 80%;
 }
 
+.titleMenu{
+    margin-left: 0.8rem;
+    margin-top: 2rem;
+}
+
 .close{
     margin-left: 0.8rem;
     border-radius: 2rem;
