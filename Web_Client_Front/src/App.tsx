@@ -13,6 +13,7 @@ import Admin from "./Pages/AppAdmin/Admin/Admin.tsx";
 import ProtectedRoute from "./Modules/ProtectedRoute.tsx";
 import AdminRestaurants from "./Pages/RestaurantAdmin/Restaurants/AdminRestaurants.tsx";
 import SingleRestaurant from "./Pages/Restaurants/SingleRestaurant/SingleRestaurant.tsx";
+import SingleSearch from "./Pages/Search/SingleSearch/SingleSearch.tsx";
 
 function App() {
     return (
@@ -37,6 +38,12 @@ function App() {
                 <Route path="/restaurant/:id" element={
                     <ProtectedRoute element={
                         <SingleRestaurant/>}
+                    />
+                }/>
+
+                <Route path="/search/foodtype/:label" element={
+                    <ProtectedRoute element={
+                        <SingleSearch/>}
                     />
                 }/>
 

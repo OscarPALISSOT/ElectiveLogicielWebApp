@@ -5,7 +5,7 @@ import InputField from "../../Components/InputField/InputField.tsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import {Restaurant} from "../../Interfaces/Restaurant.ts";
+//import {Restaurant} from "../../Interfaces/Restaurant.ts";
 import style from "./Search.module.css";
 import Categories from "../../Components/Search/Categories/Categories.tsx";
 import setAuthTokenHeader from "../../Modules/SetToken.ts";
@@ -14,7 +14,7 @@ function Search() {
 
     const [foodTypes, setFoodTypes] = useState<FoodType[]>([]);
 
-    const [ searchResult, setSearchResult ] = useState<Restaurant[]>([]);
+    //const [ searchResult, setSearchResult ] = useState<Restaurant[]>([]);
 
     useEffect(() => {
         setAuthTokenHeader(localStorage.getItem('JWT_auth_Cesivroo'));
@@ -34,7 +34,7 @@ function Search() {
             }
         })
             .then((response) => {
-                setSearchResult(response.data.response);
+                //setSearchResult(response.data.response);
                 console.log(response.data.response);
             })
             .catch((error) => {
