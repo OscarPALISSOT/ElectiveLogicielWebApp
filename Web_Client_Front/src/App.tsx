@@ -41,12 +41,6 @@ function App() {
                     />
                 }/>
 
-                <Route path="/search/foodtype/:label/restaurant/:id" element={
-                    <ProtectedRoute element={
-                        <SingleRestaurant/>}
-                    />
-                }/>
-
                 <Route path="/search/foodtype/:label" element={
                     <ProtectedRoute element={
                         <SingleSearch/>}
