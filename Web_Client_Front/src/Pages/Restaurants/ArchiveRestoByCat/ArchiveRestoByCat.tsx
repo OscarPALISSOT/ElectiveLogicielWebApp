@@ -36,15 +36,14 @@ function ArchiveRestoByCat() {
 
     return (
         <>
-            <div className={style.header}>
-                <FontAwesomeIcon icon={faCircleChevronLeft} size={'2x'} onClick={() => navigate(-1)}/>
-                <h3 className={style.headerTitle}>{label}</h3>
-            </div>
             <div className={style.container}>
-                <h3>{restaurants.length > 1 ? restaurants.length + ' résultats' : restaurants.length + ' résultat'}</h3>
-                <ListRestaurants restaurants={restaurants}/>
+                <div className={style.header}>
+                    <FontAwesomeIcon icon={faCircleChevronLeft} size={'2x'} onClick={() => navigate(-1)}/>
+                    <h3 className={style.headerTitle}>{label}</h3>
+                </div>
+                <h3 className={style.resultTitle}>{restaurants.length > 1 ? restaurants.length + ' résultats' : restaurants.length + ' résultat'}</h3>
+                <ListRestaurants restaurants={restaurants} sizeItem={'small'}/>
             </div>
-
             <NavBar/>
 
         </>

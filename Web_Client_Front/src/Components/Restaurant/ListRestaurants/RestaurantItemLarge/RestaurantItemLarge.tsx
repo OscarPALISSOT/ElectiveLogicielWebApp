@@ -14,8 +14,7 @@ const RestaurantItemLarge: React.FC<RestaurantItemLarge> = ({restaurant}: Restau
 
     return (
         <>
-            <div key={restaurant.restaurantId} className={style.featuredRestaurantItem}
-                 onClick={() => navigate('Restaurant/' + restaurant.restaurantId)}>
+            <div key={restaurant.restaurantId} onClick={() => navigate('Restaurant/' + restaurant.restaurantId)}>
                 <div className={style.thumbnail}>
                     <img crossOrigin={"anonymous"}
                          src={import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_RESTAURANT + '/getRestaurantThumbnail?restaurantThumbnail=' + restaurant.thumbnail}

@@ -49,7 +49,7 @@ function SingleRestaurant() {
     return (
         <>
             <div className={style.header}>
-                <div className={style.close} onClick={() => navigate('/')}>
+                <div className={style.close} onClick={() => navigate(-1)}>
                     <FontAwesomeIcon icon={faXmark} size={'2xl'}/>
                 </div>
             </div>

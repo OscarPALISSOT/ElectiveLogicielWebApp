@@ -14,7 +14,23 @@ const RestaurantItemSmall: React.FC<RestaurantItemSmall> = ({restaurant}: Restau
 
     return (
         <>
-            <h1>{restaurant.name}</h1>
+            <div key={restaurant.restaurantId} className={style.smallItem} onClick={() => navigate('/Restaurant/' + restaurant.restaurantId)}>
+                <div className={style.thumbnail}>
+                    <img crossOrigin={"anonymous"}
+                         src={import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_RESTAURANT + '/getRestaurantThumbnail?restaurantThumbnail=' + restaurant.thumbnail}
+                         alt=""/>
+                </div>
+                <div className={style.middleContent}>
+                    <div className={style.footerContentLeft}>
+                        <p className={style.restaurantName}>{restaurant.name}</p>
+                        <p>{restaurant.address} - {restaurant.city}</p>
+                    </div>
+
+                </div>
+                <div className={style.rating}>
+                    <p>{parseFloat((Math.random() * 4 + 1).toFixed(1))}</p>
+                </div>
+            </div>
         </>
     )
 }
