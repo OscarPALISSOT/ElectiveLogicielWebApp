@@ -70,4 +70,20 @@ async function GetNumberFood(number: number) {
   });
 }
 
-export { CreateFoodType, GetFoodType, GetAllFoodTypes, DeleteFoodType, UpdateFoodType, GetNumberFood };
+/**
+ * search a FoodType
+ *  @param {string} letter the letter to be searched
+ */
+
+async function SearchFoodType(letter: string) {
+  return prisma.foodType.findMany({
+    where: {
+      foodTypeLabel: {
+        contains: letter,
+        mode: 'insensitive',
+      },
+    },
+  });
+}
+
+export { CreateFoodType, GetFoodType, GetAllFoodTypes, DeleteFoodType, UpdateFoodType, GetNumberFood, SearchFoodType};

@@ -1,0 +1,23 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem;
+    background: var(--primary);
+}
+
+.headerTitle{
+    margin-right: calc(50vw - 1rem);
+    transform: translateX(50%);
+}
+
+.container{
+    min-height: calc(100vh - 60px);
+}
+
+.resultTitle{
+    margin-top: 1rem;
+    margin-left: 0.8rem;
+}

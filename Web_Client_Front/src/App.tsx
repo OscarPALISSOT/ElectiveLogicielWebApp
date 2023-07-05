@@ -13,6 +13,7 @@ import ProtectedRoute from "./Modules/ProtectedRoute.tsx";
 import AdminRestaurants from "./Pages/RestaurantAdmin/Restaurants/AdminRestaurants.tsx";
 import SingleRestaurant from "./Pages/Restaurants/SingleRestaurant/SingleRestaurant.tsx";
 import ArchiveRestoByCat from "./Pages/Restaurants/ArchiveRestoByCat/ArchiveRestoByCat.tsx";
+import Cart from "./Pages/Cart/Cart.tsx";
 
 function App() {
     return (
@@ -38,7 +39,11 @@ function App() {
                     />
                 }/>
 
-
+                <Route path="/cart" element={
+                    <ProtectedRoute element={
+                        <Cart/>}
+                    />
+                }/>
 
                 {/* Restaurant */}
                 <Route path="/restaurant/:id" element={

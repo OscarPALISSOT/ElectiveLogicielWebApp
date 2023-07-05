@@ -8,10 +8,11 @@ import {
   DeleteFoodType,
   GetAllFoodTypes,
   GetFoodType,
-  GetNumberFood,
+  GetNumberFood, SearchFoodType,
   UpdateFoodType,
 } from '../modules/foodType';
 import path from 'path';
+import {SearchRestaurant} from "../modules/restaurant";
 
 const router = express.Router();
 
@@ -111,5 +112,16 @@ router.get('/getFeaturedFood', async function (req, res, next) {
     res.status(500).json({ error: error });
   }
 });
+
+router.get('/search', async function (req, res, next) {
+      const { search } = req.query;
+      try {
+        const Foodtypes = await SearchFoodType(search as string);
+        res.status(200).json({ response: Foodtypes });
+      } catch (error) {
+        res.status(500).json({ error: error });
+      }
+    },
+);
 
 export default router;
