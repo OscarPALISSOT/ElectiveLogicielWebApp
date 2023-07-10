@@ -33,8 +33,8 @@ async function GetEvaluation(evaluationId: string) {
 }
 
 /**
- * Get all evaluations from a restaurant
- * @param {string} restaurantId the restaurant id to get evaluations from
+ * Get all evaluations from a Restaurant
+ * @param {string} restaurantId the Restaurant id to get evaluations from
  */
 async function GetAllEvaluations(restaurantId: string) {
   return prisma.evaluation.findMany({

@@ -6,13 +6,13 @@ import MessageResponse from '../interfaces/MessageResponse';
 import {
   CreateRestaurant,
   DeleteRestaurant,
-  GetAllRestaurants, GetNumberRestaurant,
+  GetAllRestaurants, GetAllRestaurantsFromCat, GetNumberRestaurant,
   GetRestaurant, SearchRestaurant,
   UpdateRestaurant,
 } from '../modules/restaurant';
 import { Restaurant } from '../interfaces/Restaurant';
 import { FoodType } from '../interfaces/FoodType';
-import path from "path";
+import path from 'path';
 
 const router = express.Router();
 
@@ -27,7 +27,7 @@ router.get<{}, MessageResponse>('/', (req, res) => {
 });
 
 /**
- * create a restaurant
+ * create a Restaurant
  */
 router.post('/create', async function (req, res, next) {
   const { name, owner, staff, address, city, postalCode, country, foodType, openingHours } = req.query;
@@ -64,7 +64,7 @@ router.post('/create', async function (req, res, next) {
 
 
 /**
- * get a restaurant
+ * get a Restaurant
  */
 router.get('/getRestaurant', async function (req, res, next) {
   const { restaurantId } = req.query;
@@ -89,7 +89,7 @@ router.get('/getAllRestaurants', async function (req, res, next) {
 });
 
 /**
- * delete a restaurant
+ * delete a Restaurant
  */
 router.delete('/delete', async function (req, res, next) {
   const { restaurantId } = req.query;
@@ -102,7 +102,7 @@ router.delete('/delete', async function (req, res, next) {
 });
 
 /**
- * update a restaurant
+ * update a Restaurant
  */
 router.patch('/updateRestaurant', async function (req, res, next) {
   const { restaurantId, name, owner, staff, address, city, postalCode, country, openingHours } = req.query;
@@ -153,5 +153,18 @@ router.get('/search', async function (req, res, next) {
   }
 },
 );
+
+router.get('/getAllRestaurantFromCat', async function (req, res, next) {
+  const { foodTypeLabel } = req.query;
+
+
+  console.log(foodTypeLabel);
+  try {
+    const restaurant = await GetAllRestaurantsFromCat(foodTypeLabel as string);
+    res.status(200).json({ response: restaurant });
+  } catch (error) {
+    res.status(500).json({ error: error });
+  }
+});
 
 export default router;

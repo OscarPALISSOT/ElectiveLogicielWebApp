@@ -87,7 +87,7 @@ router.patch('/update', async function (req, res, next) {
 });
 
 /**
- * Get all orders from a restaurant
+ * Get all orders from a Restaurant
  */
 
 router.get('/getAllOrders', async function (req, res, next) {

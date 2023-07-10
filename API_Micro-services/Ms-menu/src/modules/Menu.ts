@@ -31,7 +31,7 @@ async function GetMenu(menuId: string) {
 }
 
 /**
- * Get all menus from a restaurant
+ * Get all menus from a Restaurant
  */
 async function GetAllMenus(restaurantId: string) {
     return prisma.menu.findMany(

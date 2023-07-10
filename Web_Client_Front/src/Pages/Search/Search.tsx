@@ -5,7 +5,7 @@ import InputField from "../../Components/InputField/InputField.tsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import {Restaurant} from "../../Interfaces/Restaurant.ts";
+//import {Restaurant} from "../../Interfaces/Restaurant.ts";
 import style from "./Search.module.css";
 import Categories from "../../Components/Search/Categories/Categories.tsx";
 import setAuthTokenHeader from "../../Modules/SetToken.ts";
@@ -14,7 +14,7 @@ function Search() {
 
     const [foodTypes, setFoodTypes] = useState<FoodType[]>([]);
 
-    const [ searchResult, setSearchResult ] = useState<Restaurant[]>([]);
+    const [ searchResult, setSearchResult ] = useState<FoodType[]>([]);
 
     useEffect(() => {
         setAuthTokenHeader(localStorage.getItem('JWT_auth_Cesivroo'));
@@ -28,7 +28,7 @@ function Search() {
     }, [])
 
     const search = (event: React.ChangeEvent<HTMLInputElement>) => {
-        axios.get(import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_RESTAURANT + '/search', {
+        axios.get(import.meta.env.VITE_BACK_HOST + import.meta.env.VITE_URL_MS_RESTAURANT_FOODTYPE + '/search', {
             params: {
                 search: event.target.value
             }
@@ -42,26 +42,50 @@ function Search() {
             })
     }
 
-    return (
-        <>
-            <div className={style.searchContainer}>
-                <InputField
-                    name={'search'}
-                    radius={'rounded'}
-                    style={'primary'}
-                    type={'text'}
-                    placeholder={'Plats, restaurant, ...'}
-                    icon={<FontAwesomeIcon icon={faSearch}/>}
-                    onChange={(event) => search(event)}
-                />
-            </div>
-            <h2 className={style.title}>Toutes les catégories</h2>
+    if(searchResult === undefined || !searchResult.length) {
+        return (
+            <>
+                <div className={style.searchContainer}>
+                    <InputField
+                        name={'search'}
+                        radius={'rounded'}
+                        style={'primary'}
+                        type={'text'}
+                        placeholder={'Plats, Restaurant, ...'}
+                        icon={<FontAwesomeIcon icon={faSearch}/>}
+                        onChange={(event) => search(event)}
+                    />
+                </div>
+                <h2 className={style.title}>Toutes les catégories</h2>
 
-            <Categories FoodTypes={foodTypes}/>
+                <Categories FoodTypes={foodTypes}/>
 
-            <NavBar/>
-        </>
-    )
+                <NavBar/>
+            </>
+        )
+    } else {
+        return (
+            <>
+                <div className={style.searchContainer}>
+                    <InputField
+                        name={'search'}
+                        radius={'rounded'}
+                        style={'primary'}
+                        type={'text'}
+                        placeholder={'Plats, Restaurant, ...'}
+                        icon={<FontAwesomeIcon icon={faSearch}/>}
+                        onChange={(event) => search(event)}
+                    />
+                </div>
+                <h2 className={style.title}>Toutes les catégories</h2>
+
+                <Categories FoodTypes={searchResult}/>
+
+                <NavBar/>
+            </>
+        )
+    }
+
 }
 
 export default Search

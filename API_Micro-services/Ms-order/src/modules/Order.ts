@@ -35,8 +35,8 @@ async function GetOrder(orderId: string) {
 }
 
 /**
- * Get all orders from a restaurant
- * @param {string} restaurantId the restaurant id to get orders from
+ * Get all orders from a Restaurant
+ * @param {string} restaurantId the Restaurant id to get orders from
  */
 
 async function GetAllOrders(restaurantId: string) {

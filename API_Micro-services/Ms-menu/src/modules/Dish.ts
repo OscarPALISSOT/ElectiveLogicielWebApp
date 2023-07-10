@@ -31,8 +31,8 @@ async function GetDish(dishId: string) {
 }
 
 /**
- * Get all dishes from a restaurant
- * @param {string} restaurantId the restaurant id to get dishes from
+ * Get all dishes from a Restaurant
+ * @param {string} restaurantId the Restaurant id to get dishes from
  */
 async function GetAllDishes(restaurantId: string) {
     return prisma.dish.findMany(

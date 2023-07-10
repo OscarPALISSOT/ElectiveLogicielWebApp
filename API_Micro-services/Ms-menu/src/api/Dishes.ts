@@ -1,10 +1,13 @@
 import express from 'express';
+import fileUpload from 'express-fileupload';
 
 import MessageResponse from '../interfaces/MessageResponse';
 import {AddDishToMenu, CreateDish, DeleteDish, GetAllDishes, GetDish, UpdateDish} from "../modules/Dish";
 import {Dish} from "../interfaces/Dish";
 
 const router = express.Router();
+
+router.use(fileUpload());
 
 /**
  * Ping dishes route
@@ -51,7 +54,7 @@ router.get('/getDish', async function (req, res, next) {
 });
 
 /**
- * Get all dishes from a restaurant
+ * Get all dishes from a Restaurant
  */
 router.get('/getAllDishes', async function (req, res, next) {
     const { restaurantId } = req.query;
